@@ -1202,7 +1202,7 @@ export default function Hero() {
             <div className="flex space-x-6">
               <a href="#" className="text-gray-400 hover:text-white transition-colors text-sm">Privacy Policy</a>
               <a href="#" className="text-gray-400 hover:text-white transition-colors text-sm">Terms of Service</a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors text-sm">Refund & Return Policy</a>
+              <a href="/refund" className="text-gray-400 hover:text-white transition-colors text-sm">Refund & Return Policy</a>
               <a href="#" className="text-gray-400 hover:text-white transition-colors text-sm"> Cookie Policy</a>
             </div>
           </div>
