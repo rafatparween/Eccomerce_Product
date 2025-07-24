@@ -13,7 +13,7 @@ export default function Hero() {
   const titleRef = useRef(null)
   const subtitleRef = useRef(null)
   const ctaRef = useRef(null)
-   const sectionRef = useRef(null)
+  const sectionRef = useRef(null)
   const timelineRef = useRef(null)
 
   // Particle system animation
@@ -214,7 +214,7 @@ export default function Hero() {
               <path d="M9 9H9.01" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
               <path d="M15 9H15.01" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
-            <span className="ml-3 text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500">PrinterHub</span>
+            <span className="ml-3 text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500">Hewlett Hub Solutions</span>
           </motion.div>
           
           <motion.div 
@@ -223,11 +223,12 @@ export default function Hero() {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4 }}
           >
-            <a href="#" className="text-gray-300 hover:text-white transition-colors">Printers</a>
-            <a href="#" className="text-gray-300 hover:text-white transition-colors">Supplies</a>
-            <a href="#" className="text-gray-300 hover:text-white transition-colors">Services</a>
-            <a href="#" className="text-gray-300 hover:text-white transition-colors">Pricing</a>
-            <a href="#" className="text-gray-300 hover:text-white transition-colors">About Us</a>
+            <a href="/" className="text-gray-300 hover:text-white transition-colors">Home</a>
+            <a href="/about" className="text-gray-300 hover:text-white transition-colors">About Us</a>
+            <a href="/service" className="text-gray-300 hover:text-white transition-colors">Services</a>
+            <a href="/printer-solution" className="text-gray-300 hover:text-white transition-colors">Printer Solutions</a>
+            <a href="/blog" className="text-gray-300 hover:text-white transition-colors">Blogs</a>
+             <a href="/contacts" className="text-gray-300 hover:text-white transition-colors">Contact Us</a>
           </motion.div>
           
           <motion.div 
@@ -373,6 +374,80 @@ export default function Hero() {
         </div>
       </section>
 
+      {/* About Us Section */}
+      <section className="py-20 bg-gray-900/50">
+        <div className="container mx-auto px-6">
+          <div className="flex flex-col lg:flex-row items-center gap-12">
+            <motion.div 
+              className="lg:w-1/2"
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+            >
+              <h2 className="text-4xl md:text-5xl font-bold mb-8">
+                <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-cyan-300">
+                  About Hewlett Hub Solutions
+                </span>
+              </h2>
+              <p className="text-xl text-gray-300 mb-6">
+                Welcome to Hewlett Hub Solutions — your trusted source for high-quality refurbished printers and printing accessories. We specialize in sourcing, refurbishing, and reselling reliable pre-owned printers that offer the same functionality as new models at a fraction of the price.
+              </p>
+              <div className="space-y-4 mb-8">
+                <div className="flex items-start">
+                  <svg className="w-6 h-6 text-green-400 mt-1 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <p className="text-lg text-gray-300">Thoroughly inspected and tested by certified technicians</p>
+                </div>
+                <div className="flex items-start">
+                  <svg className="w-6 h-6 text-green-400 mt-1 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <p className="text-lg text-gray-300">Professionally cleaned and refurbished to like-new condition</p>
+                </div>
+                <div className="flex items-start">
+                  <svg className="w-6 h-6 text-green-400 mt-1 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <p className="text-lg text-gray-300">Backed by our limited replacement warranty for peace of mind</p>
+                </div>
+                <div className="flex items-start">
+                  <svg className="w-6 h-6 text-green-400 mt-1 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <p className="text-lg text-gray-300">Ready for plug-and-play use with all necessary accessories included</p>
+                </div>
+              </div>
+              <p className="text-xl text-gray-300">
+                Whether you're setting up a home office or managing a small business, we help you save big without compromising on quality. Our mission is to provide affordable printing solutions while reducing electronic waste.
+              </p>
+            </motion.div>
+            <motion.div 
+              className="lg:w-1/2 relative"
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+            >
+              <div className="relative rounded-xl overflow-hidden border-2 border-gray-700">
+                <img 
+                  src="https://images.unsplash.com/photo-1593642632823-8f785ba67e45" 
+                  alt="Refurbished printers" 
+                  className="w-full h-auto"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-gray-900/20 to-transparent"></div>
+                <div className="absolute bottom-0 left-0 p-8">
+                  <h3 className="text-2xl font-bold text-white mb-2">Our Refurbishment Center</h3>
+                  <p className="text-gray-300">State-of-the-art facility with certified technicians</p>
+                </div>
+              </div>
+              <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-gradient-to-r from-blue-600 to-cyan-500 rounded-xl z-[-1]"></div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
       {/* Stats Section */}
       <section className="py-20 bg-gray-900/50">
         <div className="container mx-auto px-6">
@@ -380,7 +455,10 @@ export default function Hero() {
             {[
               { value: "90%", label: "Cost savings compared to new printers" },
               { value: "1 Year", label: "Warranty on all refurbished printers" },
-              { value: "24/7", label: "Technical support available" }
+              { value: "24/7", label: "Technical support available" },
+              { value: "500+", label: "Printers refurbished monthly" },
+              { value: "98%", label: "Customer satisfaction rate" },
+              { value: "50%", label: "Reduction in e-waste contribution" }
             ].map((stat, i) => (
               <motion.div
                 key={i}
@@ -394,6 +472,105 @@ export default function Hero() {
                   {stat.value}
                 </h3>
                 <p className="text-xl text-gray-300">{stat.label}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Printer Types Section */}
+      <section className="py-28 bg-gray-900">
+        <div className="container mx-auto px-6">
+          <motion.div 
+            className="max-w-3xl mx-auto text-center mb-20"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-cyan-300">
+                Our Printer Selection
+              </span>
+            </h2>
+            <p className="text-xl text-gray-400">
+              Choose from our wide range of professionally refurbished printers for every need
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              {
+                title: "Laser Printers",
+                description: "High-speed, economical printing perfect for office environments. Toner-based technology delivers sharp text at low cost per page.",
+                icon: (
+                  <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
+                  </svg>
+                ),
+                color: "from-blue-500 to-cyan-400"
+              },
+              {
+                title: "Inkjet Printers",
+                description: "Vibrant color printing ideal for photos and creative projects. Compact designs perfect for home offices.",
+                icon: (
+                  <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
+                  </svg>
+                ),
+                color: "from-purple-500 to-pink-500"
+              },
+              {
+                title: "Multifunction Printers",
+                description: "All-in-one devices that print, scan, copy and fax. Save space and money with these versatile workhorses.",
+                icon: (
+                  <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+                  </svg>
+                ),
+                color: "from-amber-500 to-yellow-400"
+              },
+              {
+                title: "Photo Printers",
+                description: "Professional-grade photo printing with exceptional color accuracy and archival-quality inks.",
+                icon: (
+                  <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                  </svg>
+                ),
+                color: "from-pink-500 to-rose-400"
+              },
+              {
+                title: "Large Format Printers",
+                description: "For architects, engineers and designers needing wide-format printing up to A0 size.",
+                icon: (
+                  <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2" />
+                  </svg>
+                ),
+                color: "from-emerald-500 to-teal-400"
+              },
+              {
+                title: "Label Printers",
+                description: "Specialized printers for creating professional barcode labels, shipping labels and more.",
+                icon: (
+                  <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                  </svg>
+                ),
+                color: "from-indigo-500 to-blue-400"
+              }
+            ].map((type, i) => (
+              <motion.div
+                key={i}
+                className="feature-card bg-gray-900 rounded-xl p-8 hover:bg-gray-800/50 transition-all duration-300 border border-gray-800"
+                whileHover={{ y: -10 }}
+              >
+                <div className={`w-14 h-14 rounded-lg mb-6 flex items-center justify-center bg-gradient-to-br ${type.color}`}>
+                  {type.icon}
+                </div>
+                <h3 className="text-2xl font-bold mb-4">{type.title}</h3>
+                <p className="text-gray-400">{type.description}</p>
               </motion.div>
             ))}
           </div>
@@ -433,7 +610,7 @@ export default function Hero() {
                   </svg>
                 ),
                 title: "Certified Quality",
-                description: "All printers undergo rigorous testing and certification processes.",
+                description: "All printers undergo rigorous testing and certification processes to ensure they meet our high standards.",
                 color: "from-purple-500 to-pink-500"
               },
               {
@@ -443,7 +620,7 @@ export default function Hero() {
                   </svg>
                 ),
                 title: "Warranty Included",
-                description: "Every printer comes with a 1-year replacement warranty.",
+                description: "Every printer comes with a comprehensive 1-year replacement warranty for your peace of mind.",
                 color: "from-blue-500 to-cyan-400"
               },
               {
@@ -453,7 +630,7 @@ export default function Hero() {
                   </svg>
                 ),
                 title: "All Major Brands",
-                description: "HP, Canon, Epson, Brother, Xerox and more available.",
+                description: "HP, Canon, Epson, Brother, Xerox and more available from our extensive inventory.",
                 color: "from-emerald-500 to-teal-400"
               },
               {
@@ -463,7 +640,7 @@ export default function Hero() {
                   </svg>
                 ),
                 title: "Free Setup Support",
-                description: "Our technicians will help you set up your printer remotely.",
+                description: "Our expert technicians will help you set up your printer remotely at no additional cost.",
                 color: "from-amber-500 to-yellow-400"
               },
               {
@@ -473,7 +650,7 @@ export default function Hero() {
                   </svg>
                 ),
                 title: "Eco-Friendly",
-                description: "Reduce e-waste by giving printers a second life.",
+                description: "Reduce e-waste and your carbon footprint by giving printers a second life.",
                 color: "from-red-500 to-pink-400"
               },
               {
@@ -483,7 +660,7 @@ export default function Hero() {
                   </svg>
                 ),
                 title: "Office-Ready",
-                description: "Perfect for home offices, small businesses, and enterprises.",
+                description: "Perfect for home offices, small businesses, and enterprise environments alike.",
                 color: "from-indigo-500 to-blue-400"
               }
             ].map((feature, i) => (
@@ -503,81 +680,256 @@ export default function Hero() {
         </div>
       </section>
 
+      {/* Printer Comparison Section */}
+      <section className="py-28 bg-gray-900/50">
+        <div className="container mx-auto px-6">
+          <motion.div 
+            className="max-w-3xl mx-auto text-center mb-20"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-cyan-300">
+                New vs Refurbished
+              </span>
+              <br />
+              The Smart Choice
+            </h2>
+            <p className="text-xl text-gray-400">
+              See how our refurbished printers compare to buying new
+            </p>
+          </motion.div>
+
+          <div className="max-w-5xl mx-auto bg-gray-900 rounded-xl overflow-hidden border border-gray-800">
+            <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-gray-800">
+              <div className="p-8">
+                <h3 className="text-2xl font-bold mb-6 text-center">New Printers</h3>
+                <div className="space-y-4">
+                  <div className="flex items-start">
+                    <svg className="w-6 h-6 text-red-400 mt-1 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                    <p className="text-gray-300">High upfront cost (2-3x more expensive)</p>
+                  </div>
+                  <div className="flex items-start">
+                    <svg className="w-6 h-6 text-red-400 mt-1 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                    <p className="text-gray-300">Limited warranty (typically 1 year)</p>
+                  </div>
+                  <div className="flex items-start">
+                    <svg className="w-6 h-6 text-red-400 mt-1 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                    <p className="text-gray-300">Higher environmental impact</p>
+                  </div>
+                  <div className="flex items-start">
+                    <svg className="w-6 h-6 text-red-400 mt-1 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                    <p className="text-gray-300">May include unnecessary features</p>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="p-8 bg-gray-800/50">
+                <h3 className="text-2xl font-bold mb-6 text-center bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-cyan-300">Our Refurbished Printers</h3>
+                <div className="space-y-4">
+                  <div className="flex items-start">
+                    <svg className="w-6 h-6 text-green-400 mt-1 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    <p className="text-gray-300">Significant cost savings (up to 70% off)</p>
+                  </div>
+                  <div className="flex items-start">
+                    <svg className="w-6 h-6 text-green-400 mt-1 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    <p className="text-gray-300">1-year replacement warranty included</p>
+                  </div>
+                  <div className="flex items-start">
+                    <svg className="w-6 h-6 text-green-400 mt-1 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    <p className="text-gray-300">Eco-friendly - reduces e-waste</p>
+                  </div>
+                  <div className="flex items-start">
+                    <svg className="w-6 h-6 text-green-400 mt-1 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    <p className="text-gray-300">Tested and optimized for reliability</p>
+                  </div>
+                  <div className="flex items-start">
+                    <svg className="w-6 h-6 text-green-400 mt-1 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    <p className="text-gray-300">Free setup support included</p>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="p-8">
+                <h3 className="text-2xl font-bold mb-6 text-center">Benefits</h3>
+                <div className="space-y-4">
+                  <div className="flex items-center">
+                    <div className="w-3 h-3 rounded-full bg-blue-400 mr-3"></div>
+                    <p className="text-gray-300">Same functionality as new printers</p>
+                  </div>
+                  <div className="flex items-center">
+                    <div className="w-3 h-3 rounded-full bg-blue-400 mr-3"></div>
+                    <p className="text-gray-300">Professional-grade performance</p>
+                  </div>
+                  <div className="flex items-center">
+                    <div className="w-3 h-3 rounded-full bg-blue-400 mr-3"></div>
+                    <p className="text-gray-300">Compatible with all standard supplies</p>
+                  </div>
+                  <div className="flex items-center">
+                    <div className="w-3 h-3 rounded-full bg-blue-400 mr-3"></div>
+                    <p className="text-gray-300">Plug-and-play ready</p>
+                  </div>
+                  <div className="flex items-center">
+                    <div className="w-3 h-3 rounded-full bg-blue-400 mr-3"></div>
+                    <p className="text-gray-300">Accessories included</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Timeline Section */}
       <section 
-      ref={sectionRef}
-      className="timeline-section py-28 bg-gray-900/50"
-    >
-      <div className="container mx-auto px-6">
-        <motion.div 
-          className="max-w-3xl mx-auto text-center mb-20"
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-        >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Our Refurbishment Process
-          </h2>
-          <p className="text-xl text-gray-400">
-            Every printer goes through our rigorous 10-point inspection process
-          </p>
-        </motion.div>
+        ref={sectionRef}
+        className="timeline-section py-28 bg-gray-900/50"
+      >
+        <div className="container mx-auto px-6">
+          <motion.div 
+            className="max-w-3xl mx-auto text-center mb-20"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">
+              Our 10-Point Refurbishment Process
+            </h2>
+            <p className="text-xl text-gray-400">
+              Every printer goes through our rigorous inspection and refurbishment process
+            </p>
+          </motion.div>
 
-        <div className="max-w-4xl mx-auto">
-          {[
-            {
-              title: "Initial Inspection",
-              description: "Each printer undergoes a comprehensive diagnostic test",
-              icon: (
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2m-2-4h.01M17 16h.01" />
-                </svg>
-              )
-            },
-            {
-              title: "Deep Cleaning",
-              description: "Complete disassembly and professional cleaning",
-              icon: (
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
-                </svg>
-              )
-            },
-            {
-              title: "Component Replacement",
-              description: "Worn parts replaced with OEM or high-quality alternatives",
-              icon: (
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
-                </svg>
-              )
-            },
-            {
-              title: "Quality Testing",
-              description: "500+ page test run to ensure perfect performance",
-              icon: (
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              )
-            }
-          ].map((step, i) => (
-            <div 
-              key={i}
-              className="timeline-item relative pl-16 pb-10 last:pb-0 group opacity-100" // Changed from motion.div to regular div
-            >
-              <div className="absolute left-0 top-0 w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-cyan-400 flex items-center justify-center text-white group-hover:scale-110 transition-transform">
-                {step.icon}
+          <div className="max-w-4xl mx-auto">
+            {[
+              {
+                title: "Initial Diagnostic",
+                description: "Comprehensive testing of all printer functions and components",
+                icon: (
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
+                  </svg>
+                )
+              },
+              {
+                title: "Complete Disassembly",
+                description: "Printer is fully disassembled to access all internal components",
+                icon: (
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+                  </svg>
+                )
+              },
+              {
+                title: "Deep Cleaning",
+                description: "All components professionally cleaned using specialized equipment",
+                icon: (
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+                  </svg>
+                )
+              },
+              {
+                title: "Component Inspection",
+                description: "Each part inspected for wear and tested for functionality",
+                icon: (
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                  </svg>
+                )
+              },
+              {
+                title: "Part Replacement",
+                description: "Worn or damaged components replaced with OEM or high-quality alternatives",
+                icon: (
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                  </svg>
+                )
+              },
+              {
+                title: "Reassembly",
+                description: "Printer reassembled with care using proper techniques",
+                icon: (
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                  </svg>
+                )
+              },
+              {
+                title: "Firmware Update",
+                description: "Latest firmware installed for optimal performance and security",
+                icon: (
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                  </svg>
+                )
+              },
+              {
+                title: "Print Quality Test",
+                description: "500+ page test run to ensure consistent print quality",
+                icon: (
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
+                  </svg>
+                )
+              },
+              {
+                title: "Final Inspection",
+                description: "Complete quality control check by senior technician",
+                icon: (
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                  </svg>
+                )
+              },
+              {
+                title: "Packaging",
+                description: "Printer carefully packaged with all necessary accessories",
+                icon: (
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                  </svg>
+                )
+              }
+            ].map((step, i) => (
+              <div 
+                key={i}
+                className="timeline-item relative pl-16 pb-10 last:pb-0 group opacity-100"
+              >
+                <div className="absolute left-0 top-0 w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-cyan-400 flex items-center justify-center text-white group-hover:scale-110 transition-transform">
+                  {step.icon}
+                </div>
+                <div className="absolute left-5 top-10 bottom-0 w-px bg-gray-700 group-last:hidden"></div>
+                <h3 className="text-2xl font-bold mb-2">{step.title}</h3>
+                <p className="text-gray-400">{step.description}</p>
               </div>
-              <div className="absolute left-5 top-10 bottom-0 w-px bg-gray-700 group-last:hidden"></div>
-              <h3 className="text-2xl font-bold mb-2">{step.title}</h3>
-              <p className="text-gray-400">{step.description}</p>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
 
       {/* Testimonials Section */}
       <section className="py-28 bg-gray-900">
@@ -600,22 +952,40 @@ export default function Hero() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
-                quote: "The refurbished HP printer I bought works perfectly and saved me hundreds compared to a new one. Couldn't be happier!",
+                quote: "The refurbished HP printer I bought works perfectly and saved me hundreds compared to a new one. Couldn't be happier with the quality and service!",
                 author: "Sarah Johnson",
                 role: "Small Business Owner",
                 avatar: "https://randomuser.me/api/portraits/women/44.jpg"
               },
               {
-                quote: "As an IT manager, I've outfitted our entire office with refurbished printers from PrinterHub. The quality is exceptional.",
+                quote: "As an IT manager, I've outfitted our entire office with refurbished printers from Hewlett Hub Solutions. The quality is exceptional and we've saved thousands.",
                 author: "Michael Chen",
                 role: "IT Manager",
                 avatar: "https://randomuser.me/api/portraits/men/32.jpg"
               },
               {
-                quote: "The setup support was incredible - they walked me through everything remotely. My printer works like new!",
+                quote: "The setup support was incredible - they walked me through everything remotely. My printer works like new and arrived faster than expected!",
                 author: "David Wilson",
                 role: "Home Office User",
                 avatar: "https://randomuser.me/api/portraits/men/75.jpg"
+              },
+              {
+                quote: "I was skeptical at first, but the printer arrived in perfect condition and works flawlessly. Will definitely buy refurbished again!",
+                author: "Emily Rodriguez",
+                role: "Graphic Designer",
+                avatar: "https://randomuser.me/api/portraits/women/63.jpg"
+              },
+              {
+                quote: "Our school needed affordable printers for the computer lab. These refurbished units have been running daily for 8 months without a single issue.",
+                author: "Robert Thompson",
+                role: "School Administrator",
+                avatar: "https://randomuser.me/api/portraits/men/41.jpg"
+              },
+              {
+                quote: "The warranty gave me peace of mind, but I haven't needed it. The printer has been working perfectly since day one. Great value!",
+                author: "Jennifer Lee",
+                role: "Freelance Writer",
+                avatar: "https://randomuser.me/api/portraits/women/28.jpg"
               }
             ].map((testimonial, i) => (
               <motion.div
@@ -640,6 +1010,74 @@ export default function Hero() {
                     <h4 className="font-bold">{testimonial.author}</h4>
                     <p className="text-gray-400 text-sm">{testimonial.role}</p>
                   </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-28 bg-gray-900/50">
+        <div className="container mx-auto px-6">
+          <motion.div 
+            className="max-w-3xl mx-auto text-center mb-20"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">
+              Frequently Asked Questions
+            </h2>
+            <p className="text-xl text-gray-400">
+              Everything you need to know about our refurbished printers
+            </p>
+          </motion.div>
+
+          <div className="max-w-4xl mx-auto">
+            {[
+              {
+                question: "What exactly is a refurbished printer?",
+                answer: "A refurbished printer is a pre-owned device that has been professionally inspected, repaired if necessary, thoroughly cleaned, and tested to ensure it meets original manufacturer specifications. Our refurbishment process goes beyond basic testing to ensure each printer performs like new."
+              },
+              {
+                question: "How much can I save with a refurbished printer?",
+                answer: "Typically, our customers save between 50-70% compared to the cost of a brand new printer with similar specifications. The exact savings depend on the model and its original retail price, but the value is significant across our entire inventory."
+              },
+              {
+                question: "What's included with my refurbished printer?",
+                answer: "Each printer comes with all necessary accessories (power cable, USB cable if applicable, installation CD/manual), and may include starter ink or toner cartridges depending on the model. We clearly list what's included with each product on its description page."
+              },
+              {
+                question: "How long is the warranty period?",
+                answer: "All our refurbished printers come with a comprehensive 1-year replacement warranty. This covers any defects in materials or workmanship, and if any issues arise, we'll replace your printer at no additional cost."
+              },
+              {
+                question: "Can I use regular ink/toner cartridges?",
+                answer: "Yes, our refurbished printers are compatible with all standard OEM or third-party ink and toner cartridges designed for that specific model. We recommend using high-quality supplies for optimal performance."
+              },
+              {
+                question: "How do I know the printer's condition?",
+                answer: "We grade each printer's condition (Excellent, Very Good, Good) based on cosmetic appearance and provide detailed photos. All printers function perfectly regardless of cosmetic grade, which only affects external appearance."
+              }
+            ].map((faq, i) => (
+              <motion.div
+                key={i}
+                className="mb-6 bg-gray-900 rounded-xl overflow-hidden border border-gray-800"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+                viewport={{ once: true }}
+              >
+                <button className="w-full flex justify-between items-center p-6 text-left">
+                  <h3 className="text-xl font-semibold">{faq.question}</h3>
+                  <svg className="w-6 h-6 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                <div className="px-6 pb-6 text-gray-400">
+                  <p>{faq.answer}</p>
                 </div>
               </motion.div>
             ))}
@@ -699,60 +1137,73 @@ export default function Hero() {
                   <path d="M9 9H9.01" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                   <path d="M15 9H15.01" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
-                <span className="ml-3 text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500">PrinterHub</span>
+                <span className="ml-3 text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500">Hewlett Hub Solutions</span>
               </div>
               <p className="text-gray-400">Your trusted source for affordable, high-quality refurbished printers.</p>
+              <div className="flex space-x-4 mt-6">
+                <a href="#" className="text-gray-400 hover:text-white transition-colors">
+                  <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" />
+                  </svg>
+                </a>
+                <a href="#" className="text-gray-400 hover:text-white transition-colors">
+                  <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-2 16h-2v-6h2v6zm-1-6.891c-.607 0-1.1-.496-1.1-1.109 0-.612.492-1.109 1.1-1.109s1.1.497 1.1 1.109c0 .613-.493 1.109-1.1 1.109zm8 6.891h-1.998v-2.861c0-1.881-2.002-1.722-2.002 0v2.861h-2v-6h2v1.093c.872-1.616 4-1.736 4 1.548v3.359z" />
+                  </svg>
+                </a>
+                <a href="#" className="text-gray-400 hover:text-white transition-colors">
+                  <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                  </svg>
+                </a>
+              </div>
             </div>
             
             <div>
               <h3 className="text-lg font-semibold mb-4">Products</h3>
               <ul className="space-y-2">
-                <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Laser Printers</a></li>
-                <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Inkjet Printers</a></li>
-                <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Multifunction Printers</a></li>
-                <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Printer Supplies</a></li>
+                <li><a href="/" className="text-gray-400 hover:text-white transition-colors">Laser Printers</a></li>
+                <li><a href="/" className="text-gray-400 hover:text-white transition-colors">Inkjet Printers</a></li>
+                <li><a href="/" className="text-gray-400 hover:text-white transition-colors">Multifunction Printers</a></li>
+                <li><a href="/" className="text-gray-400 hover:text-white transition-colors">Photo Printers</a></li>
+                <li><a href="/" className="text-gray-400 hover:text-white transition-colors">Label Printers</a></li>
+                <li><a href="/" className="text-gray-400 hover:text-white transition-colors">Printer Supplies</a></li>
               </ul>
             </div>
             
             <div>
               <h3 className="text-lg font-semibold mb-4">Support</h3>
               <ul className="space-y-2">
-                <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Setup Guides</a></li>
-                <li><a href="#" className="text-gray-400 hover:text-white transition-colors">FAQs</a></li>
-                <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Warranty Info</a></li>
-                <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Contact Support</a></li>
+                <li><a href="/" className="text-gray-400 hover:text-white transition-colors">Setup Guides</a></li>
+                <li><a href="/" className="text-gray-400 hover:text-white transition-colors">FAQs</a></li>
+                <li><a href="/" className="text-gray-400 hover:text-white transition-colors">Warranty Info</a></li>
+                <li><a href="/" className="text-gray-400 hover:text-white transition-colors">Contact Support</a></li>
+                <li><a href="/" className="text-gray-400 hover:text-white transition-colors">Driver Downloads</a></li>
+                <li><a href="/" className="text-gray-400 hover:text-white transition-colors">Troubleshooting</a></li>
               </ul>
             </div>
             
             <div>
               <h3 className="text-lg font-semibold mb-4">Company</h3>
               <ul className="space-y-2">
-                <li><a href="#" className="text-gray-400 hover:text-white transition-colors">About Us</a></li>
-                <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Our Process</a></li>
-                <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Contact</a></li>
-                <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Blog</a></li>
+                <li><a href="/about" className="text-gray-400 hover:text-white transition-colors">About Us</a></li>
+                <li><a href="/service" className="text-gray-400 hover:text-white transition-colors">Services</a></li>
+                <li><a href="contacts" className="text-gray-400 hover:text-white transition-colors"> Contact Us</a></li>
+                 
+                <li><a href="/blog" className="text-gray-400 hover:text-white transition-colors"> Blog</a></li>
+                <li><a href="/printer-solution" className="text-gray-400 hover:text-white transition-colors">Printer Solutions</a></li>
+                <li><a href="/disclaimer" className="text-gray-400 hover:text-white transition-colors"> Disclaimer</a></li>
               </ul>
             </div>
           </div>
           
           <div className="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
-            <p className="text-gray-400 mb-4 md:mb-0">© 2023 PrinterHub. All rights reserved.</p>
+            <p className="text-gray-400 mb-4 md:mb-0">© 2023 Hewlett Hub Solutions. All rights reserved.</p>
             <div className="flex space-x-6">
-              <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" />
-                </svg>
-              </a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-2 16h-2v-6h2v6zm-1-6.891c-.607 0-1.1-.496-1.1-1.109 0-.612.492-1.109 1.1-1.109s1.1.497 1.1 1.109c0 .613-.493 1.109-1.1 1.109zm8 6.891h-1.998v-2.861c0-1.881-2.002-1.722-2.002 0v2.861h-2v-6h2v1.093c.872-1.616 4-1.736 4 1.548v3.359z" />
-                </svg>
-              </a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-                </svg>
-              </a>
+              <a href="#" className="text-gray-400 hover:text-white transition-colors text-sm">Privacy Policy</a>
+              <a href="#" className="text-gray-400 hover:text-white transition-colors text-sm">Terms of Service</a>
+              <a href="#" className="text-gray-400 hover:text-white transition-colors text-sm">Refund & Return Policy</a>
+              <a href="#" className="text-gray-400 hover:text-white transition-colors text-sm"> Cookie Policy</a>
             </div>
           </div>
         </div>
