@@ -118,12 +118,13 @@ export default function BlogPage() {
               <div className="md:flex">
                 <div className="md:w-1/2 bg-gray-800 h-64 md:h-auto flex items-center justify-center">
                   <div className="w-full h-full bg-gradient-to-br from-blue-900/30 to-gray-900 flex items-center justify-center">
-                   <Image 
-  src="/blog4.jpg" 
-  alt="Description of image" 
-  width={500} 
-  height={300} 
-/>
+                    <Image 
+                      src="/blog4.jpg" 
+                      alt="Featured blog post about refurbished printers" 
+                      width={500} 
+                      height={300} 
+                      className="object-cover w-full h-full"
+                    />
                   </div>
                 </div>
                 <div className="md:w-1/2 p-8">
@@ -189,7 +190,7 @@ export default function BlogPage() {
                   date: "June 8, 2023",
                   readTime: "5 min read",
                   tags: ['Maintenance', 'Tips'],
-                  featured: false
+                  image: "/blog1.jpg"
                 },
                 {
                   title: "Inkjet vs Laser: Which is Right for You?",
@@ -197,7 +198,7 @@ export default function BlogPage() {
                   date: "May 25, 2023",
                   readTime: "7 min read",
                   tags: ['Buying Guide', 'Comparison'],
-                  featured: false
+                  image: "/blog2.jpg"
                 },
                 {
                   title: "The Environmental Benefits of Refurbished Printers",
@@ -205,7 +206,7 @@ export default function BlogPage() {
                   date: "May 12, 2023",
                   readTime: "4 min read",
                   tags: ['Sustainability', 'Eco-Friendly'],
-                  featured: false
+                  image: "/blog3.jpg"
                 },
                 {
                   title: "Solving Common Printer Connectivity Issues",
@@ -213,7 +214,7 @@ export default function BlogPage() {
                   date: "April 28, 2023",
                   readTime: "6 min read",
                   tags: ['Troubleshooting', 'How-To'],
-                  featured: false
+                  image: "/blog5.jpg"
                 },
                 {
                   title: "Top 5 Printers for Small Businesses in 2023",
@@ -221,7 +222,7 @@ export default function BlogPage() {
                   date: "April 15, 2023",
                   readTime: "8 min read",
                   tags: ['Business', 'Recommendations'],
-                  featured: false
+                  image: "/blog6.jpg"
                 },
                 {
                   title: "Understanding Printer Page Yields",
@@ -229,7 +230,7 @@ export default function BlogPage() {
                   date: "March 30, 2023",
                   readTime: "5 min read",
                   tags: ['Buying Guide', 'Cost Analysis'],
-                  featured: false
+                  image: "/blog7.jpg"
                 }
               ].map((post, i) => (
                 <motion.div 
@@ -239,12 +240,13 @@ export default function BlogPage() {
                 >
                   <div className="h-48 bg-gray-800 flex items-center justify-center">
                     <div className="w-full h-full bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center">
-                     <Image 
-  src="/blog3.jpg" 
-  alt="Description of image" 
-  width={500} 
-  height={300} 
-/>
+                      <Image 
+                        src={post.image} 
+                        alt={post.title} 
+                        width={500} 
+                        height={300} 
+                        className="object-cover w-full h-full"
+                      />
                     </div>
                   </div>
                   <div className="p-6">

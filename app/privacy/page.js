@@ -95,7 +95,8 @@ export default function PrivacyPolicy() {
           <section className="animate-section bg-gray-900 rounded-xl shadow-lg p-8 mb-16 border border-gray-800">
             <h2 className="text-2xl font-bold text-white mb-6">Introduction</h2>
             <p className="text-gray-300 mb-6">
-              At Hewlett Hub Solutions ("we," "us," or "our"), we are committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website or purchase our products.
+              
+Your privacy is important to us. We collect customer data only for order fulfillment, support, and communication. No personal information is shared with third parties. All payment information is processed securely via trusted payment gateways.
             </p>
             <p className="text-gray-300">
               By accessing or using our service, you agree to the collection and use of information in accordance with this policy.

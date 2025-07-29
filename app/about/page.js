@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { useLayoutEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+import Image from 'next/image';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -43,18 +44,18 @@ export default function AboutPage() {
         {/* Hero Section */}
         <section className="relative min-h-[60vh] flex items-center justify-center bg-gradient-to-br from-gray-900 to-gray-950 overflow-hidden pt-20">
           {/* Animated background elements */}
-          <svg 
+          <svg
             className="background-lines absolute inset-0 w-full h-full opacity-10"
             xmlns="http://www.w3.org/2000/svg"
           >
             {Array.from({ length: 20 }).map((_, i) => (
-              <line 
+              <line
                 key={i}
-                x1={i * 5 + '%'} 
-                y1="100%" 
-                x2={i * 5 + '%'} 
-                y2="100%" 
-                stroke="url(#lineGradient)" 
+                x1={i * 5 + '%'}
+                y1="100%"
+                x2={i * 5 + '%'}
+                y2="100%"
+                stroke="url(#lineGradient)"
                 strokeWidth="1"
               />
             ))}
@@ -68,7 +69,7 @@ export default function AboutPage() {
           </svg>
 
           <div className="container mx-auto px-6 relative z-10 text-center">
-            <motion.h1 
+            <motion.h1
               className="text-4xl md:text-6xl font-bold mb-6"
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
@@ -78,7 +79,7 @@ export default function AboutPage() {
                 About Hewlett Hub
               </span>
             </motion.h1>
-            <motion.p 
+            <motion.p
               className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -123,13 +124,19 @@ export default function AboutPage() {
                 </p>
               </div>
               <div className="md:w-1/2">
-                <motion.div 
+                <motion.div
                   className="bg-gray-800 h-80 rounded-xl overflow-hidden border border-gray-700"
                   whileHover={{ scale: 1.02 }}
                   transition={{ duration: 0.3 }}
                 >
                   <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-gray-800 to-gray-900">
-                    <span className="text-gray-500">Our Team at Work</span>
+                    <Image
+                      src="/aboutpage.jpeg" // ✅ Replace with your actual image path
+                      alt="Our Team"
+                      width={300}          // ✅ Next.js Image needs width and height or fill
+                      height={300}
+                      className="object-contain"
+                    />
                   </div>
                 </motion.div>
               </div>
@@ -140,7 +147,7 @@ export default function AboutPage() {
           <section className="animate-section mb-16">
             <h2 className="text-3xl font-bold text-center text-white mb-12">Our Refurbishment Process</h2>
             <div className="grid md:grid-cols-3 gap-8">
-              <motion.div 
+              <motion.div
                 className="bg-gray-900 p-8 rounded-xl border border-gray-800 hover:border-cyan-400 transition-all"
                 whileHover={{ y: -5 }}
               >
@@ -152,7 +159,7 @@ export default function AboutPage() {
                   Every printer undergoes a 25-point inspection to identify any issues or worn components.
                 </p>
               </motion.div>
-              <motion.div 
+              <motion.div
                 className="bg-gray-900 p-8 rounded-xl border border-gray-800 hover:border-cyan-400 transition-all"
                 whileHover={{ y: -5 }}
               >
@@ -164,7 +171,7 @@ export default function AboutPage() {
                   Our technicians replace all worn parts with OEM-quality components and thoroughly clean each unit.
                 </p>
               </motion.div>
-              <motion.div 
+              <motion.div
                 className="bg-gray-900 p-8 rounded-xl border border-gray-800 hover:border-cyan-400 transition-all"
                 whileHover={{ y: -5 }}
               >
@@ -183,7 +190,7 @@ export default function AboutPage() {
           <section className="animate-section mb-16 bg-gradient-to-br from-gray-900 to-gray-800 rounded-xl p-12 border border-gray-700">
             <h2 className="text-3xl font-bold text-center text-white mb-12">Why Choose Hewlett Hub Solutions?</h2>
             <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-              <motion.div 
+              <motion.div
                 className="flex items-start gap-6 p-6 bg-gray-800/50 rounded-lg border border-gray-700"
                 whileHover={{ x: 5 }}
               >
@@ -199,7 +206,7 @@ export default function AboutPage() {
                   </p>
                 </div>
               </motion.div>
-              <motion.div 
+              <motion.div
                 className="flex items-start gap-6 p-6 bg-gray-800/50 rounded-lg border border-gray-700"
                 whileHover={{ x: 5 }}
               >
@@ -215,7 +222,7 @@ export default function AboutPage() {
                   </p>
                 </div>
               </motion.div>
-              <motion.div 
+              <motion.div
                 className="flex items-start gap-6 p-6 bg-gray-800/50 rounded-lg border border-gray-700"
                 whileHover={{ x: 5 }}
               >
@@ -231,7 +238,7 @@ export default function AboutPage() {
                   </p>
                 </div>
               </motion.div>
-              <motion.div 
+              <motion.div
                 className="flex items-start gap-6 p-6 bg-gray-800/50 rounded-lg border border-gray-700"
                 whileHover={{ x: 5 }}
               >
@@ -254,7 +261,7 @@ export default function AboutPage() {
           <section className="animate-section mb-16">
             <h2 className="text-3xl font-bold text-center text-white mb-12">Meet Our Leadership Team</h2>
             <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-8">
-              <motion.div 
+              <motion.div
                 className="bg-gray-900 rounded-xl overflow-hidden border border-gray-800 hover:border-cyan-400 transition-all"
                 whileHover={{ y: -5 }}
               >
@@ -271,7 +278,7 @@ export default function AboutPage() {
                   </p>
                 </div>
               </motion.div>
-              <motion.div 
+              <motion.div
                 className="bg-gray-900 rounded-xl overflow-hidden border border-gray-800 hover:border-cyan-400 transition-all"
                 whileHover={{ y: -5 }}
               >
@@ -288,7 +295,7 @@ export default function AboutPage() {
                   </p>
                 </div>
               </motion.div>
-              <motion.div 
+              <motion.div
                 className="bg-gray-900 rounded-xl overflow-hidden border border-gray-800 hover:border-cyan-400 transition-all"
                 whileHover={{ y: -5 }}
               >
@@ -309,7 +316,7 @@ export default function AboutPage() {
           </section>
 
           {/* CTA Section */}
-          <motion.section 
+          <motion.section
             className="animate-section bg-gradient-to-r from-blue-600 to-cyan-500 text-white rounded-xl p-12 text-center border border-cyan-400/30"
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -320,7 +327,7 @@ export default function AboutPage() {
             <p className="text-xl text-cyan-100 mb-8 max-w-2xl mx-auto">
               Discover our range of certified refurbished printers and join thousands of satisfied customers.
             </p>
-            <motion.button 
+            <motion.button
               className="bg-white text-gray-900 font-bold py-3 px-8 rounded-lg hover:bg-gray-100 transition-colors"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}

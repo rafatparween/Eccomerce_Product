@@ -1201,10 +1201,10 @@ export default function Hero() {
           <div className="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
             <p className="text-gray-400 mb-4 md:mb-0">© 2023 Hewlett Hub Solutions. All rights reserved.</p>
             <div className="flex space-x-6">
-              <a href="#" className="text-gray-400 hover:text-white transition-colors text-sm">Privacy Policy</a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors text-sm">Terms of Service</a>
+              <a href="/privacy" className="text-gray-400 hover:text-white transition-colors text-sm">Privacy Policy</a>
+              <a href="/terms" className="text-gray-400 hover:text-white transition-colors text-sm">Terms & Conditions</a>
               <a href="/refund" className="text-gray-400 hover:text-white transition-colors text-sm">Refund & Return Policy</a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors text-sm"> Cookie Policy</a>
+              <a href="/cookie" className="text-gray-400 hover:text-white transition-colors text-sm"> Cookie Policy</a>
             </div>
           </div>
         </div>
