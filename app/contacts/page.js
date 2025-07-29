@@ -1,3 +1,4 @@
+"use client"
 import Head from 'next/head';
 import { motion } from 'framer-motion';
 import { useLayoutEffect, useRef, useState } from 'react';
@@ -39,19 +40,18 @@ export default function ContactPage() {
         subject: 'General Inquiry',
         message: ''
       });
-      // Hide success message after 5 seconds
-      setTimeout(() => setSubmitStatus(null), 5000);
     }, 1500);
   };
 
   useLayoutEffect(() => {
-    // Animation for form elements
-    gsap.utils.toArray(".animate-element").forEach((element, i) => {
-      gsap.from(element, {
+    const elements = gsap.utils.toArray(".animate-element");
+    const animations = elements.map((element, i) => {
+      return gsap.from(element, {
         scrollTrigger: {
           trigger: element,
           start: "top 80%",
-          toggleActions: "play none none none"
+          toggleActions: "play none none none",
+          once: true
         },
         opacity: 0,
         y: 30,
@@ -62,7 +62,12 @@ export default function ContactPage() {
     });
 
     return () => {
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+      ScrollTrigger.getAll().forEach(trigger => {
+        if (trigger.trigger && trigger.trigger.classList.contains("animate-element")) {
+          trigger.kill();
+        }
+      });
+      animations.forEach(anim => anim.kill());
     };
   }, []);
 
@@ -76,7 +81,6 @@ export default function ContactPage() {
       <div className="bg-gray-950 text-white overflow-x-hidden">
         {/* Hero Section */}
         <section className="relative min-h-[50vh] flex items-center justify-center bg-gradient-to-br from-gray-900 to-gray-950 overflow-hidden pt-20">
-          {/* Animated background elements */}
           <svg 
             className="background-lines absolute inset-0 w-full h-full opacity-10"
             xmlns="http://www.w3.org/2000/svg"
@@ -128,18 +132,24 @@ export default function ContactPage() {
         <div className="container mx-auto px-6 py-16 -mt-16 relative z-10">
           <div className="flex flex-col lg:flex-row gap-12">
             {/* Contact Form */}
-            <motion.div 
-              className="lg:w-1/2 animate-element"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-            >
-              <div className="bg-gray-900 rounded-xl shadow-lg p-8 border border-gray-800">
+            <div className="lg:w-1/2 animate-element">
+              <motion.div 
+                className="bg-gray-900 rounded-xl shadow-lg p-8 border border-gray-800"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+              >
                 <h2 className="text-2xl font-bold text-white mb-6">Send us a message</h2>
                 
                 {submitStatus === 'success' && (
-                  <div className="bg-green-900/30 border border-green-700 text-green-400 p-4 rounded-lg mb-6">
+                  <motion.div 
+                    className="bg-green-900/30 border border-green-700 text-green-400 p-4 rounded-lg mb-6"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.2 }}
+                  >
                     Thank you! Your message has been sent. We'll get back to you soon.
-                  </div>
+                  </motion.div>
                 )}
 
                 <form onSubmit={handleSubmit}>
@@ -235,17 +245,17 @@ export default function ContactPage() {
                     </motion.button>
                   </div>
                 </form>
-              </div>
-            </motion.div>
+              </motion.div>
+            </div>
 
             {/* Contact Info */}
-            <motion.div 
-              className="lg:w-1/2 animate-element"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.2 }}
-            >
-              <div className="bg-gray-900 rounded-xl shadow-lg p-8 border border-gray-800 h-full">
+            <div className="lg:w-1/2 animate-element">
+              <motion.div 
+                className="bg-gray-900 rounded-xl shadow-lg p-8 border border-gray-800 h-full"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+              >
                 <h2 className="text-2xl font-bold text-white mb-8">Contact Information</h2>
                 
                 <div className="space-y-6">
@@ -271,7 +281,7 @@ export default function ContactPage() {
                     <div>
                       <h3 className="text-lg font-semibold text-white mb-1">Email Us</h3>
                       <p className="text-gray-400 mb-2">We typically respond within 24 hours</p>
-                      <a href="mailto:support@hewletthub.com" className="text-cyan-400 hover:text-cyan-300 transition-colors text-lg font-medium">support@hewletthub.com</a>
+                      <a href="mailto:support@hewlett-hubsolutions.com" className="text-cyan-400 hover:text-cyan-300 transition-colors text-lg font-medium">support@hewlett-hubsolutions.com</a>
                     </div>
                   </div>
 
@@ -311,81 +321,89 @@ export default function ContactPage() {
                     </ul>
                   </div>
                 </div>
+              </motion.div>
+            </div>
+          </div>
+
+          {/* Map Section */}
+          <div className="animate-element mt-16">
+            <motion.div 
+              className="bg-gray-900 rounded-xl shadow-lg overflow-hidden border border-gray-800"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+            >
+              <div className="h-64 md:h-96 bg-gray-800 flex items-center justify-center">
+                <div className="text-center p-6">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 text-gray-600 mx-auto mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                  <h3 className="text-xl font-bold text-white mb-2">Our Location</h3>
+                  <p className="text-gray-400 mb-4">123 Printer Avenue, San Francisco, CA 94107</p>
+                  <motion.button
+                    className="inline-flex items-center px-4 py-2 border border-cyan-400 text-cyan-400 rounded-lg hover:bg-cyan-400/10 transition-colors"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
+                    </svg>
+                    Get Directions
+                  </motion.button>
+                </div>
               </div>
             </motion.div>
           </div>
 
-          {/* Map Section */}
-          <motion.section 
-            className="animate-element mt-16 bg-gray-900 rounded-xl shadow-lg overflow-hidden border border-gray-800"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.4 }}
-          >
-            <div className="h-64 md:h-96 bg-gray-800 flex items-center justify-center">
-              <div className="text-center p-6">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 text-gray-600 mx-auto mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                </svg>
-                <h3 className="text-xl font-bold text-white mb-2">Our Location</h3>
-                <p className="text-gray-400 mb-4">123 Printer Avenue, San Francisco, CA 94107</p>
-                <motion.button
-                  className="inline-flex items-center px-4 py-2 border border-cyan-400 text-cyan-400 rounded-lg hover:bg-cyan-400/10 transition-colors"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
-                  </svg>
-                  Get Directions
-                </motion.button>
-              </div>
-            </div>
-          </motion.section>
-
           {/* FAQ Section */}
-          <section className="animate-element mt-16">
-            <h2 className="text-2xl font-bold text-white mb-8">Frequently Asked Questions</h2>
-            <div className="space-y-4">
-              {[
-                {
-                  question: "What's your response time for email inquiries?",
-                  answer: "We typically respond to all email inquiries within 24 hours during business days. For urgent matters, please call our support line."
-                },
-                {
-                  question: "Do you offer onsite repair services?",
-                  answer: "Currently, we provide remote support and in-warranty service through shipping. We don't offer onsite repair services at this time."
-                },
-                {
-                  question: "Can I visit your location to see products?",
-                  answer: "Yes! Our showroom is open by appointment Monday through Friday. Please contact us to schedule a visit."
-                },
-                {
-                  question: "What payment methods do you accept?",
-                  answer: "We accept all major credit cards (Visa, Mastercard, American Express), PayPal, and business purchase orders for qualified accounts."
-                }
-              ].map((faq, i) => (
-                <motion.div 
-                  key={i}
-                  className="bg-gray-900 rounded-lg border border-gray-800 overflow-hidden"
-                  whileHover={{ y: -2 }}
-                >
-                  <button className="w-full flex justify-between items-center p-6 text-left">
-                    <h3 className="text-lg font-semibold text-white">{faq.question}</h3>
-                    <svg className="w-6 h-6 text-cyan-400 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
-                    </svg>
-                  </button>
-                  <div className="px-6 pb-6 text-gray-400">
-                    <p>{faq.answer}</p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </section>
+          <div className="animate-element mt-16">
+            <motion.div 
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.6 }}
+            >
+              <h2 className="text-2xl font-bold text-white mb-8">Frequently Asked Questions</h2>
+              <div className="space-y-4">
+                {[
+                  {
+                    question: "What's your response time for email inquiries?",
+                    answer: "We typically respond to all email inquiries within 24 hours during business days. For urgent matters, please call our support line."
+                  },
+                  {
+                    question: "Do you offer onsite repair services?",
+                    answer: "Currently, we provide remote support and in-warranty service through shipping. We don't offer onsite repair services at this time."
+                  },
+                  {
+                    question: "Can I visit your location to see products?",
+                    answer: "Yes! Our showroom is open by appointment Monday through Friday. Please contact us to schedule a visit."
+                  },
+                  {
+                    question: "What payment methods do you accept?",
+                    answer: "We accept all major credit cards (Visa, Mastercard, American Express), PayPal, and business purchase orders for qualified accounts."
+                  }
+                ].map((faq, i) => (
+                  <motion.div 
+                    key={i}
+                    className="bg-gray-900 rounded-lg border border-gray-800 overflow-hidden"
+                    whileHover={{ y: -2 }}
+                  >
+                    <button className="w-full flex justify-between items-center p-6 text-left">
+                      <h3 className="text-lg font-semibold text-white">{faq.question}</h3>
+                      <svg className="w-6 h-6 text-cyan-400 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                      </svg>
+                    </button>
+                    <div className="px-6 pb-6 text-gray-400">
+                      <p>{faq.answer}</p>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+          </div>
         </div>
       </div>
     </>
   );
-};
+}

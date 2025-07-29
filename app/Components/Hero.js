@@ -3,6 +3,7 @@ import { useLayoutEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
+import Link from 'next/link'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -237,10 +238,10 @@ export default function Hero() {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5 }}
           >
-            <a href="#" className="hidden md:inline-block px-4 py-2 text-gray-300 hover:text-white transition-colors">Login</a>
-            <button className="px-6 py-2 bg-gradient-to-r from-blue-600 to-cyan-500 rounded-md font-medium hover:shadow-lg hover:shadow-cyan-500/20 transition-all">
-              Contact Us
-            </button>
+            <a href="/login" className="hidden md:inline-block px-4 py-2 text-gray-300 hover:text-white transition-colors">Login</a>
+            <Link href="/contacts" className="px-6 py-2 bg-gradient-to-r from-blue-600 to-cyan-500 rounded-md font-medium hover:shadow-lg hover:shadow-cyan-500/20 transition-all">
+    Contact Us
+  </Link>
           </motion.div>
         </div>
       </motion.nav>
