@@ -327,13 +327,6 @@ function Blog() {
   return (
     <>
 
-      {/* <PageNavbar/>
-      <PageHeader/>
-      <Troubleshoot/>
-      <SupportTabs/>
-      <PageFooter/>
-      <JivoChat/>
-       */}
 
        <PageNavbar/>
        <PageHeader/>

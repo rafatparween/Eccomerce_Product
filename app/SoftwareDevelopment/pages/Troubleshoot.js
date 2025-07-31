@@ -114,7 +114,9 @@
 
 
 
-"use client"
+
+"use client";
+
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
@@ -122,27 +124,31 @@ export default function Troubleshoot() {
   const [jivoReady, setJivoReady] = useState(false);
 
   useEffect(() => {
+    if (typeof window === "undefined") return;
+
     const script = document.createElement("script");
     script.src = "//code.jivosite.com/widget/kd9uAKn19v";
     script.async = true;
+
     script.onload = () => {
-      // Delay to ensure jivo_api is ready
       const waitForJivo = setInterval(() => {
-        if (window.jivo_api) {
+        if (typeof window !== "undefined" && window.jivo_api) {
           setJivoReady(true);
           clearInterval(waitForJivo);
         }
       }, 500);
     };
+
     document.body.appendChild(script);
 
     return () => {
+      // Cleanup: remove script and prevent memory leaks
       document.body.removeChild(script);
     };
   }, []);
 
   const handleSetupClick = () => {
-    if (jivoReady && window.jivo_api) {
+    if (typeof window !== "undefined" && jivoReady && window.jivo_api) {
       window.jivo_api.open();
     } else {
       alert("Chat is still loading. Please wait a moment...");
@@ -152,7 +158,7 @@ export default function Troubleshoot() {
   return (
     <div className="bg-white min-h-[430px] flex flex-col items-center justify-center px-4 py-10">
       <div className="flex flex-col lg:flex-row items-center justify-center max-w-7xl w-full">
-        {/* Left: Devices - unchanged desktop, responsive mobile */}
+        {/* Left: Devices */}
         <div className="flex flex-col items-center gap-6 lg:w-1/2 mb-10 lg:mb-0">
           <Image
             src="/newsetup.png"
@@ -166,11 +172,11 @@ export default function Troubleshoot() {
             onClick={handleSetupClick}
             disabled={!jivoReady}
           >
-           Click Here For Chat Support
+            Click Here For Chat Support
           </button>
         </div>
 
-        {/* Right: Text - unchanged desktop, responsive mobile */}
+        {/* Right: Text */}
         <div className="lg:w-1/2 text-center lg:text-left">
           <p className="text-3xl lg:text-[40px] text-black mb-2">Diagnose and solve</p>
           <div className="flex items-start justify-center lg:justify-start mb-4">
