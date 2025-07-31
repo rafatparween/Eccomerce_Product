@@ -31,7 +31,7 @@ const JivoChat = () => {
     loadJivoChatScript();
   }, []);
 
-  return null;
+  return null
 };
 
 export default JivoChat
