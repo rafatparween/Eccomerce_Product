@@ -1,0 +1,202 @@
+$(document).ready(function () {
+  var domainName = window.location.origin;
+  var pageInfoMeta = $("head meta[name=pageinfo]");
+  var cc = pageInfoMeta.data("cc");
+  var lc = pageInfoMeta.data("lc");
+  var alertAPI = domainName + "/wcc-services/cms-v2/alerts";
+  var alertLengthLoop = 10;
+  const ALERT_TYPE_ORDER = ["Negative", "Warning", "Positive", "Neutral"];
+
+  var jsonDataAlerts = {
+    allAlerts: false,
+    cclc: cc + "-" + lc,
+  };
+
+  $(".customF").hide();
+
+  function sortAndFilterAlerts(alertData, productAlerts = false) {
+    const alertTypeOrder = ALERT_TYPE_ORDER;
+    let formattedAlertData = [];
+    formattedAlertData = alertData.filter((alert) => alert.alertDesc !== "");
+    formattedAlertData = formattedAlertData.sort((a, b) => {
+      const aTypeIndex = alertTypeOrder.indexOf(a.alertType);
+      const bTypeIndex = alertTypeOrder.indexOf(b.alertType);
+      return aTypeIndex - bTypeIndex;
+    });
+    return formattedAlertData;
+  }
+
+  function getDeviceType() {
+    if (
+      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+        navigator.userAgent
+      )
+    ) {
+      return "Mobile";
+    } else {
+      return "Desktop/Laptop";
+    }
+  }
+
+  if (getDeviceType() == "Mobile") {
+    alertLengthLoop = 5;
+  }
+
+  $.ajax({
+    type: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    url: alertAPI,
+    data: JSON.stringify(jsonDataAlerts),
+    success: function (data) {
+      var alertHtml;
+      if (data.data == null || !data.data.length) {
+        // if success[] is empty in response
+        console.log("No alerts found in API response");
+      } else {
+        if (data.data[0].hasOwnProperty("alertType")) {
+          $(".customF").show();
+          var sortedData = sortAndFilterAlerts(data.data);
+          if (getDeviceType() == "Mobile" && sortedData?.length < 5) {
+            alertLengthLoop = sortedData.length;
+          }
+          if (getDeviceType() == "Desktop/Laptop" && sortedData?.length < 10) {
+            alertLengthLoop = sortedData.length;
+          }
+          for (var i = 0; i < alertLengthLoop; i++) {
+            var alertCTALinkText = sortedData[i].alertCTALinkText;
+            var alertDesc = sortedData[i].alertDesc;
+            var alertCTALink = sortedData[i].alertCTALink
+              .replace(/{cc}/g, cc)
+              .replace(/{lc}/g, lc);
+            // var alertCTALinkSplit = sortedData[i].alertCTALink.split("/");
+            // var alertCTALink =
+            //   "/" +
+            //   cc +
+            //   "-" +
+            //   lc +
+            //   "/" +
+            //   alertCTALinkSplit[2] +
+            //   "/" +
+            //   alertCTALinkSplit[3];
+            var alertAnrId = sortedData[i].anrId;
+
+            var infoData = $(".infoClass").val();
+            var alertData = $(".alertClass").val();
+            var alertLinkToTarget = "_self";
+            if (data.data[i].alertLinkToTarget == "newTab") {
+              alertLinkToTarget = "_blank";
+            }
+            if (
+              typeof sortedData[i].alertType !== "undefined" &&
+              sortedData[i].alertType != "Negative"
+            ) {
+              alertHtml = $(
+                '<div class="notification"><div class="notification-title"><strong>' +
+                  infoData +
+                  '</strong></div><div class="notification-body"><div class="notification-text"><div><strong><div class="notification-text-inner">' +
+                  alertDesc +
+                  '</div></strong></div><div class="cta-link-wrapper"><a id="' +
+                  alertAnrId +
+                  '" href="' +
+                  alertCTALink +
+                  '" title="' +
+                  alertCTALinkText +
+                  '" target="' +
+                  alertLinkToTarget +
+                  '">' +
+                  alertCTALinkText +
+                  "</a></div></div></div>"
+              );
+            } else {
+              alertHtml = $(
+                '<div class="notification"><div class="notification-title alertRed"><strong>' +
+                  alertData +
+                  '</strong></div><div class="notification-body"><div class="notification-text"><div><strong><div class="notification-text-inner">' +
+                  alertDesc +
+                  '</div></strong></div><div class="cta-link-wrapper"><a id="' +
+                  alertAnrId +
+                  '" href="' +
+                  alertCTALink +
+                  '" title="' +
+                  alertCTALinkText +
+                  '" target="' +
+                  alertLinkToTarget +
+                  '">' +
+                  alertCTALinkText +
+                  "</a></div></div></div>"
+              );
+            }
+            $(".notifications-scroll").append(alertHtml);
+            $(".notifications-bg").addClass("open");
+            $(".notifications-bg").removeClass("viewed");
+            countNotifications();
+            hideAlert();
+          }
+        }
+      }
+    },
+    error: function () {
+      console.log("Error in Alert Service API Call");
+    },
+  });
+
+  // Open notifications on click
+  $("#notifications-trigger").on("tap click", function (e) {
+    e.preventDefault();
+
+    //Local Storage for Alert Click
+    var notificationBtnCicked = localStorage.notificationBtnCickedTrue;
+
+    notificationBtnCicked = true;
+
+    $(".notifications-bg").addClass("open");
+    $(".notifications-bg").addClass("viewed");
+    $(this).toggleClass("open");
+    $("#dismiss-notifications").attr("aria-hidden", "false");
+  });
+
+  // Close notifications on click of dismissal
+  $(".closeAlert").on("click", function (e) {
+    e.preventDefault();
+    $(this).attr("aria-hidden", "true");
+    $(".notifications-bg").removeClass("open").addClass("viewed");
+    $("#notifications-trigger").addClass("viewed");
+    $(".notification-title").removeClass("alertRed");
+    countNotifications();
+    // If there no more notifications, show the empty notifications message
+    if ($(".notification").length === 0) {
+      $("#empty-notifications").show();
+      // Automatically close notifications after 2 sec.
+      setTimeout(function () {
+        $(".notifications-bg").removeClass("open");
+      }, 2000);
+    }
+    //add local storage on click of Close button
+    localStorage.setItem("onLoadreadAlert", "read");
+  });
+
+  // Hide Alert if user already read the notifcation
+  function hideAlert() {
+    if (localStorage.getItem("onLoadreadAlert") == "read") {
+      $(".notifications-bg").removeClass("open");
+      $(".notification-title").removeClass("alertRed");
+    }
+  }
+
+  // Function for ALERT Component Click
+  var countNotifications = function () {
+    var totalNotifications =
+      $(".notifications-bg").find(".notification").length;
+    $("#totalNotifications").text(totalNotifications);
+  };
+  countNotifications();
+});
+
+function decodeHTML(html) {
+  if (typeof html !== "undefined") {
+    html = html.replace(/&#34;/g, '"');
+  }
+  return html;
+}

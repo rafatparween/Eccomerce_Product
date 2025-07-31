@@ -1,0 +1,469 @@
+$(document).ready(function () {
+  //secondary navigation text update mobile
+  const navLinks = $('ul[role=menubar] a');
+  const pageInfoMeta = $('head meta[name=pageinfo]');
+  const uri = pageInfoMeta.data('uri');
+  const cc = pageInfoMeta.data('cc');
+  const lc = pageInfoMeta.data('lc');
+  var linkFound = false;
+
+  /**  repair microsite  **/
+  if($("#btnContactHPSupport").length > 0){
+    var linkContactHP = "/"+cc+"-"+lc+"/contact-hp";
+    $("#btnContactHPSupport").attr("href", linkContactHP);
+  }
+  if($("#btnServiceCenter").length > 0){
+    var linkServiceCenter = "/"+cc+"-"+lc+"/service-center";
+    $("#btnServiceCenter").attr("href", linkServiceCenter);
+  }
+
+  $(navLinks).each(function(i) {
+  const anchor = $(navLinks[i]);
+  var href = anchor.attr('href');
+  if(typeof href !== 'undefined' && (href.indexOf("/", 0) > -1) ){
+    if(href.indexOf("?") != -1){
+    href =  href.substring(0,href.indexOf("?"));
+    }
+    if(href === uri ){
+      linkFound = true;
+      $('.hp-section .nav-title').text(anchor.text()+" ");
+            anchor.parents('li[role=menuitem]').children('a').attr('class','active');
+    }
+  }
+  });
+
+  if(!linkFound){
+    const productsLinks = "/"+cc + "-" +lc+"/products";
+    const productsLinkAnchor = $('ul[role=menubar] a[href="'+productsLinks+'"]')
+    $('.hp-section .nav-title').text(productsLinkAnchor.text()+" ");
+  }
+
+  $(".hp-wcc-column-control").parent().addClass("container");
+
+  $(".bg-container-blue").removeClass("container");
+
+  $(".bg-container-grey").removeClass("container");
+
+  $(".bg-container-default").removeClass("container");
+
+  $(".hp-wcc-btn-computing, .hp-wcc-btn-printer").removeClass("button");
+
+  $(".footer-banner").removeClass("container");
+
+  $(".hp-wcc-title-header .cmp-title").addClass("container");
+
+  /* Computing Page */
+  $(".computing-header-btn .row .col-sm-6").first().addClass("btn1");
+  $(".computing-header-btn .row .col-sm-6").last().addClass("btn2");
+
+  $(".ordered-list-bios").parents().eq(2).addClass("ollistOne");
+  $(".ollistOne").find("ol").attr("start", "3");
+  $(".ordered-list-update-bios").find("ol").attr("start", "3");
+
+  /*Fix Issue Page*/
+  $(".bluetooth").attr("id", "bluetooth");
+  $(".slow").attr("id", "slow");
+  $(".sound").attr("id", "sound");
+  $(".wireless").attr("id", "wireless");
+  $(".bluescreen").attr("id", "bluescreen");
+  $(".touchscreen").attr("id", "touchscreen");
+  $(".battery").attr("id", "battery");
+  $(".manage-login").attr("id", "manage-login");
+  $(".sysrecovery").attr("id", "sysrecovery");
+  $(".fixIssuesSleep").attr("id", "fixIssuesSleep");
+  $(".known").attr("id", "knownLink");
+
+  //hiding chatnow extra divs for Improvetab
+  $(".improve-tab-remove-element").hide();
+
+  /* Printer Section */
+  $(".printer-header-btn .row .col-sm-6").first().addClass("btn1");
+  $(".printer-header-btn .row .col-sm-6").last().addClass("btn2");
+  $(".bg-container-blue").parent().removeClass("container");
+
+  $(".printer-banner .sposCaption")
+    .removeClass("sposCaption")
+    .addClass("boxLAlign");
+  $(".printer-banner .sposBtn").removeClass("sposBtn");
+  $(".printer-banner .sposBanner").removeClass("sposBanner");
+
+  $(".computing-banner .boxLAlign").removeClass("boxLAlign");
+  $(".computing-banner .bannerBtn").removeClass("bannerBtn");
+  $(".computing-banner .transparent").removeClass("transparent");
+
+  /* Printer Section - connectivity Issue Tab */
+  $(".chat-now-connectivity-issues .va-callout-two-col").removeClass(
+    "va-callout-two-col"
+  );
+
+  if ($(".tabs-printer-layout ul li").length == 3) {
+    $(".tabContainer").addClass("tablength3");
+  }
+
+  /* Same Page href navigation support-center-printing */
+  $(".printer-compatibility-win10").attr("id", "printer-compatibility-win10");
+  $(".download-latest-swd").attr("id", "download-latest-swd");
+  $(".printers-manufactured-2010").attr("id", "printers-manufactured-2010");
+  $(".printers-manufactured-2009").attr("id", "printers-manufactured-2009");
+  $(".wireless-network-setup").attr("id", "wireless-network-setup");
+  $(".wired-network-setup").attr("id", "wired-network-setup");
+  $(".USB-setup").attr("id", "USB-setup");
+
+  /* HP Account Page Starts */
+  $(".acct").children().addClass("container");
+
+  $(".account-box").find(".cmp-container").removeClass("container");
+
+  $(".locate-all-acct-bene").children().addClass("acct-bene");
+
+  $("#hpidCreatePersonalAcctBtnBottom").addClass(
+    "create-acct-btn mktg-btn-primary acct-text"
+  );
+
+  $(".bg-container-dark-blue").removeClass("container");
+
+  $(".personalized-dashboard").find(".paneSec").removeClass("paneSec");
+
+  $(".hp-account-no-title").remove();
+  /* HP Account Page Ends */
+
+  /* Print & Scan Starts */
+  $(".bg-container-dark-grey").removeClass("container");
+
+  $(".bg-container-dark-grey").find(".row").addClass("container");
+
+  $(".printMicrositeBox").find(".cmp-container").addClass("container");
+
+  $(".printMicrositeBox").removeClass("container");
+
+  $(".print-scan-header").find(".cmp-text").addClass("container");
+
+  $(".print-scan-header").find(".cmp-text h2").addClass("printScanH2");
+
+  $(".print-scan-download-section")
+    .find(".cmp-container")
+    .addClass("troubleshootingSection");
+
+  $("#downloadBtn").parent().removeClass("button");
+
+  $("#downloadModal").find(".modal-dialog").addClass("modal-sm");
+
+  /* Is your printer currently offline */
+  $("#yesBtn").click(function () {
+    $("#firstModal").addClass("hidden");
+    $("#secondModal").removeClass("hidden");
+
+    setTimeout(function () {
+      $("#downloadModal").modal("hide");
+      var pageInfoMeta = $("head meta[name=pageinfo]");
+      var cc = pageInfoMeta.data("cc");
+      var lc = pageInfoMeta.data("lc");
+      var localizedMicrositeLink =
+        window.location.protocol +
+        "//" +
+        window.location.host +
+        "/" +
+        cc +
+        "-" +
+        lc +
+        "/" +
+        "help/printscandoctor-printing-problems" + '#printer-offline';
+      window.location.href = localizedMicrositeLink;
+    }, 8000);
+  });
+
+  $("#noBtn").click(function () {
+    $("#downloadModal").modal("hide");
+    $(".modal-backdrop").remove();
+  });
+
+  /* Download Modal Close */
+  $(".close").click(function () {
+    $("#downloadModal").hide();
+    $(".modal-backdrop").addClass("hidden");
+    $("#firstModal").removeClass("hidden");
+    $("#secondModal").addClass("hidden");
+  });
+
+  $(".downloadLink").parent().attr("data-toggle", "modal");
+
+  /* Accordian Click */
+  $(".print-scan-accordion-main h3").click(function () {
+    $(this).toggleClass("toggled");
+  });
+
+  $(".print-scan-ethernet-cable").parent().addClass("ethcabParentP");
+
+  $(".print-scan-shortcut").find("ol").attr("start", "6");
+
+  $("#printscandoctor").find(".paneSec").removeClass("paneSec");
+
+  $(".print-scan-fix-printing").parent().addClass("fixPrintingContainer");
+
+  $(".printer-offline").attr("id", "printer-offline");
+
+  $(".printer-job-stuck").attr("id", "printer-job-stuck");
+
+  $(".print-scan-bookmarks").attr("id", "print-scan-bookmarks");
+
+  /* Print & Scan Ends */
+
+  /* UATFIX */
+
+  $("#issuesContent .cmp-container").removeClass("container");
+
+  $(".additional-setup-install").attr("id", "additional-setup-install");
+
+  $("#setupContent ")
+    .find(".youtube-component .paneSec")
+    .removeClass("paneSec");
+
+  $('a[href^="#known"]').addClass("knownLink");
+  $(".knownLink").click(function (event) {
+    event.preventDefault();
+    $(".tabContainer").removeClass("active");
+    $("#fixContent").hide();
+    $("#learnContent").show();
+    $("#learnTab ").parent().addClass("active");
+    $("#learnContent").addClass("active");
+    document.location.hash = "knownLink";
+  });
+
+  $("#learnContent .bodyContainer .cmp-container").removeClass("container");
+  $("#recoverContent .bodyContainer .cmp-container").removeClass("container");
+  $("#improveContent .bodyContainer .cmp-container").removeClass("container");
+
+  $(".tab-header-printer-section #micrositeWrapper").removeClass("container");
+  $("#setupContent .bodyContainer .cmp-container").removeClass("container");
+  $("#connectContent .bodyContainer .cmp-container").removeClass("container");
+
+  $(".print-scan-fix-scanning").parent().removeClass("container");
+
+  /*** Code for Responsive Win10 - Landing **/
+
+  function reverseButton(x) {
+    if (x.matches) {
+      $(".landing-btn-container .col-sm-4").insertAfter(
+        ".landing-btn-container .hp-wcc-rte"
+      );
+    } else {
+      $(".landing-btn-container .col-sm-4").insertAfter(
+        ".landing-btn-container .col-sm-8"
+      );
+    }
+  }
+
+  var x = window.matchMedia("(max-width: 768px)");
+  reverseButton(x);
+  x.addListener(reverseButton);
+
+  $(window).on("resize", function (e) {
+    checkScreenSize();
+  });
+
+  checkScreenSize();
+
+  //Make menubar Sticky in iPad and Small Phones
+  function checkScreenSize() {
+    var newWindowWidth = $(window).width();
+    if (newWindowWidth < 769) {
+      $(window).scroll(function () {
+        var newWindowWidth = $(window).width();
+        if (newWindowWidth < 769) {
+          var height = $(window).scrollTop();
+
+          if (height > 100) {
+            $(".micrositesecondarynavigation").addClass("makeSticky");
+          } else {
+            $(".micrositesecondarynavigation").removeClass("makeSticky");
+          }
+        } else {
+          //desktop reso
+          $(".micrositesecondarynavigation").removeClass("makeSticky");
+        }
+      });
+    }
+
+    //detaching sidealert from bottom and attaching to custom-dropdown
+    if (newWindowWidth < 769) {
+      $(".fixedWidgets").detach().appendTo(".ibmPortalControl");
+    } else if (newWindowWidth > 769) {
+      $(".fixedWidgets").detach().appendTo(".side-widget");
+    }
+  }
+
+  /***  HP Accoutn Fix***/
+
+  $(".locate-one-place").children().addClass("acct-bene");
+
+  $(".printing-footer-banner").addClass("container");
+
+  $(".printer-issues-sub-heading").addClass("hidden-lg");
+
+  $("#howToUseTab_box .bodyContainer .cmp-container").removeClass("container");
+
+  $(".fixPrintingContainer").removeClass("container");
+
+   $("a.sposBannerPrinting").addClass("localize-url");
+
+  updateLocalizeURL();
+  getSPOSLocalizedLink();
+
+  $(".print-scan-accordion-main .cmp-accordion div").addClass(
+    "section expandable"
+  );
+  $(".print-scan-accordion-main .cmp-accordion div h2").addClass(
+    "expandableHeading"
+  );
+
+  $(".computing-top-btn-box").addClass("container");
+
+  $(".landing-btn-container").removeClass("container");
+
+  $(".computing-top-btn-box").addClass("container");
+
+  $("#hpidExistingAcctSignInBtn").addClass("mktg-btn-secondary");
+
+  $(".computing-header-btn .hp-wcc-btn-computing button").attr(
+    "tabindex",
+    "-1"
+  );
+
+  $(".printer-header-btn .hp-wcc-btn-printer button").attr("tabindex", "-1");
+
+  //Make Tab Focus to Content than footer for first time
+  setTimeout(function () {
+    $("#footer [tabindex]").removeAttr("tabindex");
+  }, 3000);
+
+  // Pause youtube video on tab change
+  $('a[data-toggle="tab"]').on("shown.bs.tab", function (e) {
+    if (window.cc == "cn") {
+      $.each(videojs.players, function (p) {
+        videojs(p).pause();
+      });
+    } else {
+      var iframe = document.querySelector("iframe");
+      if (iframe !== null) {
+        var iframeSrc = iframe.src;
+        var src = iframeSrc.replace("autoplay=1", "autoplay=0");
+        iframe.src = src;
+      }
+    }
+  });
+
+  //Remove Outline on click accordian in printscandoctor
+  $(".expandableHeading button").click(function () {
+    $(this).css("outline-width", "0px");
+
+    $(this).focus(function () {
+      $(this).css("outline-width", "1px");
+    });
+  });
+
+
+    //Remove Outline on click Child-accordian in printscandoctor
+    $(".print-scan-inner-accordion button").click(function () {
+        $(this).css("outline-width", "0px");
+        $(this).focus(function () {
+          $(this).css("outline-width", "1px");
+        });
+     });
+
+
+   //PrintScanDr - FixPrinting
+   $(".print-scan-fix-printing a").click(function () {
+        event.stopPropagation();
+        $(this).parents('ul').find('li a').removeClass('activelink');
+        $(this).addClass('activelink');
+
+   });
+
+    //PrintScanDr - FixPrinting - removing active class
+    $(document).on("click", function(e) {
+        $(".print-scan-fix-printing a").removeClass('activelink');
+    });
+
+
+  /****** Doc ready End  ******/
+});
+
+function getSPOSLocalizedLink() {
+    var storeDomain ="";
+  var storeName ="";
+  var sposBannerType="";
+  const pageInfoMeta = $('head meta[name=pageinfo]');
+    const cc = pageInfoMeta.data('cc');
+    const lc = pageInfoMeta.data('lc');
+
+  switch (cc) {
+    case "us":
+      storeName = cc + "/" + lc;
+      storeDomain ="store.hp.com";
+      sposBannerType="slp/weekly-deals/top-deals?";
+      break;
+
+    case "ca":
+      storeName ="CanadaStore";
+      storeDomain ="store.hp.com";
+      sposBannerType ="Merch/Offer.aspx?p=c-hp-canada-laptops-desktops-printers-deals&lang=en-CA&";
+      break;
+
+    case "gb":
+      storeName ="UKStore";
+      storeDomain ="store.hp.com";
+      sposBannerType ="Merch/Offer.aspx?p=c-latest-laptop-offers&";
+      break;
+
+    case "au":
+      storeDomain ="h20386.www2.hp.com";
+      storeName ="AustraliaStore";
+      sposBannerType ="Merch/offer.aspx?";
+      break;
+
+    case "es":
+      storeName ="SpainStore";
+      storeDomain ="store.hp.com";
+      sposBannerType ="Merch/offer.aspx?p=c-ofertas-portatiles&";
+      break;
+
+      case "nl":
+      storeName ="NetherlandsStore";
+      storeDomain ="store.hp.com";
+      sposBannerType ="Merch/Offer.aspx?p=c-laptop-aanbiedingen&";
+      break;
+
+      case "fr":
+      storeName ="FranceStore";
+      storeDomain ="store.hp.com";
+      sposBannerType ="Merch/Offer.aspx?p=c-offres-pc-portables&";
+      break;
+
+      case "de":
+      storeName ="GermanyStore";
+      storeDomain ="store.hp.com";
+      sposBannerType ="Merch/Offer.aspx?p=top-angebote&";
+      break;
+
+       case "jp":
+      storeName ="directplus";
+      storeDomain ="jp.ext.hp.com";
+      sposBannerType ="personal/?";
+      break;
+
+       case "cn":
+      storeName ="www.hpstore.cn";
+      storeDomain ="";
+      sposBannerType ="?";
+      break;
+
+      case "sg": case "my": case "id": case "th": case "in": case "hk": case "kr":
+      storeName = cc + "-" + lc;
+      storeDomain ="store.hp.com";
+      sposBannerType ="default/promotion/offer?";
+      break;
+    }
+
+    var SPOSLocalizedLink = window.location.protocol + "//" + storeDomain + "/" + storeName + "/" + sposBannerType + "jumpid=re_r11839_" + cc + "/" + lc + "/weekly-deals/win10microsite&utm_medium=HPWeb&utm_source=hpsupport&utm_campaign=weeklydeals&utm_content=win10microsite";
+        $("#sposBannerWin10Click").attr("href",SPOSLocalizedLink);
+}

@@ -1,0 +1,39 @@
+const oneBoxElement = document.querySelector('one-box-search-widget');
+oneBoxElement.placeHolder = $('.one-box-search-placeHolder').text();
+oneBoxElement.searchOrigin = $('.one-box-search-searchOrigin').text();
+oneBoxElement.buttonText = $('.one-box-search-buttonText').text();
+oneBoxElement.screenReader = $('.one-box-search-screenReader').text() ;
+oneBoxElement.isWebCompActive = true;
+oneBoxElement.wcCC = windowcc;
+oneBoxElement.wcLC = windowlc;
+oneBoxElement.wcLangDirection = $('html').attr('dir');
+oneBoxElement.wcApiDomain = window.location.origin;
+
+var loadScript =  function(url, callback){
+	var script = document.createElement("script")
+	script.type = "text/javascript";
+
+	if (script.readyState){  //IE
+		script.onreadystatechange = function(){
+			if (script.readyState == "loaded" ||
+					script.readyState == "complete"){
+				script.onreadystatechange = null;
+				callback();
+			}
+		};
+	} else {  //Others
+		script.onload = function(){
+			callback();
+		};
+	}
+	script.src = url;
+	document.getElementsByTagName("head")[0].appendChild(script);
+}
+
+//loadScript("/content/dam/hp-wcc/widgets/webcomponent/angularCompiler_min.js", function(){
+	var oneBoxSearchscript = document.createElement("script");
+    oneBoxSearchscript.src= "/content/dam/hp-wcc/widgets/kbox/one-box-search.js";
+    document.head.appendChild(oneBoxSearchscript);
+//});
+					
+

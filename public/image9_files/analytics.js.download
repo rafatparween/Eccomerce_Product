@@ -1,0 +1,1355 @@
+try {
+  /*
+   * This is the DataLayer that is passed to Ensighten for analytics.
+   * This file is included directly into themes.html after the co:head section
+   * Author: Varun Vinayak
+   * Sample: globalDataLayer.setValue("key","value")
+   */
+
+  /* ****This is the global datalayer object that holds the required key - value pairs & can be accessed by all the portlets ****  */
+  var globalDataLayer = {
+    CountryCode: "",
+    LanguageCode: "",
+    Locale: "",
+    WebSectionId: "R11839",
+    PfinderQuery: "",
+    Template: "",
+    chatBotAccessed: false,
+    customerState: "Anonymous",
+    swSniffedOSsupported: null,
+    Document: {
+      documentID: "",
+    },
+    Dashboard: {
+      NoOfDevices: "",
+      Products: [
+        {
+          audienceType: "",
+          ProductLineCode: "",
+          ProductModelNumber: "",
+          SeriesName: "",
+          SeriesOid: "",
+          setValue: function (key, value) {
+            if (this.hasOwnProperty(key)) {
+              this[key] = value;
+            }
+          },
+        },
+      ],
+      SpecsMissing: [],
+      setValue: function (key, value) {
+        if (this.hasOwnProperty(key)) {
+          this[key] = value;
+        }
+      },
+    },
+    Product: {
+      bigSeriesName: "",
+      bigSeriesOid: "",
+      supportCategoryName: "",
+      supportCategoryOid: "",
+      seriesName: "",
+      seriesOid: "",
+      productLineCode: "",
+      supportNameName: "",
+      supportNameOid: "",
+      platformId: "",
+      webReleaseDate: "",
+      serialNumber: "",
+      productModelNumber: "",
+      audienceType: "",
+      setValue: function (key, value) {
+        if (this.hasOwnProperty(key)) {
+          this[key] = value;
+        }
+      },
+    },
+    Search: {
+      Query: "",
+      Redirect: "false",
+      Count: "",
+      Product: {
+        bigSeriesName: "",
+        bigSeriesOid: "",
+        supportCategoryName: "",
+        supportCategoryOid: "",
+        seriesName: "",
+        seriesOid: "",
+        productLineCode: "",
+        supportNameName: "",
+        supportNameOid: "",
+        platformId: "",
+        webReleaseDate: "",
+        serialNumber: "",
+        productModelNumber: "",
+        setValue: function (key, value) {
+          if (this.hasOwnProperty(key)) {
+            this[key] = value;
+          }
+        },
+      },
+      IDOLProduct: {
+        productName: "",
+        productTMSOID: "",
+        productTMSClass: "",
+        setValue: function (key, value) {
+          if (this.hasOwnProperty(key)) {
+            this[key] = value;
+          }
+        },
+      },
+      setValue: function (key, value) {
+        if (this.hasOwnProperty(key)) {
+          this[key] = value;
+        }
+      },
+    },
+    DMD: {
+      SSFInstalled: "",
+      ProdCount: "",
+      Products: [
+        {
+          Pn: "",
+          Pl: "",
+          PName: "",
+          sOid: "",
+          pOid: "",
+          DetectMethod: "",
+          setValue: function (key, value) {
+            if (this.hasOwnProperty(key)) {
+              this[key] = value;
+            }
+          },
+        },
+      ],
+      setValue: function (key, value) {
+        if (this.hasOwnProperty(key)) {
+          this[key] = value;
+        }
+      },
+    },
+    EntitlementResults: {
+      EntResults: "",
+      setValue: function (key, value) {},
+    },
+    ErrorCode: "",
+    ErrorReason: "",
+    softwareDownloadedFileNames: "",
+    IOG: [],
+    sessionId: "",
+    Flag: {
+      dashboardVisited: false,
+      documentViewed: false,
+      searchExecuted: false,
+      swdVisited: false,
+      contactHPVisited: false,
+      identifyNowDmd: false,
+      findSolutionsDmd: false,
+      checkNowDmd: false,
+      EASVisited: false,
+      setValue: function (key, value) {
+        if (this.hasOwnProperty(key)) {
+          this[key] = value;
+        }
+      },
+    },
+    chatBotWidgetId: "chatbotToronto",
+    setValue: function (key, value) {
+      if (this.hasOwnProperty(key)) {
+        this[key] = value;
+      }
+    },
+  };
+
+  if (sessionStorage.DownloadType != undefined) {
+    globalDataLayer.DownloadType = sessionStorage.DownloadType;
+  }
+
+  /**
+   * R192-367: Global Data Layer sharing between Websphere WCC and AWS WCC applications --
+   * The globalDataLayerWriter is a utility object for writing globalDataLayer values retrived from local storage.
+   * globalDataLayer properties can contain strings, numbers, booleans, objects, and arrays of objects.
+   */
+  var globalDataLayerWriter = {
+    /**
+     * Sets globalDataLayer properties on the globalDataLayer object. Not all gdl properties have a setValue method
+     * so it's necessary to check first to avoid error.  Nested objects necessitate the additional checks for
+     * ancestor / parent.  There is likely a more elegant solution (using less 'if' stmts), but this works for now...
+     *
+     * @param gdlPropName - gdl property name
+     * @param gldPropValue - gdl property value
+     * @param gdlFamilyTree - [optional] object with parent & ancestor properties.  Ex {parent: Products, ancestor: Dashboard}
+     *
+     */
+    writeGlobalDataLayerValue: function (
+      gdlPropName,
+      gdlPropVal,
+      gdlFamilyTree
+    ) {
+      try {
+        if (
+          gdlFamilyTree &&
+          gdlFamilyTree.hasOwnProperty("ancestor") &&
+          gdlFamilyTree.hasOwnProperty("parent")
+        ) {
+          if (
+            window.globalDataLayer[gdlFamilyTree.ancestor][
+              gdlFamilyTree.parent
+            ].hasOwnProperty("setValue")
+          ) {
+            window.globalDataLayer[gdlFamilyTree.ancestor][
+              gdlFamilyTree.parent
+            ].setValue(gdlPropName, gdlPropVal);
+          } else {
+            window.globalDataLayer[gdlFamilyTree.ancestor][
+              gdlFamilyTree.parent
+            ][gdlPropName] = gdlPropVal;
+          }
+        } else if (gdlFamilyTree && gdlFamilyTree.hasOwnProperty("parent")) {
+          if (undefined !== window.globalDataLayer[gdlFamilyTree.parent]) {
+            if (
+              window.globalDataLayer[gdlFamilyTree.parent].hasOwnProperty(
+                "setValue"
+              )
+            ) {
+              window.globalDataLayer[gdlFamilyTree.parent].setValue(
+                gdlPropName,
+                gdlPropVal
+              );
+            } else {
+              window.globalDataLayer[gdlFamilyTree.parent][gdlPropName] =
+                gdlPropVal;
+            }
+          }
+        } else {
+          window.globalDataLayer.setValue(gdlPropName, gdlPropVal);
+        }
+      } catch (e) {
+        console.log("ERROR: failed to set globalDataLayer prop " + e);
+      }
+    },
+    /**
+     * Iterates globalDataLayer properties calling writeGlobalDataLayerValue with the appropriate level of reference (for nested objects).
+     * Arrays & primitive types are handled identically for now (value is assigned directly).  If the propery is not null nor an Array but
+     * is an object, the function recurses on itself retaining the parent property name as ancestor .
+     *
+     * @param parent - the property name for this globalDataLayer value
+     * @param gdlObj - the globalDataLayer object to be parsed
+     * @param ancestor - [optional] will be present for nested objects only.  This is the first level globalDataLayer property name.  Ex:
+     *    Search becomes the ancestor when the globalDataLayer.Search.Product object value is parsed.
+     */
+    parseGDLProperty: function (parent, gdlObj, ancestor) {
+      var gdlAncestory = { parent: parent };
+      if (ancestor && ancestor !== "") {
+        gdlAncestory["ancestor"] = ancestor;
+      }
+      for (var key in gdlObj) {
+        if (
+          "object" == typeof gdlObj[key] &&
+          false == Array.isArray(gdlObj[key]) &&
+          null !== gdlObj[key]
+        ) {
+          // value is an object with string/boolean/number/null properties.  ex: globalDataLayer.Search.Product = {"key":"value",...}
+          globalDataLayerWriter.parseGDLProperty(key, gdlObj[key], parent);
+        } else {
+          // value is an array of objects or any primitive data type (string, number, boolean)
+          globalDataLayerWriter.writeGlobalDataLayerValue(
+            key,
+            gdlObj[key],
+            gdlAncestory
+          );
+        }
+      }
+    },
+  };
+  /**
+   * R192-367: Global Data Layer sharing between Websphere WCC and AWS WCC applications --
+   *
+   * This function checks local storage for the globalDataLayer item.  If found, the value is converted to JSON then iterated
+   * writing each key/value to window.globalDataLayer (for all non-object values) or sending the value for futher parsing
+   * (for values that are objects themselves). The intent is twofold:
+   *  1.  avoid overwriting the globalDataLayer object with a subset of key/values acquired from AWS WCC (in case AWS WCC
+   *      globalDataLayer object does not include keys set by portlets elswewhere in the Websphere WCC application) and,
+   *  2.  where possible, assert greater control over how values are set on the global object. The preferred method is to use the object's setValue() method
+   *      (if it has one) to ensure data integrity.
+   */
+  function getGlobalDataLayerFromLocalStorage() {
+    var gdl =
+      window.localStorage &&
+      window.localStorage.hasOwnProperty("globalDataLayer")
+        ? JSON.parse(localStorage.getItem("globalDataLayer"))
+        : undefined;
+    if (undefined !== gdl) {
+      for (var k in gdl) {
+        if ("object" == typeof gdl[k] && null !== gdl[k]) {
+          globalDataLayerWriter.parseGDLProperty(k, gdl[k]);
+        } else {
+          globalDataLayerWriter.writeGlobalDataLayerValue(k, gdl[k]);
+        }
+      }
+    } else{
+      /* SSVSPRT-14631 - Adding videosession to GDL - START */
+      globalDataLayer.videosession = 'FALSE'; // Intial value to false on load
+      writeGlobalDataLayerToLocalStorage_WS(); // When local storage is empty and microsite page is visited, write to localStorage
+      /* SSVSPRT-14631 - Adding videosession to GDL - END */
+    }
+  }
+  /**
+   * R192-367: Global Data Layer sharing between Websphere WCC and AWS WCC applications --
+   * writeGlobalDataLayerToLocalStorage_WS sets the globalDataLayer object in localStorage
+   */
+  function writeGlobalDataLayerToLocalStorage_WS() {
+    try {
+      if (globalDataLayer && window.localStorage) {
+        window.localStorage.setItem(
+          "globalDataLayer",
+          JSON.stringify(globalDataLayer)
+        );
+      }
+    } catch (e) {
+      console.log("Failed to set gdl in local storage " + e);
+    }
+  }
+  /** R192-367: Global Data Layer sharing between Websphere WCC and AWS WCC applications --
+   *  Initialize globalDataLayer with values from local storage. Values will be updated / overwritten
+   *  as customer interacts with the Portal application.
+   */
+  try {
+    getGlobalDataLayerFromLocalStorage();
+  } catch (e) {
+    console.log("Failed to read gdl from local storage " + e);
+  }
+  /**
+   * R192-367: Global Data Layer sharing between Websphere WCC and AWS WCC applications --
+   * Persist globalDataLayer values in local storage before page unload event.
+   */
+  /*window.onbeforeunload = function () {
+    writeGlobalDataLayerToLocalStorage_WS();
+  };*/
+
+  /*--------Setting Flag Object-------*/
+  function updateDataLayerFlags(flagObject) {
+    if (flagObject == "") {
+      globalDataLayer.Flag = {
+        documentViewed: false,
+        searchExecuted: false,
+        swdVisited: false,
+        contactHPVisited: false,
+        identifyNowDmd: false,
+        findSolutionsDmd: false,
+        checkNowDmd: false,
+        EASVisited: false,
+      };
+      flagObject = JSON.stringify(globalDataLayer.Flag);
+    }
+    flagObject = $.parseJSON(flagObject);
+    if (globalDataLayer.Flag === undefined) {
+      globalDataLayer.Flag = {
+        documentViewed: false,
+        searchExecuted: false,
+        swdVisited: false,
+        contactHPVisited: false,
+        identifyNowDmd: false,
+        findSolutionsDmd: false,
+        checkNowDmd: false,
+        EASVisited: false,
+      };
+      checkSessionObject(flagObject);
+    } else {
+      checkSessionObject(flagObject);
+    }
+  }
+
+  function updateAudienceType() {
+    //determine if product is consumer or commercial
+    if ($("#tmsClassForSearch").val() == "pm_series_value") {
+      if ($("#isCommercialProduct").val() == "true") {
+        globalDataLayer.Product.setValue("audienceType", "Commercial");
+      } else {
+        globalDataLayer.Product.setValue("audienceType", "Consumer");
+      }
+    } else if ($("#tmsClassForSearch").val() == "pm_name_value") {
+      if ($("#isCommercialProduct").val() == "true") {
+        globalDataLayer.Product.setValue("audienceType", "Large");
+      } else {
+        globalDataLayer.Product.setValue("audienceType", "HHO");
+      }
+    }
+  }
+
+  function checkSessionObject(flagObject) {
+    if (flagObject.documentViewed !== true) {
+      globalDataLayer.Flag.documentViewed = false;
+    } else {
+      globalDataLayer.Flag.documentViewed = flagObject.documentViewed;
+    }
+
+    if (flagObject.searchExecuted !== true) {
+      globalDataLayer.Flag.searchExecuted = false;
+    } else {
+      globalDataLayer.Flag.searchExecuted = flagObject.searchExecuted;
+    }
+
+    if (flagObject.swdVisited !== true) {
+      globalDataLayer.Flag.swdVisited = false;
+    } else {
+      globalDataLayer.Flag.swdVisited = flagObject.swdVisited;
+    }
+
+    if (flagObject.contactHPVisited !== true) {
+      globalDataLayer.Flag.contactHPVisited = false;
+    } else {
+      globalDataLayer.Flag.contactHPVisited = flagObject.contactHPVisited;
+    }
+
+    if (flagObject.identifyNowDmd !== true) {
+      globalDataLayer.Flag.identifyNowDmd = false;
+    } else {
+      globalDataLayer.Flag.identifyNowDmd = flagObject.identifyNowDmd;
+    }
+
+    if (flagObject.findSolutionsDmd !== true) {
+      globalDataLayer.Flag.findSolutionsDmd = false;
+    } else {
+      globalDataLayer.Flag.findSolutionsDmd = flagObject.findSolutionsDmd;
+    }
+
+    if (flagObject.checkNowDmd !== true) {
+      globalDataLayer.Flag.checkNowDmd = false;
+    } else {
+      globalDataLayer.Flag.checkNowDmd = flagObject.checkNowDmd;
+    }
+
+    // EAS Visited Flag
+    if (flagObject.easVisited !== true) {
+      globalDataLayer.Flag.EASVisited = false;
+    } else {
+      globalDataLayer.Flag.EASVisited = flagObject.easVisited;
+    }
+
+    if (flagObject.documentGDL == null) {
+      globalDataLayer.Document.documentID = "";
+      delete globalDataLayer.Flag.documentGDL;
+    } else {
+      globalDataLayer.Document.documentID = flagObject.documentGDL.documentId;
+      delete globalDataLayer.Flag.documentGDL;
+    }
+  }
+
+  /* This section feeds some values available at dom.ready to the datalayer */
+  $(document).ready(function () {
+    //Based on jSession id we maintain the swSniffedOSsupported weather if it is true or flase
+    if (localStorage.swdOSSession == $("#jSessionId").val()) {
+      globalDataLayer.swSniffedOSsupported = localStorage.swdOSVal;
+    }
+
+    var pageInfoMeta = $("head meta[name=pageinfo]");
+    var datalayerCC = pageInfoMeta.data("cc");
+    var datalayerLC = pageInfoMeta.data("lc");
+    var templateName = pageInfoMeta.data("templatename");
+
+    if (datalayerLC == undefined) {
+      datalayerCC = "us";
+      datalayerLC = "en";
+    }
+
+    //set Template value
+    globalDataLayer.setValue("Template", templateName);
+
+    //TO-DO Logic to update customerState once user login.
+
+    /* 6897: called on every page load to determine if Search redirect has occured
+    Session storage Search query will be present only for redirect*/
+    // getSessionStorageForSearch();
+
+    globalDataLayer.setValue(
+      "CountryCode",
+      datalayerCC
+    ); /* Fetches cc from the url format: .com/cc-lc/ */
+    globalDataLayer.setValue(
+      "LanguageCode",
+      datalayerLC
+    ); /* Fetches lc from the url format: .com/cc-lc/ */
+    globalDataLayer.setValue("Locale", datalayerCC + "-" + datalayerLC);
+
+    // Data from the TMS SESSION hidden variable
+    var tmsResponse;
+    if ($("#productARresponse").length > 0) {
+      if ($("#productARresponse").val() != "") {
+        tmsResponse = $("#productARresponse").val();
+      }
+
+      if (tmsResponse != null && tmsResponse != "" && tmsResponse != "null") {
+        tmsResponse = JSON.parse(tmsResponse);
+
+        if (tmsResponse.hasOwnProperty("bigSeriesName")) {
+          globalDataLayer.Product.setValue(
+            "bigSeriesName",
+            tmsResponse["bigSeriesName"]
+          );
+        } else {
+          console.log("no bigSeriesName");
+        }
+
+        if (tmsResponse.hasOwnProperty("bigSeriesOid")) {
+          globalDataLayer.Product.setValue(
+            "bigSeriesOid",
+            tmsResponse["bigSeriesOid"]
+          );
+        } else {
+          console.log("no bigSeriesOid");
+        }
+
+        if (tmsResponse.hasOwnProperty("platformId")) {
+          globalDataLayer.Product.setValue(
+            "platformId",
+            tmsResponse["platformId"]
+          );
+        } else {
+          console.log("no platformId");
+        }
+
+        if (tmsResponse.hasOwnProperty("productLineCode")) {
+          globalDataLayer.Product.setValue(
+            "productLineCode",
+            tmsResponse["productLineCode"]
+          );
+        } else {
+          console.log("no product productLineCode");
+        }
+
+        if (tmsResponse.hasOwnProperty("seriesName")) {
+          globalDataLayer.Product.setValue(
+            "seriesName",
+            tmsResponse["seriesName"]
+          );
+        } else {
+          console.log("no product seriesName");
+        }
+
+        if (tmsResponse.hasOwnProperty("seriesOid")) {
+          globalDataLayer.Product.setValue(
+            "seriesOid",
+            tmsResponse["seriesOid"]
+          );
+        } else {
+          console.log("no product seriesOid");
+        }
+
+        if (tmsResponse.hasOwnProperty("supportCategoryName")) {
+          globalDataLayer.Product.setValue(
+            "supportCategoryName",
+            tmsResponse["supportCategoryName"]
+          );
+        } else {
+          console.log("no product supportCategoryName");
+        }
+
+        if (tmsResponse.hasOwnProperty("supportCategoryOid")) {
+          globalDataLayer.Product.setValue(
+            "supportCategoryOid",
+            tmsResponse["supportCategoryOid"]
+          );
+        } else {
+          console.log("no product supportCategoryOid");
+        }
+
+        if (tmsResponse.hasOwnProperty("supportNameName")) {
+          globalDataLayer.Product.setValue(
+            "supportNameName",
+            tmsResponse["supportNameName"]
+          );
+        } else {
+          console.log("no product supportNameName");
+        }
+
+        if (tmsResponse.hasOwnProperty("supportNameOid")) {
+          globalDataLayer.Product.setValue(
+            "supportNameOid",
+            tmsResponse["supportNameOid"]
+          );
+        } else {
+          console.log("no product supportNameOid");
+        }
+
+        if (tmsResponse.hasOwnProperty("modelNumber")) {
+          globalDataLayer.Product.setValue(
+            "productModelNumber",
+            tmsResponse["modelNumber"]
+          );
+        } else {
+          console.log("no product modelNumber");
+        }
+
+        if (tmsResponse.hasOwnProperty("webReleaseDate")) {
+          globalDataLayer.Product.setValue(
+            "webReleaseDate",
+            tmsResponse["webReleaseDate"]
+          );
+        } else {
+          console.log("no product webReleaseDate");
+        }
+
+        if (tmsResponse.hasOwnProperty("audience")) {
+          globalDataLayer.Product.setValue(
+            "audienceType",
+            tmsResponse["audience"]
+          );
+        } else {
+          console.log("no audience type");
+        }
+      } else {
+        console.log("no value from tms");
+      }
+    }
+
+    // Data from the SEARCH PROD INFO hidden variable
+    var searchTmsResponse;
+    if ($("#searchProductARresponse").length > 0) {
+      if ($("#searchProductARresponse").val() != "") {
+        searchTmsResponse = $("#searchProductARresponse").val();
+      }
+
+      if (
+        searchTmsResponse != null &&
+        searchTmsResponse != "" &&
+        searchTmsResponse != "null"
+      ) {
+        searchTmsResponse = JSON.parse(searchTmsResponse);
+
+        if (searchTmsResponse.hasOwnProperty("bigSeriesName")) {
+          globalDataLayer.Search.Product.setValue(
+            "bigSeriesName",
+            searchTmsResponse["bigSeriesName"]
+          );
+        } else {
+          console.log("no SearchProduct bigSeriesName");
+        }
+
+        if (searchTmsResponse.hasOwnProperty("bigSeriesOid")) {
+          globalDataLayer.Search.Product.setValue(
+            "bigSeriesOid",
+            searchTmsResponse["bigSeriesOid"]
+          );
+        } else {
+          console.log("no SearchProduct bigSeriesOid");
+        }
+
+        if (searchTmsResponse.hasOwnProperty("platformId")) {
+          globalDataLayer.Search.Product.setValue(
+            "platformId",
+            searchTmsResponse["platformId"]
+          );
+        } else {
+          console.log("no SearchProduct platformId");
+        }
+
+        if (searchTmsResponse.hasOwnProperty("productLineCode")) {
+          globalDataLayer.Search.Product.setValue(
+            "productLineCode",
+            searchTmsResponse["productLineCode"]
+          );
+        } else {
+          console.log("no SearchProduct productLineCode");
+        }
+
+        if (searchTmsResponse.hasOwnProperty("seriesName")) {
+          globalDataLayer.Search.Product.setValue(
+            "seriesName",
+            searchTmsResponse["seriesName"]
+          );
+        } else {
+          console.log("no SearchProduct seriesName");
+        }
+
+        if (searchTmsResponse.hasOwnProperty("seriesOid")) {
+          globalDataLayer.Search.Product.setValue(
+            "seriesOid",
+            searchTmsResponse["seriesOid"]
+          );
+        } else {
+          console.log("no SearchProduct seriesOid");
+        }
+
+        if (searchTmsResponse.hasOwnProperty("supportCategoryName")) {
+          globalDataLayer.Search.Product.setValue(
+            "supportCategoryName",
+            searchTmsResponse["supportCategoryName"]
+          );
+        } else {
+          console.log("no SearchProduct supportCategoryName");
+        }
+
+        if (searchTmsResponse.hasOwnProperty("supportCategoryOid")) {
+          globalDataLayer.Search.Product.setValue(
+            "supportCategoryOid",
+            searchTmsResponse["supportCategoryOid"]
+          );
+        } else {
+          console.log("no SearchProduct supportCategoryOid");
+        }
+
+        if (searchTmsResponse.hasOwnProperty("supportNameName")) {
+          globalDataLayer.Search.Product.setValue(
+            "supportNameName",
+            searchTmsResponse["supportNameName"]
+          );
+        } else {
+          console.log("no SearchProduct supportNameName");
+        }
+
+        if (searchTmsResponse.hasOwnProperty("supportNameOid")) {
+          globalDataLayer.Search.Product.setValue(
+            "supportNameOid",
+            searchTmsResponse["supportNameOid"]
+          );
+        } else {
+          console.log("no SearchProduct supportNameOid");
+        }
+
+        if (searchTmsResponse.hasOwnProperty("webReleaseDate")) {
+          globalDataLayer.Search.Product.setValue(
+            "webReleaseDate",
+            searchTmsResponse["webReleaseDate"]
+          );
+        } else {
+          console.log("no SearchProduct webReleaseDate");
+        }
+
+        // US 182 35 Replicate search product data into global data
+        globalDataLayer.Product = globalDataLayer.Search.Product;
+        // Updating contact support url with correct product number
+        var gdl = globalDataLayer.Product; // shorthand convinience
+        var seriesOrModelId = gdl.seriesNameOid
+          ? gdl.seriesNameOid
+          : gdl.seriesOid;
+        updateContactSupportURL(
+          "/hp-pps-services/hub/navigation",
+          seriesOrModelId
+        );
+      } else {
+        console.log("no value from search tms");
+      }
+    }
+
+    //Data from SEARCH IDOL hidden variable
+    var searchARData;
+    if ($("#SearchANR").length > 0) {
+      if ($("#SearchANR").val() != "") {
+        searchARData = $("#SearchANR").val();
+      }
+
+      if (
+        searchARData != null &&
+        searchARData != "" &&
+        searchARData != "null"
+      ) {
+        searchARData = JSON.parse(searchARData);
+
+        //check  SEARCH IDOL hidden field for values
+        /*  eg:
+                "productName": "HP ENVY 120 e-All-in-One Printer",
+                "productTMSOID": 5203206,
+                "productTMSClass": "pm_name_value"
+            */
+
+        if (searchARData.hasOwnProperty("productName")) {
+          globalDataLayer.Search.IDOLProduct.setValue(
+            "productName",
+            searchARData["productName"]
+          );
+        } else {
+          console.log("no Search IDOL productName");
+        }
+
+        if (searchARData.hasOwnProperty("productTMSOID")) {
+          globalDataLayer.Search.IDOLProduct.setValue(
+            "productTMSOID",
+            searchARData["productTMSOID"]
+          );
+        } else {
+          console.log("no Search IDOL productTMSOID");
+        }
+
+        if (searchARData.hasOwnProperty("productTMSClass")) {
+          globalDataLayer.Search.IDOLProduct.setValue(
+            "productTMSClass",
+            searchARData["productTMSClass"]
+          );
+        } else {
+          console.log("no Search IDOL productTMSClass");
+        }
+      } else {
+        console.log("no value from search IDOL");
+      }
+    }
+
+    var error404;
+    if (location.href.indexOf("errorType=404") > 0) {
+      error404 = $("#error404").val();
+      globalDataLayer.setValue("ErrorCode", "404");
+      globalDataLayer.setValue("Template", "Error404");
+    }
+
+    var error500;
+    if (location.href.indexOf("errorType=500") > 0) {
+      error500 = $("#error500").val();
+      globalDataLayer.setValue("ErrorCode", "500");
+      globalDataLayer.setValue("Template", "Error500");
+    }
+
+    var EntitlementResult;
+    if ($("#ipWarrantyLevel").length > 0) {
+      EntitlementResult = $("#ipWarrantyLevel").val();
+      globalDataLayer.EntitlementResults.setValue(
+        "EntResults",
+        EntitlementResult
+      );
+    }
+
+    /* Adding downloaded driver file name to datalayer from session */
+    var downloadedFileName =
+      $("#downloadFileName").length > 0 ? $("#downloadFileName").val() : "";
+    if (
+      downloadedFileName !== "" &&
+      downloadedFileName !== null &&
+      typeof downloadedFileName !== "undefined"
+    ) {
+      // globalDataLayer.setValue("sofwareDownloadedFileName",downloadedFileName);
+      globalDataLayer.setValue(
+        "softwareDownloadedFileNames",
+        downloadedFileName
+      );
+    } else {
+      console.log("no softwareDownloadedFileName");
+    }
+
+    /*--------------Template Setting------------------*/
+
+    //Set values based solely on page name
+
+    var pageName = $("#pageIdentifier").val();
+    var custDetailPageName = $("#jspName").val();
+    var url = document.location.href;
+    var prodModel = function () {
+      var currentUrl = document.location.href;
+      if (currentUrl.indexOf("/model") > -1) {
+        return true;
+      } else {
+        return false;
+      }
+    };
+    if (custDetailPageName == "customerdetails") {
+      globalDataLayer.setValue("Template", "customerdetails");
+    }
+    if (pageName != "" && pageName != "null" && pageName != null) {
+      if (pageName == "Support Home") {
+        globalDataLayer.setValue("Template", "SiteHome");
+      } else if (pageName == "WarrantyOnly") {
+        // warranty results - no prod info page
+
+        globalDataLayer.setValue("Template", "OSWarrantyOnly");
+      } else if (pageName == "caseCreation") {
+        //Added as part of 6581
+
+        globalDataLayer.setValue("Template", "SubmitCaseFormPage");
+      } else if (pageName == "Product Home") {
+        globalDataLayer.setValue("Template", "ProductCategoryLanding");
+      } else if (
+        pageName == "SWDSelfService" &&
+        globalDataLayer.Template == ""
+      ) {
+        globalDataLayer.setValue("Template", "SWDLanding");
+      } else if (pageName == "Contact HP - Anonymous") {
+        globalDataLayer.setValue("Template", "ContactHPLanding");
+      } else if (pageName == "ServiceLocator") {
+        globalDataLayer.setValue("Template", "ServiceLocator");
+      } else if (pageName == "SecurityBulletinArchive") {
+        globalDataLayer.setValue("Template", "securitybulletinarchive");
+      } else if (pageName == "multipleWarranty") {
+        globalDataLayer.setValue("Template", "MultipleWarrantyInputPage");
+      } else if (pageName == "Add Device") {
+        //Ading for add device page
+        globalDataLayer.setValue("Template", "AddDevice");
+      } else if (
+        pageName == "SWDSelfServiceStep" &&
+        globalDataLayer.Product.productModelNumber == null
+      ) {
+        //SWD Changes globalDataLayer
+
+        if (prodModel() == true) {
+          globalDataLayer.setValue("Template", "SWDDownload_New");
+        } else {
+          globalDataLayer.setValue("Template", "SWDSeriesDownload_New");
+        }
+      } else if (pageName == "SWDSelfServiceStep") {
+        //SWD Changes globalDataLayer
+
+        globalDataLayer.setValue("Template", "SWDDownload_New");
+      } else if (pageName == "swdDriverDetails") {
+        //SWD Changes globalDataLayer
+        if (prodModel() == true) {
+          //Set for model
+          globalDataLayer.setValue("Template", "SWDModelDriverDetailsPage");
+        } else {
+          //Set for series
+          globalDataLayer.setValue("Template", "SWDSeriesDriverDetailsPage");
+        }
+      } else if (pageName == "SWDSelfServiceFinish") {
+        globalDataLayer.setValue("Template", "SWDClosure_New");
+      } else if (pageName == "Contact HP Product Context View") {
+        /*globalDataLayer.Flag.contactHPVisited = 'true';
+            localStorage.contactHPVisited = 'true';
+            triggerLocalSessionTimer();*/
+        //this value is set on AJAX success in hp-product-contact-options
+      } else if (pageName == "SearchResult") {
+        if (url.indexOf("contact-hp") > 0) {
+          globalDataLayer.setValue("Template", "Models");
+
+          if (getParameterByName("q")) {
+            globalDataLayer.setValue("PfinderQuery", getParameterByName("q"));
+          }
+
+          // if bad results change the TemplateName
+          if ($("#pFinderBadResults").length > 0) {
+            // globalDataLayer.setValue('Template',
+            // 'ModelsBadResults');
+          }
+        } else if (url.indexOf("products") > 0) {
+          globalDataLayer.setValue("Template", "ProductModels");
+          if (getParameterByName("q")) {
+            globalDataLayer.setValue("PfinderQuery", getParameterByName("q"));
+          }
+          // if bad results change the TemplateName
+          if ($("#pFinderBadResults").length > 0) {
+            // globalDataLayer.se\tValue('Template',
+            // 'SWDModelsBadResults');
+          }
+        } else if (url.indexOf("drivers") > 0) {
+          globalDataLayer.setValue("Template", "SWDModels");
+          if (getParameterByName("q")) {
+            globalDataLayer.setValue("PfinderQuery", getParameterByName("q"));
+          }
+          // if bad results change the TemplateName
+          if ($("#pFinderBadResults").length > 0) {
+            // globalDataLayer.setValue('Template',
+            // 'SWDModelsBadResults');
+          }
+        } else {
+          globalDataLayer.setValue("Template", "Search");
+          if (getParameterByName("q")) {
+            globalDataLayer.Search.setValue("Query", getParameterByName("q"));
+          }
+          /*
+           * globalDataLayer.Flag.searchExecuted = 'true';
+           * localStorage.searchExecuted = 'true';
+           * triggerLocalSessionTimer();
+           */
+        }
+      } else if (
+        pageName == "ConcentraWrapper" ||
+        pageName == "ConcentraNonContextual"
+      ) {
+        globalDataLayer.setValue("Template", "Document");
+      } else if (
+        pageName == "Product Details Page" ||
+        pageName == "Product Details Page"
+      ) {
+        if (tmsResponse.hasOwnProperty("supportNameOid")) {
+          if (
+            tmsResponse["supportNameOid"] != null &&
+            tmsResponse["supportNameOid"] != "null" &&
+            tmsResponse["supportNameOid"] != ""
+          ) {
+            globalDataLayer.setValue("Template", "ProductModel");
+          } else {
+            globalDataLayer.setValue("Template", "ProductSeries");
+          }
+        }
+      } else if (pageName == "DisputeForm") {
+        if ($("#warrantyDisputeForm").length > 0) {
+          globalDataLayer.setValue("Template", "DisputeWarrantyForm");
+        } else {
+          globalDataLayer.setValue("Template", "DisputeWarrantyConfirmation");
+        }
+      } else if (pageName == "RemoteConnection") {
+        globalDataLayer.setValue("Template", "RemoteAssistance");
+      } else if (pageName == "Warranty Check") {
+        globalDataLayer.setValue("Template", "WarrantyLanding");
+      } else if (pageName == "Product Warranty Result") {
+        if ($("#warrantyStatus").length > 0) {
+          var wStatus = $("#warrantyStatus").val();
+          switch (wStatus) {
+            case "IW":
+              globalDataLayer.setValue("Template", "IWResults");
+              break;
+            case "OW":
+              globalDataLayer.setValue("Template", "OOWResults");
+              break;
+            case "XW":
+              globalDataLayer.setValue("Template", "XWResults");
+              break;
+          }
+        } else {
+          globalDataLayer.setValue("Template", "OOWResults");
+        }
+      } else if (pageName == "Unknown Warranty") {
+        globalDataLayer.setValue("Template", "UWResults");
+      } else if (pageName == "multipleWarranty") {
+        globalDataLayer.setValue("Template", "MultipleWarrantyInputPage");
+      } else if (pageName == "Historical Products") {
+        globalDataLayer.setValue("Template", "HistoricalProductsLanding");
+      } else if (pageName == "MediaOrdering") {
+        var stepsvalue = $(".steps_media").val();
+        switch (stepsvalue) {
+          case "step1":
+            globalDataLayer.setValue("Template", "MediaCustomerInformation");
+            break;
+          case "step2":
+            globalDataLayer.setValue("Template", "MediaShippingInformation");
+            break;
+          case "step3":
+            globalDataLayer.setValue("Template", "MediaBillingInformation");
+            break;
+          case "step4":
+            globalDataLayer.setValue("Template", "MediaPaymentInformation");
+            break;
+          case "step5":
+            globalDataLayer.setValue("Template", "MediaOrderConfirmation");
+        }
+      } else if (pageName == "productreplacement") {
+        globalDataLayer.setValue("Template", "productreplacement");
+      } else if (pageName == "orderconfirmation") {
+        globalDataLayer.setValue("Template", "orderconfirmation");
+      }
+      //error page
+      else if (pageName == "Error Page") {
+        var errorvalue = $(".mediaerror").val() | 0;
+        var productReplacementErrorValue =
+          $("#productreplacementerror").val() | 0;
+        switch (errorvalue) {
+          case 1:
+            globalDataLayer.setValue("Template", "MediaNotOrderable");
+            break;
+          case 2:
+            globalDataLayer.setValue("Template", "MediaLimitReached");
+            break;
+          case 3:
+            globalDataLayer.setValue("Template", "MediaPaymentFailed");
+            break;
+        }
+        switch (productReplacementErrorValue) {
+          case 1:
+            globalDataLayer.setValue("Template", "IneligibleProduct");
+            break;
+          case 2:
+            globalDataLayer.setValue("Template", "SubmissionFailed");
+            break;
+        }
+      } else if (pageName == "IdentifyProduct") {
+        globalDataLayer.setValue("Template", "ChangeProduct");
+      } else if (pageName == "SWDpfinderBadResults") {
+        //Added as part of 6539
+
+        if (url.indexOf("contact-hp") > 0) {
+          globalDataLayer.setValue("Template", "ContactHPBadResults");
+        } else if (url.indexOf("products") > 0) {
+          globalDataLayer.setValue("Template", "PDPBadResults");
+        } else if (url.indexOf("drivers") > 0) {
+          globalDataLayer.setValue("Template", "SWDBadResults");
+        }
+      } else if (pageName == "productIdentification") {
+        globalDataLayer.setValue("Template", "DMD");
+      }
+    }
+    /*------------------------------------------------*/
+	/********** SSVSPRT-10768 STARTS *********/
+	/***********************************/
+	/**** UDL Implementation STARTS ****/
+	/***********************************/
+
+	let UDL_DISABLE_TEMPLATE = "";
+
+	if (
+	  !(
+		UDL_DISABLE_TEMPLATE.split(",").indexOf(
+		  $("meta[name=pageinfo]").attr("data-templatename")
+		) !== -1
+	  )
+	) {
+	  let regionalTwobyteCodes = {
+		emea_middle_east: {
+		  twoByteCC: "m_",
+		},
+		emea_africa: {
+		  twoByteCC: "f_",
+		},
+		lamerica_nsc_carib: {
+		  twoByteCC: "c_",
+		},
+		lamerica_nsc_cnt_amer: {
+		  twoByteCC: "l_",
+		},
+	  };
+
+	  function getRegional2ByteCCcodes() {
+		if (regionalTwobyteCodes.hasOwnProperty(aem_cc)) {
+		  this.countryCode = regionalTwobyteCodes[aem_cc]["twoByteCC"];
+		  this.document.documentElement.lang = aem_lc + "-" + this.countryCode;
+		  $("head").append(
+			'<meta name="target_country" content="' + this.countryCode + '" />​'
+		  );
+		} else {
+		  this.document.documentElement.lang = aem_lc + "-" + aem_cc.toUpperCase();
+		  $("head").append(
+			'<meta name="target_country" content="' + aem_cc + '" />'
+		  );
+		}
+	  }
+
+	  function add_update_metatag() {
+		getRegional2ByteCCcodes();
+		$("head").append('<meta name="web_section_id" content="R11839" />​');
+		var pageNameL5 = "microsites",
+		  pageNameL6 = "",
+		  pageNameL7 = "",
+		  pageNameL8 = $("meta[name='pageinfo']").attr("data-templatename").toLowerCase();
+		  if(respJsonDataUDL){ // Reading json response from microsites API coming from header.jsp
+			  $.each(respJsonDataUDL, function(index, item) {
+				if (item.key === globalDataLayer.Template) {
+					split_result = item.value.split(':::');
+					pageNameL5 = split_result[0];
+					pageNameL8 = split_result[1];        
+				  return false;
+				}
+			  });
+		  }
+		if (
+		  window.location.href.indexOf("instant-ink-business") > -1 ||
+		  window.location.href.indexOf("instant-ink-platinum") > -1
+		) {
+		  pageNameL5 = "sdp";
+		  pageNameL6 = "sdp-instant-ink";
+		}
+		dataLayer.push({
+		  event: "e_pageView",
+		  pageNameL5: pageNameL5,
+		  pageNameL6: pageNameL6,
+		  pageNameL7: pageNameL7,
+		  pageNameL8: pageNameL8,
+		});
+
+		// update UDL on the basis of user login status START
+		var checkUserSigninURL = "";
+		if (window.location.href.indexOf("https://support.hp.com") > -1) {
+		  checkUserSigninURL =
+			"https://global-navbar-backend.id.hp.com/api/v1/session/sso_check";
+		} else {
+		  checkUserSigninURL =
+			"https://global-navbar-backend.stg.cd.id.hp.com/api/v1/session/sso_check";
+		}
+		$.ajax({
+		  url: checkUserSigninURL,
+		  type: "GET",
+		  cache: false,
+		  Expires: "Tue, 01 Jan 1980 1:00:00 GMT",
+		  Pragma: "no-cache",
+		  contentType: "application/json",
+		  xhrFields: {
+			withCredentials: true,
+		  },
+		  success: function (response) {
+			console.log(response);
+			if (response.sessionIsValid) {
+			  window["dataLayer"].push({
+				event: "e_userLogin",
+				loginStatus: true,
+			  });
+			} else {
+			  function lookupIndex(array, prop, value) {
+				for (var i = 0, len = array.length; i < len; i++)
+				  if (array[i] && array[i][prop] === value) return i;
+			  }
+			  dataLayer[lookupIndex(dataLayer, "event", "e_pageView")][
+				"loginStatus"
+			  ] = false;
+			}
+		  },
+		  error: function (e) {
+			console.log("error in scrapping");
+		  },
+		});
+		// update UDL on the basis of user login status START
+	  }
+
+	  (function () {
+		$.ajax({
+		  type: "GET",
+		  url: "/wcc-services/config/" + aem_cc + "-" + aem_lc + "/siteHome",
+		  success: function (data) {
+			console.log("UDL: script loading DONE");
+			for (i = 0; i < data.ssc.length; i++) {
+			  if (data.ssc[i].key == "UDL_KILL_SWITCH") {
+				if (data.ssc[i].value !== "false") {
+				  console.log("UDL: global switch is ON");
+				  initAnalytics_GTM_UDL();
+				} else {
+				  console.log("UDL: global switch is OFF");
+				}
+			  }
+			  if (data.ssc[i].key == "PRIVACY_BANNER_ENABLED_LOCALES") {
+				privacyBannerSupportedLocales = data.ssc[i].value;
+			  }
+			  if (data.ssc[i].key == "PRIVACY_BANNER_URL") {
+				privacyBannerUrl = data.ssc[i].value;
+			  }
+			}
+			loadPrivacyBanner();
+		  },
+		  error: function (request, status, error) {
+			console.log(request.responseText);
+		  },
+		});
+	  })();
+
+	  function initAnalytics_GTM_UDL() {
+		(function () {
+		  let initAnalytics = function () {
+			window.dataLayer = window.dataLayer || [];
+			(function (w, d, s, l, i) {
+			  w[l] = w[l] || [];
+			  w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+			  var f = d.getElementsByTagName(s)[0],
+				j = d.createElement(s),
+				dl = l != "dataLayer" ? "&l=" + l : "";
+			  j.async = true;
+			  j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+			  f.parentNode.insertBefore(j, f);
+			})(window, document, "script", "dataLayer", "GTM-MZXB4R4");
+			// add and update meta tag here
+			add_update_metatag();
+		  };
+		  try {
+			window.addEventListener("load", initAnalytics, false);
+		  } catch (e) {
+			initAnalytics();
+		  }
+		})();
+	  }
+	} else {
+	  console.log("UDL: UDL DISABLE TEMPLATE is ON");
+	}
+	/***********************************/
+	/**** UDL Implementation ENDS  *****/
+	/***********************************/
+
+	/**************************************/
+	/**** Privacy Banner Update STARTS ****/
+	/**************************************/
+
+	let privacyBannerSupportedLocales;
+	let privacyBannerUrl;
+	const PRIVACY_BANNER_MAX_RETRY = 5;
+	let privacyBannerRetryCount = 0;
+
+	function loadPrivacyBanner() {
+	  const secNavEl = document.getElementsByClassName(
+		"micrositesecondarynavigation"
+	  )[0];
+	  const breadCrumbEl = document.querySelectorAll("nav.cmp-breadcrumb")[0];
+	  if (breadCrumbEl) {
+		breadCrumbEl.insertAdjacentHTML(
+		  "beforebegin",
+		  "<div id='privacyBanner'></div>"
+		);
+	  } else {
+		secNavEl.insertAdjacentHTML("afterend", "<div id='privacyBanner'></div>");
+	  }
+
+	  isPrivacyBannerVisible =
+		privacyBannerSupportedLocales.indexOf(`${aem_cc}-${aem_lc}`) > -1
+		  ? true
+		  : false;
+	  if (this.isPrivacyBannerVisible) {
+		loadPrivacyBannerScript(privacyBannerUrl);
+	  } else {
+		if (typeof localStorage !== "undefined") {
+		  localStorage.removeItem("privacyBannerSeen");
+		}
+	  }
+	}
+
+	function loadPrivacyBannerScript(privacyBannerUrl) {
+	  let node = document.createElement("script");
+	  node.src = privacyBannerUrl;
+	  node.type = "text/javascript";
+	  node.addEventListener("load", (event) => {
+		modifyPrivacyBanner();
+	  });
+	  const headerEl = document.getElementById("privacyBanner");
+	  headerEl.appendChild(node);
+	}
+
+	function modifyPrivacyBanner() {
+	  setTimeout(() => {
+		const desktopPrivacyLink = document.querySelectorAll(
+		  ".privacy-nb .desktop p a"
+		);
+		desktopPrivacyLink?.[0]?.setAttribute("target", "_blank");
+		desktopPrivacyLink?.[0]?.setAttribute("tabindex", "0");
+
+		const mobilePrivacyLink = document.querySelectorAll(
+		  ".privacy-nb .mobile p a"
+		);
+		mobilePrivacyLink?.[0]?.setAttribute("target", "_blank");
+		mobilePrivacyLink?.[0]?.setAttribute("tabindex", "0");
+
+		const closeButtonDesktop = document.querySelectorAll(
+		  ".privacy-nb .desktop > a"
+		);
+		closeButtonDesktop?.[0]?.setAttribute("tabindex", "0");
+		closeButtonDesktop?.[0]?.classList.add("closeBanner");
+		closeButtonDesktop?.[0]?.addEventListener("keyup", (event) => {
+		  event.preventDefault();
+		  if (event.keyCode === 13) {
+			closeButtonDesktop[0].click();
+		  }
+		});
+		const closeButtonMobile = document.querySelectorAll(
+		  ".privacy-nb .mobile > a"
+		);
+		closeButtonMobile?.[0]?.setAttribute("tabindex", "0");
+		closeButtonMobile?.[0]?.classList.add("closeBanner");
+
+		// Fallback - in case script does not load in 500ms
+		const isBannerLoaded =
+		  ((closeButtonDesktop && closeButtonDesktop?.[0]) ||
+			(closeButtonMobile && closeButtonMobile?.[0])) == undefined;
+		if (isBannerLoaded && privacyBannerRetryCount <= PRIVACY_BANNER_MAX_RETRY) {
+		  modifyPrivacyBanner();
+		  privacyBannerRetryCount++;
+		}
+	  }, 400);
+	}
+
+	/**************************************/
+	/**** Privacy Banner Update ENDS ******/
+	/**************************************/
+	/********** SSVSPRT-10768 ENDS *********/
+  });
+
+  clearLocalStorageEAS();
+
+  function clearLocalStorageEAS() {
+    if (localStorage.easStartTime) {
+      var initialTime = parseInt(localStorage.easStartTime);
+      var expirayDuration = 60 * 60 * 1000;
+      var currentTime = new Date().getTime();
+      if (currentTime - initialTime >= expirayDuration) {
+        localStorage.removeItem("userEASInfo");
+      }
+    }
+  }
+} catch (err) {
+  console.log(err);
+}

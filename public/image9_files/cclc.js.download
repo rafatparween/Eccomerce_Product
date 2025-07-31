@@ -1,0 +1,216 @@
+$(document).ready(function() {
+    const pageInfoMeta = $('head meta[name=pageinfo]');
+    const cc = pageInfoMeta.data('cc');
+    const lc = pageInfoMeta.data('lc');
+	const uri = pageInfoMeta.data('uri');
+    const servletPath = "/bin/hpwcc/countryselector";
+    var pagePath = pageInfoMeta.data('pagepath');
+
+    //update flag name
+    const currentLCCCFlag = $('.country-selector').find("a[rel=" + cc + "][data-languagecode=" + lc + "]").first();
+    const currentCountryName = currentLCCCFlag.text();
+    $('#clcCountryHeader').text(currentCountryName);
+
+    // adding single line screen reader
+    $("#clcCountryScreenReader").css("width", $("#dvCountrySelector a").width());
+    $("#clcCountryScreenReader").text($("#lblClcCountryHeader").text().replace(':',' ')+currentCountryName);
+   
+
+    //generate json of lc and cc for current page locales
+	const links = $('head link[rel=alternate]');
+    const webserverurl = pageInfoMeta.data('webserverurl');
+    var lcccJson = {};
+    $(links).each(function(i) {
+        const linkTag = $(links[i]);
+        var link = linkTag.attr('href');
+		if(typeof webserverurl !== 'undefined'){
+			link = link.replace(webserverurl + "/", '');
+		}
+        link = link.substring(0, link.indexOf('/'));
+        if (link.indexOf('-') > -1) {
+            const lccc = link.split('-');
+            var lc = lccc[1];
+            var cc = lccc[0];
+            var lcArray = lcccJson[lc];
+            if (typeof lcArray !== 'undefined') {
+                lcArray.push(cc);
+            } else {
+                var lcArray = [];
+                lcArray.push(cc);
+            }
+            lcccJson[lc] = lcArray;
+        }
+    });
+	
+	//show flags based on lc and cc json
+    const flags = $('.hp-country-name');
+    $(flags).each(function(i) {
+        var flag = $(flags[i]);
+        const flagCC = flag.attr("rel").toLowerCase();
+        const flagLC = flag.data("languagecode").toLowerCase();
+        const resLC = lcccJson[flagLC];
+        if (typeof resLC !== 'undefined') {
+            if (resLC.indexOf(flagCC) > -1) {
+                if(flagLC !== "ru"){flag.parent().parent().removeClass('hide');} // Except RU
+                const currentPath = uri;
+                var path = "";
+                if (window.location.href.indexOf(".html") > -1) {
+                    if (currentPath.indexOf('/language-masters/') > -1) {
+                        path = pagePath.replace("/language-masters/", "/" + flagLC + "-" + flagCC + "/");
+                    } else {
+                        path = pagePath.replace(lc + "-" + cc, flagLC + "-" + flagCC);
+                    }
+                    path = path + ".html";
+					if (window.location.href.indexOf(".html") > -1 && (window.location.href.indexOf("author") > -1 
+                    		|| window.location.href.indexOf("localhost") > -1 || window.location.href.indexOf("127.0.0.1") > -1)) {
+ 						path +="?wcmmode=disabled";                    
+                    }
+                } else {
+                    path = uri.replace(cc + "-" + lc, flagCC + "-" + flagLC);
+                }
+                var langPath = path;
+                flag.attr("href", langPath);
+            }
+        }
+
+    });
+	if(!$("#dvAsia .hp-country-name[rel = 'TW'][data-languagecode='zh']").parent().parent().hasClass('hide')){
+		var adding = $("#dvAsia .hp-country-name[rel = 'TW'][data-languagecode='zh']").parent().parent().html();
+		var adder = $("#dvAsia .hp-country-name[rel = 'HK'][data-languagecode='en']").parent().parent();
+		$("#dvAsia .hp-country-name[rel = 'TW'][data-languagecode='zh']").parent().parent().addClass('hide');
+		$('<li class>'+adding+'</li>').insertAfter(adder);
+	}
+
+//Country Selector hiding region section without any listing
+    const americaA=$("#dvAmerica").find("li");
+    const americaAb=$("#dvAmerica").find("li.hide");
+    if(americaA.length==americaAb.length){
+        $("#dvAmerica").hide();
+    }
+    const emeaA=$("#dvEmea_africa").find("li");
+    const emeaAf=$("#dvEmea_africa").find("li.hide");
+        if(emeaA.length==emeaAf.length){
+            $("#dvEmea_africa").hide();
+    }
+    const asiaA=$("#dvAsia").find("li");
+    const asiaAb=$("#dvAsia").find("li.hide");
+    if(asiaA.length==asiaAb.length){
+        $("#dvAsia").hide();
+    }
+
+// Country Selector Modal Open
+var popupActivatorIsClicked = false;
+$('.PopupActivator').click(function() {
+    popupActivatorIsClicked = true;
+    openCLCModal();
+});
+
+if (window.location.href.toLowerCase().indexOf("openclc=true") != -1) {
+    setTimeout(function () {
+      $("#clcCountryHeader").click();
+      document.getElementById("cclcModal").scrollIntoView();
+    }, 2000);
+}
+
+function openCLCModal(){
+    var w = window.innerWidth;    
+    if($('.cclc-modal').hasClass('hide')){
+        $('.cclc-modal').removeClass('hide');
+    	$('.selector-modal-wrapper').show();
+		setTimeout(() => {
+            document.getElementById("cclcModal").scrollIntoView({behavior: "smooth"});
+        }, 500);
+    } else {
+		$('.selector-modal-wrapper').hide();
+    	$('.cclc-modal').addClass('hide');
+    }
+   if($('.countrySelectorBox').hasClass('hide')){
+        $('.countrySelectorBox').removeClass('hide');
+        $('.modal-backdrop').removeClass('hide');
+        $('.clc-selector-mobile').show();
+		$('body').addClass('modal-open');
+        $('.modal-backdrop').show();
+        $('.modal-backdrop').addClass('in');
+    } else {
+		$('body').removeClass('modal-open');
+        $('.countrySelectorBox').addClass('hide');
+        $('.clc-selector-mobile').hide();
+        $('.modal-backdrop').hide();
+    }
+
+    if(w >= 800){
+        $('body').removeClass('modal-open');
+        $('.countrySelectorBox').addClass('hide');
+        $('.clc-selector-mobile').hide();
+        $('.modal-backdrop').hide();
+    }
+}
+
+// Country Selector Modal Close
+ $('.close').click(function() {
+    $('.selector-modal-wrapper').hide();
+    $('.cclc-modal').addClass('hide');
+    $('body').removeClass('modal-open');
+    $('.countrySelectorBox').addClass('hide');
+    $('.clc-selector-mobile').hide();
+    $('.modal-backdrop').hide();
+ });
+
+  window.onresize = function(event) {
+    var w = window.innerWidth;
+    if(w >= 800){
+        $('body').removeClass('modal-open');
+    }
+	/*var desk = document.getElementById("visid-desktop");
+    var mob = document.getElementById("visid-mobile");
+    if (window.getComputedStyle(mob).display !== "none" && window.getComputedStyle(desk).display === "none") {
+        if(!$('body').hasClass('modal-open')){
+            $('body').addClass('modal-open');
+        }
+    } else{
+        if($('body').hasClass('modal-open')){
+            $('body').removeClass('modal-open');
+        }
+    }*/
+  };
+
+ //Accordian
+	$('.accordion').each(function () {
+	    var $accordian = $(this);
+	    $accordian.find('.accordion-item .countryHeader').on('click', function () {
+            //$(this).removeClass('open').addClass('close');
+           $accordian.find('.accordion-item .country-list').slideUp();
+	        if (!$(this).next().is(':visible')) {
+                //$(this).removeClass('close').addClass('open');
+                if($(this).parent().attr('class').includes('country-group-0')){
+				  $('.accordion-item.country-group-1').removeClass('active');
+            	  $('.accordion-item.country-group-2').removeClass('active');
+                } else if($(this).parent().attr('class').includes('country-group-1')){
+				  $('.accordion-item.country-group-2').removeClass('active');
+            	  $('.accordion-item.country-group-0').removeClass('active');
+                } else if($(this).parent().attr('class').includes('country-group-2')){
+				  $('.accordion-item.country-group-0').removeClass('active');
+            	  $('.accordion-item.country-group-1').removeClass('active');
+                }
+                $(this).parent().addClass('active');
+	            $(this).next().slideDown();
+            } else{
+				$(this).parent().removeClass('active');
+            }
+	    });
+	});
+
+    document.addEventListener("click", (e) => {
+     if(!popupActivatorIsClicked){
+      const isClosest = e.target.closest("#cclcModal");
+      if(!isClosest){
+        if(!$('.cclc-modal').hasClass('hide')){
+          $('.selector-modal-wrapper').hide();
+    	  $('.cclc-modal').addClass('hide');
+        }
+      }
+     }
+     popupActivatorIsClicked = false; // Reset
+    });
+
+});

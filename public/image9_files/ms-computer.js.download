@@ -1,0 +1,100 @@
+const tileIdURLMapComputer = {"windowsOSIntent": "windows-operating-system-issues", "batteryIntent":"battery-adapter-issues", "slowPCIntent":"computer-slow", "networkingIntent":"internet-network-issues", "keyboardIntent":"keyboard-mouse-issues", "systemRecoveryIntent":"system-recovery", "displayIntent":"display-touchscreen-issues", "soundIssuesIntent":"sound-issues", "systemFreezeIntent":"lockup-freeze-issues", "bootPowerIntent":"power-boot-issues", "storageIssuesIntent":"low-disk-space-issues" };
+
+$(document).ready(function() {
+	
+    var pagelc = $('head meta[name=pageinfo]').data('lc');
+    var pagecc = $('head meta[name=pageinfo]').data('cc');    
+    var hostname = "https://" + document.location.host;
+    var supportHome = hostname + "/" + window.location.pathname.split("/")[1]; 
+    /* making the intent div to be keyboard accessible */
+	$("#intentsDiv > div > div").each(function() { 
+		$(this).attr("tabindex","0"); 
+	}); 
+
+    /* making the intent div to be keyboard accessible ends */
+    $('#intentsDiv > div > div').click(function(){
+    	targetURL = "computer/" + tileIdURLMapComputer[$(this).attr('id')];
+    	/* if (pagelc == "en" && tileIdURLMapComputer[$(this).attr('id')] == "sound-issues") {
+	    		targetURL = hostname + "/" + pagecc + "-" + pagelc + "/topic/audio";
+    	} */
+        window.location = targetURL;
+        return false;
+    });
+
+	// /* amending this to allow preview testing for Diag expansion */
+	// $('#intentsDiv > div > div').click(function(){
+	// 	let targetURL;
+	// 	if (['it', 'tr', 'pl', 'th', 'sv', 'da', 'no'].includes(aem_lc)) {
+	// 		targetURL = "computer/" + tileIdURLMapComputer[$(this).attr('id')] + "?preview=true";
+	// 	} else {
+	// 		targetURL = "computer/" + tileIdURLMapComputer[$(this).attr('id')];
+	// 	}
+	// 	window.location = targetURL;
+	// 	return false;
+	// });
+	
+	  /* fix video modal close button SSVSPRT-5320*/
+		switch (aem_lc) {
+			case "ko":
+			$('button.btn-primary.btn.closeModal').text('닫기');
+			$('button.btn-primary.btn.closeModal').prop('title', '닫기');
+		break;		
+		}
+
+    $("#printNavTab").hover(function(){
+        $(this).parent().parent().css("border-bottom", "solid 2px #404040");
+    }, function(){
+        $(this).parent().parent().css("border-bottom", "none");
+    });
+    $(".homeUrl").attr("href",supportHome);  
+
+	/* updating ids as per RAW-70 "MSR_<EN master Document ID>_cc-lc" STARTS*/
+	var troubleShootingContainerAnchors = "#troubleShootingContainer a.document-url";
+	$(troubleShootingContainerAnchors).each(function(i) {
+		const actualTaggedDom = $(this);
+		var documentAnchorDom = actualTaggedDom.closest('a');
+		var splittedLink = documentAnchorDom.attr('href').split('/');
+		//splitting query parameter from from url
+		var documentId = (splittedLink[splittedLink.length - 1].split("?"))[0];	
+		$(this).attr('id', 'MSR_'+documentId+ '_' + pagecc + "-"+ pagelc);				
+	});
+	/* updating ids as per RAW-70 "MSR_<EN master Document ID>_cc-lc" ENDS*/
+	
+	// typeahead patch for onebox search START
+	$(document).on('click','#Oneboxsearch', function(){  
+		window.location.href = "/"+pagecc+"-"+pagelc+"/search?q=" + $('#oneboxtextsearch').val();
+	});
+
+	$(document).on('keypress','#Oneboxsearch, #oneboxtextsearch', function(e){
+	 var key = e.which;
+	 if(key == 13)  // the enter key code
+	  {
+		if($('ngb-typeahead-window').length == 0 || $('ngb-typeahead-window button').hasClass('dropdown-item active') == false){
+			$('#Oneboxsearch').click();
+			return false; 
+		}
+	  }
+	}); 
+	// typeahead patch for onebox search END
+	
+});    
+
+
+window.onload = function(){
+    var hideCount = 0;
+	// center align if data in column less than 3 and hide if no img src
+    $('#videoContainer .columnControl .row .col-sm-4').each(function(index){
+	  if($(this).children().length == 0){
+		$(this).remove();
+	  }
+	  //console.log($(this).children().find('img').attr('src'));
+	  if($(this).children().find('img').attr('src') == ''){
+		 $(this).addClass('hide');
+		 hideCount++;
+	  }
+	});
+	// hide video container if no video data return by service/api
+	if(hideCount == $('#videoContainer .columnControl .row .col-sm-4').length){
+		$('#videoContainer').addClass('hide');
+	}
+};

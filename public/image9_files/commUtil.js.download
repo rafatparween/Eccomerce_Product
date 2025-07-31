@@ -1,0 +1,1183 @@
+//pollyfills for Array.form START
+if (!Array.from) {
+  Array.from = (function () {
+    var toStr = Object.prototype.toString;
+    var isCallable = function (fn) {
+      return typeof fn === "function" || toStr.call(fn) === "[object Function]";
+    };
+    var toInteger = function (value) {
+      var number = Number(value);
+      if (isNaN(number)) {
+        return 0;
+      }
+      if (number === 0 || !isFinite(number)) {
+        return number;
+      }
+      return (number > 0 ? 1 : -1) * Math.floor(Math.abs(number));
+    };
+    var maxSafeInteger = Math.pow(2, 53) - 1;
+    var toLength = function (value) {
+      var len = toInteger(value);
+      return Math.min(Math.max(len, 0), maxSafeInteger);
+    };
+
+    // The length property of the from method is 1.
+    return function from(arrayLike /*, mapFn, thisArg */) {
+      // 1. Let C be the this value.
+      var C = this;
+
+      // 2. Let items be ToObject(arrayLike).
+      var items = Object(arrayLike);
+
+      // 3. ReturnIfAbrupt(items).
+      if (arrayLike == null) {
+        throw new TypeError(
+          "Array.from requires an array-like object - not null or undefined"
+        );
+      }
+
+      // 4. If mapfn is undefined, then let mapping be false.
+      var mapFn = arguments.length > 1 ? arguments[1] : void undefined;
+      var T;
+      if (typeof mapFn !== "undefined") {
+        // 5. else
+        // 5. a If IsCallable(mapfn) is false, throw a TypeError exception.
+        if (!isCallable(mapFn)) {
+          throw new TypeError(
+            "Array.from: when provided, the second argument must be a function"
+          );
+        }
+
+        // 5. b. If thisArg was supplied, let T be thisArg; else let T be undefined.
+        if (arguments.length > 2) {
+          T = arguments[2];
+        }
+      }
+
+      // 10. Let lenValue be Get(items, "length").
+      // 11. Let len be ToLength(lenValue).
+      var len = toLength(items.length);
+
+      // 13. If IsConstructor(C) is true, then
+      // 13. a. Let A be the result of calling the [[Construct]] internal method of C with an argument list containing the single item len.
+      // 14. a. Else, Let A be ArrayCreate(len).
+      var A = isCallable(C) ? Object(new C(len)) : new Array(len);
+
+      // 16. Let k be 0.
+      var k = 0;
+      // 17. Repeat, while k < lenâ€¦ (also steps a - h)
+      var kValue;
+      while (k < len) {
+        kValue = items[k];
+        if (mapFn) {
+          A[k] =
+            typeof T === "undefined"
+              ? mapFn(kValue, k)
+              : mapFn.call(T, kValue, k);
+        } else {
+          A[k] = kValue;
+        }
+        k += 1;
+      }
+      // 18. Let putStatus be Put(A, "length", len, true).
+      A.length = len;
+      // 20. Return A.
+      return A;
+    };
+  })();
+}
+//pollyfills for Array.form END
+
+var pageInfoMeta = $("head meta[name=pageinfo]");
+var aem_cc = pageInfoMeta.data("cc");
+var aem_lc = pageInfoMeta.data("lc");
+
+/***********************************************************************************/
+/**** UDL Implementation AND Privacy Banner Update - Moved to analytics.js file ****/
+/***********************************************************************************/
+
+/*************************************************************/
+/*   DR-386 STARTS	 */
+/*************************************************************/
+// TARGETING
+
+let adobe_jp_target_locale = window.location.href.indexOf("/jp-ja/") != -1;
+
+$(window).on("load", function () {
+  if (adobe_jp_target_locale) {
+    waitForElement_aem("body", function (elem) {
+      $(elem).append(
+        '<!--adobe tag for Japan--> <script src="https://assets.adobedtm.com/f74d69706122cfe92e00ce6f73afb4d643504043/satelliteLib-49b5e1f40440dd6712c1542f95865fa1e3d7d953.js"></script><!--adobe tag-->'
+      );
+      console.log("JP adobe tag added");
+    });
+  }
+});
+
+/*************************************************************/
+/*   DR-386 ENDS	 */
+/*************************************************************/
+
+/*************************************************************/
+/*   SSVSPRT-13056/10227 - header search bar code STARTS		 */
+/*************************************************************/
+
+/* Remove as per new search implementation - SSVSPRT-12268*/
+
+/*************************************************************/
+/*     SSVSPRT-13056/10227 - header search bar code END	*/
+/*************************************************************/
+
+(function () {
+  let initAnalytics = function () {
+    window.dataLayer = window.dataLayer || [];
+    (function (w, d, s, l, i) {
+      w[l] = w[l] || [];
+      w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+      var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s),
+        dl = l != "dataLayer" ? "&l=" + l : "";
+      j.async = true;
+      j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+      f.parentNode.insertBefore(j, f);
+    })(window, document, "script", "dataLayer", "GTM-MZXB4R4");
+  };
+  try {
+    window.addEventListener("load", initAnalytics, false);
+  } catch (e) {
+    initAnalytics();
+  }
+})();
+
+var aem_Pfw_disabled = function () {
+  return window.location.href.indexOf("disable_pfw=true") != -1 ||
+    window.location.href.indexOf("pfw_disable=true") != -1
+    ? true
+    : false;
+};
+
+/* function for single document/locale service call START */
+window.getSingleDocUrlOnly = function (
+  id,
+  passDocumentID,
+  passcc,
+  passlc,
+  jumpid
+) {
+  var documentAPIURL =
+      window.location.origin + "/wcc-services/kaas/translateDocuments",
+    jsonData = {
+      cc: "us",
+      lc: "en",
+      targetCC: aem_cc.toUpperCase(),
+      targetLC: aem_lc,
+      docIDs: [passDocumentID],
+    };
+
+  $.ajax({
+    type: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    url: documentAPIURL,
+    data: JSON.stringify(jsonData),
+    success: function (data) {
+      if (data.code == "200") {
+        if (data) {
+          var jump_id = "";
+          if (typeof jumpid != "undefined") {
+            jump_id = jumpid;
+          }
+          //$('#'+id).attr('href', data.data.documentIDMap["docurl"+passDocumentID] +jump_id);
+          if (data.data.documentIDMap[passDocumentID] == "") {
+            //documentAnchorDom.attr("href", "/"+ cc +"-"+ lc +"/document/"+key);
+            $(".aemDocNum" + passDocumentID).attr(
+              "href",
+              "/" +
+                aem_cc +
+                "-" +
+                aem_lc +
+                "/document/" +
+                passDocumentID +
+                jump_id
+            );
+          } else {
+            //documentAnchorDom.attr("href", "/"+ cc +"-"+ lc +"/document/"+value);
+            $(".aemDocNum" + passDocumentID).attr(
+              "href",
+              "/" +
+                aem_cc +
+                "-" +
+                aem_lc +
+                "/document/" +
+                data.data.documentIDMap[passDocumentID] +
+                jump_id
+            );
+          }
+        } else {
+          console.log("Doc data not found");
+        }
+      }
+    },
+    error: function (xhr, status, error) {
+      console.log("doc ajax fail");
+    },
+  });
+};
+/* function for single document/locale service call ENDS */
+
+$(document).ready(function () {
+  $("body").append(
+    '<style type="text/css">.patchLoader.loading-screen-wrapper{z-index:100000;position:fixed;background-color:#fff;width:100%;height:100%;display:block;opacity:.9;top:0;left:0}.patchLoader .loading-screen-icon{text-align:center;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:40px}.patchLoader .loader{margin:60px auto;font-size:10px;text-indent:-9999em;border:1.1em solid #0096d6;border-left-color:#fff;transform:translateZ(0);border-radius:50%;width:120px;height:120px;animation:2s linear infinite spin;position:absolute;left:calc(50% - 60px);top:calc(50% - 60px)}</style>'
+  );
+  
+  $("body").append(
+    '<div id="commUtil-modalPageLevelSpinner" class="patchLoader loading-screen-wrapper hide"><div class="loading-screen-icon ltr"><div class="loader">loader</div><span class="loading-text"></span></div></div>'
+  );
+
+    //SSVSPRT-15828
+
+    waitForElement_aem("#GA-We-Chat", function (elem) {
+
+      $(elem).attr("href", "https://www.hp.com/cn-zh/contact-hp/webchat-support.html?src=csptwechat?jumpid=in_r11839_cn/zh/moreoptionsDoc/wechat");
+      console.log("Wechat URL updated");
+  
+    });
+
+  //RDR-753 Launch CLC modal when parameter ?openCLC=true is detected 4 May 2022 - moved to cclc.js
+  var pageInfoMeta = $("head meta[name=pageinfo]");
+  var cc = pageInfoMeta.data("cc");
+  var lc = pageInfoMeta.data("lc");
+
+  /* SSVSPRT-12708 single api call for documents URL STARTS */
+  (window.getAllDocUrlatOnce = function () {
+    const className = "span.document-url";
+    var documentAnchors = "a.document-url";
+    var documentPathCheck = "/document/";
+    var documentIdArray = [];
+    $(documentAnchors).each(function (i) {
+      $("#commUtil-modalPageLevelSpinner").removeClass("hide");
+      const actualTaggedDom = $(this);
+      var documentAnchorDom = actualTaggedDom.closest("a");
+      var link = documentAnchorDom.attr("href");
+      if (typeof link === "undefined") {
+        documentAnchorDom = $(this).children(":first");
+        link = documentAnchorDom.attr("href");
+      }
+      if (link.indexOf(documentPathCheck) > -1) {
+        var splittedLink = link.split("/");
+        var documentId = splittedLink[splittedLink.length - 1].split("?")[0];
+        documentIdArray.push(documentId);
+        documentAnchorDom.addClass("aemDocNum_" + documentId);
+      }
+    });
+
+    // Function to send AJAX request for a batch of IDs
+    function sendBatch(startIndex) {
+      var batch = documentIdArray.slice(startIndex, startIndex + 10);
+      var jsonData = {
+        cc: "us",
+        lc: "en",
+        targetCC: aem_cc.toUpperCase(),
+        targetLC: aem_lc,
+        docIDs: batch,
+      };
+
+      $.ajax({
+        type: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        url: window.location.origin + "/wcc-services/kaas/translateDocuments",
+        data: JSON.stringify(jsonData),
+        beforeSend: function () {},
+        success: function (data) {
+          if (data.code == "200") {
+            $.each(data.data.documentIDMap, function (key, value) {
+              if (value == "") {
+                //documentAnchorDom.attr("href", "/"+ cc +"-"+ lc +"/document/"+key);
+                $(".aemDocNum" + key).attr(
+                  "href",
+                  "/" + aem_cc + "-" + aem_lc + "/document/" + key
+                );
+              } else {
+                //documentAnchorDom.attr("href", "/"+ cc +"-"+ lc +"/document/"+value);
+                $(".aemDocNum_" + key).attr(
+                  "href",
+                  "/" + aem_cc + "-" + aem_lc + "/document/" + value
+                );
+              }
+              if (
+                $(".aemDocNum_" + key).find("span.document-url").length !== 0 &&
+                data.data.documentTitleMap[value] != ""
+              ) {
+                $(".aemDocNum_" + key)
+                  .find("span.document-url")
+                  .text(data.data.documentTitleMap[value]);
+              }
+            });
+          }
+
+          // If there are more batches, send the next one
+          if (startIndex + 10 < documentIdArray.length) {
+            sendBatch(startIndex + 10);
+          }
+        },
+        complete: function () {
+          $("#commUtil-modalPageLevelSpinner").addClass("hide");
+        },
+      });
+    }
+
+    // Start sending the batches
+    sendBatch(0);
+  })();
+  /* SSVSPRT-12708 single api call for documents URL ENDS */
+
+  /* single api call for video details URL STARTS */
+  (window.getAllVideoDataatOnce = function () {
+    if ($(".videoComponentContainer").length > 0) {
+      const className = "div.videoComponentContainer";
+      const videoCollectionIDArray = [];
+      $(className).each(function (i) {
+        const dataCollectionID = $(this).attr("data-collection-id");
+        videoCollectionIDArray.push(dataCollectionID);
+      });
+
+      //changing region to cc
+      if (
+        cc + "-" + lc == "za-en" ||
+        cc + "-" + lc == "lamerica_nsc_carib-en" ||
+        cc + "-" + lc == "emea_africa-en" ||
+        cc + "-" + lc == "emea_middle_east-en"
+      ) {
+        cc = "us";
+      }
+      if (cc + "-" + lc == "lamerica_nsc_cnt_amer-es") {
+        cc = "es";
+      }
+      if (cc + "-" + lc == "emea_africa-fr") {
+        cc = "fr";
+      }
+      if (cc + "-" + lc == "emea_middle_east-ar") {
+        cc = "ar";
+      }
+
+      //console.log(videoCollectionIDArray.join(','));
+      var videoAPIURL =
+        "https://uat.support.hp.com/wcc-services/content/videoDetails/" +
+        cc +
+        "-" +
+        lc +
+        "?videoIds=" +
+        videoCollectionIDArray.join(",") +
+        "&udpFlag=true";
+      if (
+        window.location.href.includes("https://wcc-qa1.itg.support.hp.com/")
+      ) {
+        videoAPIURL =
+          "https://wcc-qa1.itg.support.hp.com/wcc-services/content/videoDetails/" +
+          cc +
+          "-" +
+          lc +
+          "?videoIds=" +
+          videoCollectionIDArray.join(",") +
+          "&udpFlag=true";
+      }
+      if (window.location.href.includes("https://support.hp.com")) {
+        videoAPIURL =
+          "https://support.hp.com/wcc-services/content/videoDetails/" +
+          cc +
+          "-" +
+          lc +
+          "?videoIds=" +
+          videoCollectionIDArray.join(",") +
+          "&udpFlag=true";
+      }
+      $.ajax({
+        type: "Get",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        url: videoAPIURL,
+        success: function (data) {
+          if (data.status == "OK") {
+            for (var key in data.data) {
+              //console.log(key, data.data[key]);
+              var thumbnail = "";
+              //console.log(thumbnail);
+              if (
+                data.data[key].thumbnail.findIndex(function (item) {
+                  return item.includes("|1280|");
+                }) > -1
+              ) {
+                var index = data.data[key].thumbnail.findIndex(function (item) {
+                  return item.includes("|1280|");
+                });
+                thumbnail = data.data[key].thumbnail[index].split("|")[0];
+              } else if (
+                data.data[key].thumbnail.findIndex(function (item) {
+                  return item.includes("|720|");
+                }) > -1
+              ) {
+                var index = data.data[key].thumbnail.findIndex(function (item) {
+                  return item.includes("|720|");
+                });
+                thumbnail = data.data[key].thumbnail[index].split("|")[0];
+              } else {
+                var index = data.data[key].thumbnail.findIndex(function (item) {
+                  return item.includes("|160|");
+                });
+                thumbnail = data.data[key].thumbnail[index].split("|")[0];
+              }
+
+              $("[data-collection-id='" + key + "']")
+                .find(".thumbnail")
+                .attr("src", thumbnail);
+
+              if (data.data[key].streamingService == "Brightcove") {
+                $("[data-collection-id='" + key + "']")
+                  .find(".imageContainer")
+                  .attr("data-embed", data.data[key].bcId);
+                /* SSVSPRT-14631 - Adding data-anr-id attr - START */
+                $("[data-collection-id='" + key + "']")
+                  .find(".imageContainer")
+                  .attr("data-anr-id", "wccvideo-"+data.data[key].bcId);
+                /* SSVSPRT-14631 - Adding data-anr-id attr - END */
+              } else {
+                $("[data-collection-id='" + key + "']")
+                  .find(".imageContainer")
+                  .attr("data-embed", data.data[key].streamingId);
+                /* SSVSPRT-14631 - Adding data-anr-id attr - START */
+                $("[data-collection-id='" + key + "']")
+                  .find(".imageContainer")
+                  .attr("data-anr-id", "wccvideo-"+data.data[key].streamingId);
+                /* SSVSPRT-14631 - Adding data-anr-id attr - END */
+              }
+              $("[data-collection-id='" + key + "']")
+                .find(".imageContainer")
+                .attr("data-streamingService", data.data[key].streamingService);
+              $("[data-collection-id='" + key + "']")
+                .find(".thumbnail")
+                .attr("alt", data.data[key].title);
+              $("[data-collection-id='" + key + "']")
+                .find(".data-title")
+                .html(data.data[key].title);
+              $("[data-collection-id='" + key + "']")
+                .find(".data-description")
+                .html(data.data[key].description);
+              $("[data-collection-id='" + key + "']").css("display", "block");
+            }
+          }
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+          console.log("Status: " + textStatus);
+        },
+      });
+    }
+  })();
+
+  $(document).on(
+    "click",
+    ".videoComponentContainer .imageContainer",
+    function () {
+      //$(this).find('.play-button').remove();
+      //$(this).find('thumbnail').remove();
+      var videoId = $(this).attr("data-embed");
+      /* SSVSPRT-14631 - Adding videosession to GDL - START */
+      globalDataLayer.videosession = "TRUE-"+videoId;
+      var gdl = window.localStorage && window.localStorage.hasOwnProperty("globalDataLayer") ? JSON.parse(localStorage.getItem("globalDataLayer")) : undefined;
+      if (undefined !== gdl) {
+        gdl.videosession = globalDataLayer.videosession;
+        window.localStorage.setItem("globalDataLayer",JSON.stringify(gdl)); // Sync to localStorage GDL
+      }
+      /* SSVSPRT-14631 - Adding videosession to GDL - END */
+      if ($(this).attr("data-streamingService") == "Brightcove") {
+        if ($(this).find("img").length > 0) {
+          $(this).html(
+            '<video id="myPlayerID" class="video-js aspectRatio" data-video-id="' +
+              videoId +
+              '" data-account="1160438706001" data-player="ByLWUi0A" data-embed="default" data-application-id controls width="100%"  height="100%" autoplay></video></div>'
+          );
+          var brightCoveScript = document.createElement("script");
+          brightCoveScript.type = "text/javascript";
+          brightCoveScript.src =
+            "https://players.brightcove.net/1160438706001/ByLWUi0A_default/index.min.js";
+          $(this).append(brightCoveScript);
+        }
+      } else {
+        $(this).html(
+          '<iframe class="aspectRatio" src="https://www.youtube.com/embed/' +
+            videoId +
+            "?enablejsapi=1&version=3&playerapiid=ytplayer&rel=0&showinfo=0&autoplay=1&origin=" +
+            window.origin +
+            '" frameborder="0" allow="autoplay" allowfullscreen></iframe>'
+        );
+      }
+    }
+  );
+
+  $(document).on(
+    "keyup",
+    ".videoComponentContainer .imageContainer",
+    function () {
+      if (event.keyCode === 13) {
+        $(this).click();
+      }
+    }
+  );
+
+  /* video carousel JS embed START SSVSPRT-8538 */
+  if ($(".videoCarouselContainerComp").length > 0) {
+    var videoCarouselModalJSPath =
+      "/content/dam/hp-wcc/microsite-assets/customlib/js/videocarouselmodal.js";
+    $("head").append(
+      '<script src="' + videoCarouselModalJSPath + '"></script>'
+    );
+  }
+  /* video carousel JS embed END  SSVSPRT-8538*/
+
+  //adobe tracking code for anchor tag and buton tag with id's START
+  window.adobeAnalyticsTracking = function (vId, text) {
+    var y = {};
+    var varId = vId;
+    y[varId] = text;
+    y["linkTrackVars"] = varId;
+    //console.log("adobeAnalyticsEss|"+JSON.stringify(y));
+    try {
+      ess.tl(true, "o", text, y);
+    } catch (err) {
+      console.log("ess function not found" + err);
+    }
+  };
+
+  $(document).on("click", "a, button", function () {
+    if (window.location.href.indexOf("swollen-battery") == -1) {
+      // excluding for swollen battery page as its adobe tracking is written on its js only
+      if (this.id !== "") {
+        adobeAnalyticsTracking(
+          "eVar37",
+          globalDataLayer.Template + "|" + this.id
+        );
+      }
+    }
+  });
+  //adobe tracking code for anchor tag and buton tag with id's END
+
+  function waitForElementandUpdateHref(elem, href) {
+    const checkExist = setInterval(function () {
+      if ($(elem).length) {
+        setTimeout(function () {
+          if (
+            $(".signin-button").attr("data-link-id").toLowerCase() ===
+            "signinid"
+          ) {
+            $(elem).attr("href", href);
+          }
+        }, 500);
+        clearInterval(checkExist);
+      }
+    }, 100); // check every 100ms
+  }
+
+  var urlSigninHeader =
+    window.location.protocol +
+    "//" +
+    window.location.host +
+    "/wcc-services/s/signin?cc=" +
+    $("head meta[name=pageinfo]").data("cc") +
+    "&lc=" +
+    $("head meta[name=pageinfo]").data("lc") +
+    "&pageurl=" +
+    window.location.href;
+  waitForElementandUpdateHref(".signin-button", urlSigninHeader);
+
+  $(document).keyup(function (e) {
+    if (e.keyCode === 27) {
+      $("#downloadModal").modal("hide");
+      $(".country-close").click();
+      $(".closeModal").click();
+    }
+  });
+
+  // play and pause videos for modal open and close  START
+  window.pauseYTVideo = function () {
+    $("iframe").each(function () {
+      $(this)[0].contentWindow.postMessage(
+        '{"event":"command","func":"' + "pauseVideo" + '","args":""}',
+        "*"
+      );
+    });
+  };
+
+  window.pauseBrightcoveVideo = function () {
+    //console.log("pauseBrightcoveVideo");
+    if ($("#bcplayer_html5_api").length > 0) {
+      var myPlayer = videojs("bcplayer_html5_api");
+      myPlayer.pause();
+    }
+    if ($("#myPlayerID_html5_api").length > 0) {
+      var myPlayer = videojs("myPlayerID_html5_api");
+      myPlayer.pause();
+    }
+  };
+
+  $(document).on("shown.bs.modal", ".modal", function () {
+    if ($("head meta[name=pageinfo]").data("lc") == "cn") {
+      if (
+        typeof $(this)
+          .find(".videoComponentContainer:first")
+          .attr("isautoplaymodal") !== "undefined" &&
+        $(this)
+          .find(".videoComponentContainer:first")
+          .attr("isautoplaymodal") !== false
+      ) {
+        if (
+          $(this)
+            .find(".videoComponentContainer:first")
+            .attr("isautoplaymodal") == "true"
+        ) {
+          $(this).find(".videoComponentContainer:first .play-button").click();
+          if (
+            $(this).find(".videoComponentContainer:first .play-button")
+              .length == 0
+          ) {
+            $(this).find(".vjs-big-play-button").first().click();
+          }
+        }
+      } else {
+        pauseBrightcoveVideo();
+        pauseYTVideo();
+        //var myPlayer = videojs('bcplayer_html5_api');
+        //myPlayer.play();
+        var brightcoveModalId = $(this).attr("id");
+        setTimeout(function () {
+          $("#" + brightcoveModalId)
+            .find(".vjs-big-play-button")
+            .first()
+            .click();
+        }, 1000);
+      }
+    } else {
+      pauseYTVideo();
+      pauseBrightcoveVideo();
+      if (
+        typeof $(this)
+          .find(".videoComponentContainer:first")
+          .attr("isautoplaymodal") !== "undefined" &&
+        $(this)
+          .find(".videoComponentContainer:first")
+          .attr("isautoplaymodal") !== false
+      ) {
+        if (
+          $(this)
+            .find(".videoComponentContainer:first")
+            .attr("isautoplaymodal") == "true"
+        ) {
+          $(this).find(".videoComponentContainer:first .play-button").click();
+        }
+      } else {
+        pauseYTVideo();
+        $("#" + $(this).attr("id") + " .youtube .play-button").click();
+      }
+      if ($("#" + $(this).attr("id")).find("iframe").length > 0) {
+        $("#" + $(this).attr("id"))
+          .find("iframe")
+          .first()[0]
+          .contentWindow.postMessage(
+            '{"event":"command","func":"' + "playVideo" + '","args":""}',
+            "*"
+          );
+      }
+    }
+  });
+
+  $(document).on("hidden.bs.modal", ".modal", function () {
+    pauseBrightcoveVideo();
+    pauseYTVideo();
+  });
+
+  $(document).on(
+    "click",
+    ".brightcoveclose, .vjs-big-play-button, .play-button",
+    function () {
+      pauseBrightcoveVideo();
+      pauseYTVideo();
+    }
+  );
+
+  $(document).on(
+    "keypress",
+    ".brightcoveclose, .vjs-big-play-button, .play-button",
+    function (e) {
+      if (e.which == 13) {
+        pauseBrightcoveVideo();
+        pauseYTVideo();
+      }
+    }
+  );
+
+  // play and pause videos for modal open and close  END
+
+  /*Update Country name in dropdownlist of coutry selector START*/
+  if (location.href.indexOf("repair") != -1) {
+    function waitForDropdown() {
+      var checkElementExist = setInterval(function () {
+        if ($("#userCountryCode_dd_list").length > 0) {
+          clearInterval(checkElementExist);
+          // Update Country name
+          $('#userCountryCode option:contains("Hong Kong")')
+            .empty()
+            .append("Hong Kong SAR China");
+          $('#userCountryCode option:contains("Taiwan")')
+            .empty()
+            .append("Taiwan Region");
+          $('#userCountryCode_dd_list li:contains("Hong Kong")')
+            .empty()
+            .append(
+              '<a href="javascript:;">Hong Kong SAR China<span class="hide value">hk</span></a>'
+            );
+          $('#userCountryCode_dd_list li:contains("Taiwan")')
+            .empty()
+            .append(
+              '<a href="javascript:;">Taiwan Region<span class="hide value">tw</span></a>'
+            );
+          // adding extra attr to add locale specific font-family
+          $("#userCountryCode_dd_list > li").each(function () {
+            $(this).attr("font-family", $(this).find("span").text());
+          });
+        }
+      });
+    }
+    waitForDropdown();
+  }
+
+  if (location.href.indexOf("swollen-battery") != -1) {
+    function waitForDropdown() {
+      var checkElementExist = setInterval(function () {
+        if ($("#addrCountry_dd_list").length > 0) {
+          clearInterval(checkElementExist);
+          // Update Country name
+          $('#addrCountry option:contains("Hong Kong")')
+            .empty()
+            .append("Hong Kong SAR China");
+          $('#addrCountry option:contains("Taiwan")')
+            .empty()
+            .append("Taiwan Region");
+          $('#addrCountry_dd_list a:contains("Hong Kong")')
+            .empty()
+            .append('Hong Kong SAR China<span class="hide value">hk</span>');
+          $('#addrCountry_dd_list a:contains("Taiwan")')
+            .empty()
+            .append('Taiwan Region<span class="hide value">tw</span>');
+          // adding extra attr to add locale specific font-family
+          $("#addrCountry_dd_list > a").each(function () {
+            $(this).attr("font-family", $(this).find("span").text());
+          });
+        }
+      });
+    }
+    waitForDropdown();
+  }
+  /*Update Country name in dropdownlist of coutry selector END*/
+
+  /* function for keypress search dropdown list items BEGIN */
+  $(document).on(
+    "keypress",
+    ".hpStyleDropdownSlim, .hpStyleDropdownLight",
+    function (e) {
+      //keypress events for typeahead
+      if (
+        e.keyCode != 37 ||
+        e.keyCode != 38 ||
+        e.keyCode != 39 ||
+        e.keyCode != 40
+      ) {
+        key = String.fromCharCode(e.charCode != null ? e.charCode : e.keyCode);
+        console.log(key + "-pressed Key");
+        clearTimeout(timeOutResetLettersSlim);
+        timeOutResetLettersSlim = setTimeout(function () {
+          letterPressedSlim = [];
+        }, 500);
+        letterPressedSlim.push(key);
+        console.log(letterPressedSlim);
+        console.log(letterPressedSlim.join(""));
+        console.log(
+          "before - " + typeAheadTextSlim + ", " + typeAheadCounterSlim
+        );
+        if (getTypedSlim() == letterPressedSlim.join("")) {
+          setTypedSlim(letterPressedSlim.join(""));
+          setCounterSlim(getCounterSlim() + 1);
+        } else {
+          setCounterSlim(1);
+          setTypedSlim(letterPressedSlim.join(""));
+        }
+        console.log(
+          "after - " + typeAheadTextSlim + ", " + typeAheadCounterSlim
+        );
+        typeaheadSlim(letterPressedSlim.join(""), this);
+      }
+    }
+  );
+
+  //To handle typeahed for more than once
+  $(document).on(
+    "blur",
+    ".hpStyleDropdownSlim, .hpStyleDropdownLight",
+    function (e) {
+      setCounterSlim(1);
+      setTypedSlim("");
+    }
+  );
+
+  $(document).on(
+    "keypress",
+    ".hpStyleDropdownSlim div > a.dropdown-item, .hpStyleDropdownLight div > a.dropdown-item",
+    function (e) {
+      //$('#'+elId+'_dd_slim div > a.dropdown-item').on('mouseover', function(e) {
+      setTypeAheadSlim(this);
+    }
+  );
+
+  typeaheadSlim = function (what, elem) {
+    var els = $("#" + $(elem).attr("id") + " .dropdown-item").filter(function (
+      index
+    ) {
+      if ($(this).children("span").length > 1) {
+        return (
+          $(this).children("span").first().html().toLowerCase().search(what) ==
+          0
+        );
+      } else {
+        return $(this).html().toLowerCase().search(what) == 0;
+      }
+    });
+    console.log("typeAheadCounterSlim: " + typeAheadCounterSlim);
+    var index = (typeAheadCounterSlim - 1) % els.length;
+    if (els && els.length > 0 && els[index]) {
+      els[index].focus();
+    }
+  };
+
+  setTypeAheadSlim = function (el) {
+    var hoveredEl = $(el);
+    var hoveredChar = hoveredEl.html().toLowerCase().split("<")[0][0];
+    setTypedSlim(hoveredChar);
+    setCounterSlim(0);
+  };
+
+  var letterPressedSlim = [];
+  var timeOutResetLettersSlim = null;
+  var typeAheadCounterSlim = 1;
+  var typeAheadTextSlim = "";
+
+  function setCounterSlim(val) {
+    typeAheadCounterSlim = val;
+  }
+
+  function getCounterSlim() {
+    return typeAheadCounterSlim;
+  }
+
+  function setTypedSlim(val) {
+    typeAheadTextSlim = val;
+  }
+
+  function getTypedSlim() {
+    return typeAheadTextSlim;
+  }
+  /* function for keypress search dropdown list items ENDS */
+});
+
+/*=============== Accordian scrolling animation/affect function START ===============*/
+$(document).ready(function () {
+  $(".cmp-accordion__button").on("click.accordion_handler", function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+    if (!$(this).hasClass("cmp-accordion__button--disabled")) {
+      var $panel = $(this).parent().siblings(".cmp-accordion__panel");
+      var $accordion = $(this).closest(".cmp-accordion");
+      if ($panel.hasClass("cmp-accordion__panel--expanded")) {
+        $panel.slideDown(function () {
+          $("html, body").animate(
+            { scrollTop: $panel.offset().top - 200 },
+            true
+          );
+        });
+      } else {
+        if ($accordion.attr("data-cmp-single-expansion") !== undefined) {
+          $accordion.children(".cmp-accordion__item").each(function () {
+            $(this)
+              .children(".cmp-accordion__panel.cmp-accordion__panel--expanded")
+              .not($panel)
+              .slideUp();
+          });
+        }
+        $panel.slideUp();
+      }
+    }
+  });
+});
+/*=============== Accordian scrolling animation/affect function END ===============*/
+
+/*=============== AEM common code(optimizely) START ===============*/
+if (!aem_Pfw_disabled()) {
+  // wait for element AEM
+  function waitForElement_aem(selector, callback) {
+    if (typeof callback === "function") {
+      var element = document.querySelectorAll(selector);
+
+      for (let i = 0; i < element.length; i++) {
+        callback(element[i]);
+      }
+
+      var observer = new MutationObserver(function (mutations) {
+        mutations.forEach(function (mutation) {
+          var nodes = Array.from(mutation.addedNodes);
+          for (var i = 0; i < nodes.length; i++) {
+            //for (var node of nodes) {
+            if (nodes[i].matches && nodes[i].matches(selector)) {
+              callback(nodes[i]);
+            }
+            if (
+              nodes[i].querySelectorAll &&
+              nodes[i].querySelectorAll(selector).length > 0
+            ) {
+              let childList = nodes[i].querySelectorAll(selector);
+              for (let i = 0; i < childList.length; i++) {
+                callback(childList[i]);
+              }
+            }
+          }
+        });
+      });
+
+      observer.observe(document.documentElement, {
+        attributes: true,
+        childList: true,
+        subtree: true,
+        characterData: true,
+      });
+    }
+  }
+
+  /*************************************************************/
+  /*       #459 close alert after 10 sec for AEM	     */
+  /*************************************************************/
+  var runCloseAlert = true;
+  waitForElement_aem(".notifications-bg", function (elem) {
+    if (runCloseAlert) {
+      setTimeout(function () {
+        runCloseAlert = false;
+        $(".notifications-bg").addClass("open");
+        if (!$(elem).hasClass("viewed")) {
+          setTimeout(function () {
+            $(".notifications-bg.open").fadeOut();
+            /* settimeout for removing class open so it doesnt appear again and show fadeout effect*/
+            setTimeout(function () {
+              $(".notifications-bg.open").removeClass("open");
+            }, 400);
+          }, 10000);
+          //console.log("#459 alert is hidden");
+        }
+      }, 400);
+    }
+  });
+
+  /*************************************************************/
+  /*    RDR-621 Adding active experiment IDs to Global Data Layer		*/
+  /*************************************************************/
+
+  function addVariationIdsToGDL(experimentList) {
+    var listMaxLenght = 100;
+    var finalList =
+      JSON.parse(sessionStorage.getItem("OptimizelyVarID")) !== null
+        ? JSON.parse(sessionStorage.getItem("OptimizelyVarID"))
+        : [];
+    var variationMap = optimizely.get("state").getVariationMap();
+
+    //Avoiding having duplicates on the list
+    for (var i = 0; i < experimentList.length; i++) {
+      try {
+        if (
+          finalList.indexOf(
+            experimentList[i] + "_" + variationMap[experimentList[i]].id
+          ) == -1
+        ) {
+          finalList.push(
+            experimentList[i] + "_" + variationMap[experimentList[i]].id
+          );
+        }
+      } catch (e) {}
+    }
+
+    finalList =
+      finalList.length >= listMaxLenght
+        ? finalList.slice(-listMaxLenght)
+        : finalList;
+    sessionStorage.setItem("OptimizelyVarID", JSON.stringify(finalList));
+
+    if (globalDataLayer !== null && globalDataLayer !== undefined) {
+      globalDataLayer.OptimizelyVarID = finalList.join(";");
+    }
+  }
+
+  function addMedalliaLCToGDL() {
+    //aem_lc,aem_cc
+    var medalliaCCLC = aem_cc + "-" + aem_lc;
+    switch (medalliaCCLC) {
+      case "br-pt":
+        globalDataLayer.medalliaLC = "pt-br";
+        break;
+      case "hk-zh":
+        globalDataLayer.medalliaLC = "zh-hk";
+        break;
+      case "tw-zh":
+        globalDataLayer.medalliaLC = "zh-tw";
+        break;
+      default:
+        globalDataLayer.medalliaLC = aem_lc;
+    }
+  }
+
+  $(document).ready(function () {
+    var attemptCount = 5;
+    (function pollExperimentList() {
+      attemptCount--;
+      if (attemptCount >= 0) {
+        if (typeof optimizely !== "undefined") {
+          addVariationIdsToGDL(
+            optimizely.get("state").getActiveExperimentIds()
+          );
+          window.setTimeout(pollExperimentList, 1000);
+        }
+      }
+    })();
+
+    /**********************************************************************************************/
+    /*   SSVSPRT-6300 New custom parameter to capture language code (AEM microsites) STARTS  	 */
+     /**********************************************************************************************/
+    function waitForGDL() {
+      var checkElementExist = setInterval(function () {
+        if (globalDataLayer) {
+          clearInterval(checkElementExist);
+          addMedalliaLCToGDL();
+          /* SSVSPRT-14631 - Adding videosession to GDL - START */
+          var gdl = window.localStorage && window.localStorage.hasOwnProperty("globalDataLayer") ? JSON.parse(localStorage.getItem("globalDataLayer")) : undefined;
+          if (undefined !== gdl) {
+            globalDataLayer.videosession = (undefined !== gdl.videosession && 'FALSE' !== gdl.videosession) ? gdl.videosession : 'FALSE';
+            gdl.videosession = globalDataLayer.videosession;
+            window.localStorage.setItem("globalDataLayer",JSON.stringify(gdl)); // Sync to localStorage GDL
+          }
+          /* SSVSPRT-14631 - Adding videosession to GDL - END */
+        }
+      });
+    }
+    waitForGDL();
+    /*************************************************************/
+    /*   SSVSPRT-6300 New custom parameter to capture language code (AEM microsites) ENDS  	 */
+    /*************************************************************/
+
+    
+  });
+}
+/*=============== AEM common code(optimizely) ENDS ===============*/
+
+/*=============== Moved updateLocalizeURL function from clientlib microsite_support.js to CommUtil.js-START ===============*/
+function updateLocalizeURL() {
+  const className = ".localize-url";
+  const localizeAnchors = $(className);
+  $(localizeAnchors).each(function (i) {
+    const anchorTag = $(this);
+    const pageInfoMeta = $("head meta[name=pageinfo]");
+    const cc = pageInfoMeta.data("cc");
+    const lc = pageInfoMeta.data("lc");
+    var localizeAnchorDom = anchorTag.closest("a");
+    var link = localizeAnchorDom.attr("href");
+    var localizedMSLink;
+    if (typeof link === "undefined") {
+      localizeAnchorDom = $(this).children(":first");
+      link = localizeAnchorDom.attr("href");
+    }
+    //for external HP links
+    if (link.indexOf("https://") > -1 || link.indexOf("http://") > -1) {
+      if (
+        (link.indexOf("www.hp.com") > -1 || link.indexOf("www8.hp.com") > -1) &&
+        cc == "gb"
+      ) {
+        link = link.replace("-us/", "-uk/");
+      } else {
+        link = link = link.replace("-us/", "-" + cc + "/");
+      }
+
+      if (/(bg|hr|ee|lv|lt|ro|rs|sk|si)/.test(cc)) {
+        if (cc == "ee") {
+          link = link.replace("/en-", "/et-");
+        } else if (cc == "rs") {
+          link = link.replace("/en-", "/sr-");
+        } else if (cc == "si") {
+          link = link.replace("/en-", "/sl-");
+        } else {
+          link = link.replace("/en-", "/" + cc + "-");
+        }
+      } else {
+        link = link.replace("/en-", "/" + lc + "-");
+      }
+      localizedMSLink = link;
+    } else {
+      link = link.replace("#", "");
+      localizedMSLink = "/" + cc + "-" + lc + "/" + link;
+    }
+
+    localizeAnchorDom.attr("href", localizedMSLink);
+  });
+}
+/*=============== Moved updateLocalizeURL function from clientlib microsite_support.js to CommUtil.js-END ===============*/
+
+$(() => {
+  $(".modal-content .help-modal-footer span.hp-copyright").text(
+    `© Copyright ${new Date().getFullYear()} HP Development Company, L.P`
+  );
+});
+
+/*************************************************************/
+/*     SSVSPRT-17526 - START           */
+/*************************************************************/
+
+$(function () {
+  try {
+    $(document).ready(function () {
+    const checkExist = setInterval(function () {
+      if ($(".signin-button").length) {
+      setTimeout(function () {
+        console.log($(".signin-button").attr("data-link-id").toLowerCase());
+        if ($(".signin-button").length > 0 && $(".signin-button").attr("data-link-id")) {
+        if ($(".signin-button").attr("data-link-id").toLowerCase() === "signinid") {
+          var pageUrl = window.location.protocol + "//" + window.location.host + "/" + $("head meta[name=pageinfo]").data("cc") + "-" + $("head meta[name=pageinfo]").data("lc") + "/dashboard";
+          var urlSigninHeader = window.location.protocol + "//" +
+          window.location.host +
+          "/wcc-services/s/signin?cc=" +
+          $("head meta[name=pageinfo]").data("cc") +
+          "&lc=" +
+          $("head meta[name=pageinfo]").data("lc") +
+          "&pageurl=" + pageUrl;
+          $("#sec-nav-dashboard1").on("click", function (e) {
+            e.preventDefault();
+            window?.open(urlSigninHeader, "_self");
+          });
+        }
+
+        }
+      }, 1600);
+      clearInterval(checkExist);
+      }
+    }, 100);
+    });
+  } catch (err) {
+    //$("#va-modalSpinner").hide();
+    //console.log(err);
+  }
+  });	
+/*************************************************************/
+/*     SSVSPRT-17526 - START           */
+/*************************************************************/

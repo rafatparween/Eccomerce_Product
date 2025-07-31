@@ -1,0 +1,679 @@
+div#fragmentIdentifyComputer-modalPageLevelSpinner.hidden, div#Pfinder_Fragment-modalPageLevelSpinner.hidden {display: none;}
+
+/* tab switch between pc and printer starts */
+#pcnavbarDiv .row div:nth-child(1) > .text{
+    padding: 0 20px 10px;
+    float: right;
+    border-bottom: solid 2px #035C84;
+}
+#pcnavbarDiv .row div:nth-child(1) > .text p {
+    color: #035C84;
+}
+#pcnavbarDiv .row div:nth-child(2) > .text{
+    float: left;
+}
+#pcnavbarDiv .row div:nth-child(2) > .text div{
+    padding: 0 20px 10px;
+}
+
+/* hr.cmp-separator__horizontal-rule {
+    border-top: #e8e8e8 !important;
+} */
+.power-boot-video{
+    display: none;
+}
+#pageDescContainer {text-align: center; margin-bottom:10px;}
+
+#pageDescContainer .pageTitle{
+    font-family: HPSimplifiedLight;
+    font-weight: 300;
+    font-size: 38px;
+    line-height: 42px;
+    margin-top: 30px;
+    display: block;
+}
+
+#pageDescContainer .pageDesc{
+	font-family: HPSimplifiedLight;
+	font-size: 16px;
+	line-height: 24px;
+	margin-top: 25px;
+	margin-bottom: 50px;
+	text-align: left;
+}
+
+#pageDescContainer .pageDesc.row {
+    padding: 0;
+    margin-left: 20px;
+}
+
+#pageDescContainer .pageDesc .paragraph {
+    margin-bottom: 20px;
+    text-align: justify;
+    /* margin-left: 15px; */
+}
+#pageDescContainer .pageDesc .paragraph .row{
+	margin-left: 5px;
+	margin-top: 10px;
+}
+
+#pageDescContainer .pageDesc .paragraph ul li {
+    list-style: disc;
+ /*    list-style-position: inside; */
+	color: black;
+}
+
+#pageDescContainer .pageDesc .paragraph ul li:not(:last-child) {
+    margin-bottom: 10px;
+}
+
+.improve_computer_performance {
+	padding: 10px 0 35px 0;
+}
+
+.improve_computer_performance .paragraph{
+	padding: 0 20px 15px 60px;
+	font-family: 'HPSimplifiedLight';
+}
+
+.improve_computer_performance .paragraph ul li {
+    list-style: disc;
+    list-style-position: inside;
+	color: black;
+}
+
+.improve_computer_performance .paragraph ul li:not(:last-child) {
+    margin-bottom: 10px;
+}
+
+.accordianCustomInnerContent {
+	padding: 10px 0 35px 60px;
+}
+
+.accordianCustomInnerContent {
+	padding: 10px 0 35px 60px;
+	font-size: 18px;
+}
+
+.accordianCustomInnerContent .title{
+	font-weight: 400;
+	padding: 0 20px 15px 0px;
+}
+
+.accordianCustomInnerContent .paragraph {
+	padding: 0 20px 15px 0px;
+    font-family: HPSimplifiedLight;
+}
+
+.accordianCustomInnerContent .paragraphExtraPadding {
+	padding: 0 20px 15px 30px;
+}
+
+.accordianCustomInnerContent .paragraph ol li {
+	font-family: HPSimplifiedLight;
+    list-style: number;
+    list-style-position: inside;
+    color: black;
+}
+
+.accordianCustomInnerContent .paragraph ul li:not(:last-child) {
+    margin-bottom: 10px;
+}
+
+
+#step1Container{
+	padding-left: 60px;
+}
+.troubleshootContainer .reduceLPadding{
+    display: block;
+    height: auto;
+    padding-left: 60px;
+}
+
+.troubleshootContainer  .para {
+    font-size: 16px;
+    color: #000;
+    line-height: 22px;
+    letter-spacing: 0.25px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.troubleshootContainer  .para ul, .troubleshootContainer  .para ol {
+    color: #000;
+    margin-left: 14px;
+}
+
+.troubleshootContainer .para ol li {
+    list-style-type: decimal;
+}
+
+.troubleshootContainer .para ul  li {
+    font-size: 16px;
+    color: #000;
+    line-height: 22px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.troubleshootContainer .para ul  li a {
+	color: #165DBA;
+}
+
+.troubleshootContainer .para ul li div{
+    margin-top: 0px!important;
+    margin-bottom: 0px!important;
+    padding-top: 0px!important;
+    padding-bottom: 0px!important;
+}
+
+.troubleshootContainer .para ul.with-bullets li {
+    list-style-type: disc;
+}
+
+.troubleshootContainer .para ul.without-bullets {
+    margin-left: 0;
+}
+
+
+.troubleshootContainer .para .blockquote{ 
+    background: #FFFFFF;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.12);
+    border-radius: 4px;
+    padding: 10px
+}
+
+.troubleshootContainer .para .blockquote .note-heading{
+	font-family: 'HPSimplified';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 20px;
+	color: #075782;
+}
+
+.troubleshootContainer .para .blockquote .para{
+	font-family: 'HPSimplifiedLight';
+	font-style: normal;
+	font-weight: 300;
+	font-size: 16px;
+	line-height: 19px;
+	margin: 0 0 0 0;                                     
+}
+
+/* .separator{
+    max-width: 1000px;
+    margin: auto;
+    padding: 30px 0;
+    color:#E8E8E8
+} */
+
+.videoTutorialsTitle {
+    text-align: center;
+    font-size: 36px;
+    font-family: HPSimplifiedLight;
+    line-height: 1.2;
+    margin-bottom: 40px;
+}
+
+#videoContainer{
+    max-width: unset;
+    overflow: visible;
+    background: linear-gradient(62.18deg, rgba(89, 199, 181, 0.49) 19.35%, rgba(0, 149, 212, 0.49) 82.71%);
+    padding: 60px 0;
+    margin-bottom: 50px;
+}
+
+#videoContainer .col-sm-4 .paneSec{
+	background: white;
+    border-radius: 10px;
+    padding: 10px 10px 30px 10px;
+}
+
+#troubleShootingContainer{
+	margin-bottom: 60px;
+	margin-top: 10px;
+/* 	text-align: center; */
+}
+
+.troubleShootingTitle {
+	font-family: HPSimplifiedLight;
+    text-align: center;
+    font-size: 32px;
+    margin: 0 0 10px 0;
+    padding: 50px 0 20px;
+}
+
+#adapterTroubleshootingContainer .title{	
+    font-family: HPSimplifiedLight;
+    margin-bottom: 10px
+}
+#adapterTroubleshootingContainer .desc{
+     margin-bottom: 30px;
+
+}
+
+.row.power-boot-video {
+  text-align: left;
+  padding: 15px;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.12);    
+  margin: 30px 0;
+  }
+  
+  #adapterTroubleshootingContainer .desc{margin-bottom: 30px;}
+  
+  .desc {font-family: HPSimplifiedLight;line-height: 1.1em;margin-bottom: 1rem;}
+  
+  p.desc {font-size: 16px;}
+  
+  h4.desc {
+    font-size:20px;
+    font-weight: 300;
+    margin-top: 30px;
+  }
+
+#surveyContainer {
+	background-color: #F8F8F8;
+	margin-bottom:30px;
+}
+
+#surveyContainer > .experiencefragment {
+		max-width:1000px;
+	    margin: 0 auto;
+		padding: 0 30px;
+}
+	
+@media only screen and (max-width: 800px){
+	#surveyContainer {
+		padding: 0 15px;
+	}
+}
+
+
+/* accordion stying (should be moved from the exp frag css to in page css) */
+/* .cmp-accordion__title {
+    display: block;
+    font-size: 24px;
+    color: #2C3038;
+} */
+.accordion .experiencefragment {
+    padding: 0 20px 0 60px;
+}
+.cmp-accordion__button {
+    display: flex;
+}
+/* accordion stying ends */
+
+@media (max-width: 496px) {
+    #pcnavbarDiv .row div:nth-child(1) > .text {
+        padding: 0 10px 10px;
+    }   
+    #pcnavbarDiv .row div:nth-child(2) > .text div {
+        padding: 0 10px 10px;
+    }    
+
+}    
+
+#navbarDiv .row div:nth-child(1) > .text{
+    float: right;
+}
+#navbarDiv .row div:nth-child(1) > .text div{
+    padding: 0 20px 10px;
+}
+#navbarDiv .row div:nth-child(2) > .text p {
+    color: #035C84;
+}
+#navbarDiv .row div:nth-child(2) > .text{
+    float: left;
+    border-bottom: solid 2px #035C84;     
+    padding: 0 20px 10px;   
+}
+@media (max-width: 496px) {
+    #navbarDiv .row div:nth-child(1) > .text div {
+        padding: 0 10px 10px;
+    }   
+    #navbarDiv .row div:nth-child(2) > .text {
+        padding: 0 10px 10px;
+    }    
+}
+/* tab switch between pc and printer ends */
+#breadcrumbsDiv {
+    margin: 0 auto;
+    padding: 0 15px;
+    max-width: 1200px;
+}
+.breadcrumbs {
+    list-style-type: none !important;
+    padding: 0;
+    margin: 0;
+}
+.breadcrumbs li {
+    margin-right: 0px;
+    position: relative;
+    float: left;
+    font-size: 16px;
+    font-family: 'HP Simplified';
+}
+.rArrow {
+    margin: 0 10px;
+}
+.level1 {
+    color: #212121;
+}
+.home {
+    color: #165DBA;
+}
+h2 {
+    font-family: 'HPSimplifiedLight';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 38px;
+    line-height: 42px;    
+    margin: 50px 0 20px;
+    color: #000000;
+}
+#upperSection p {
+    font-family: 'HPSimplifiedLight';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 24px; 
+    color: #000000;
+}
+.overrideContainer {
+    max-width: unset;
+    overflow: inherit;
+}
+#navbarDiv, #pcnavbarDiv {
+    background: #FAFAFA;
+    box-shadow: 0px 4px 8px rgba(33, 33, 33, 0.05);
+    height: 80px;
+    font-family: 'HPSimplified';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 20px;   
+    padding: 25px 0;
+    max-width: unset;
+    margin: 0 auto;
+    text-align: center;
+}
+#navbarDiv img, #pcnavbarDiv img {
+    max-width: 27px;
+    height: 25px;
+    margin-right: 5px;
+}
+
+#navbarDiv a, #pcnavbarDiv a {
+    color: #404040;
+	text-decoration: none;
+}
+#navbarDiv a:hover, #pcnavbarDiv a:hover {
+    text-decoration: unset;
+    color: #404040;
+}
+#intentsOuterDiv {
+    padding: 40px 0;
+    background-image: linear-gradient(42deg, rgba(89, 199, 181, 0.49) 19%, rgba(0, 149, 212, 0.49) 83%);
+    box-shadow: 0 0 50px 0 rgb(0 0 0 / 16%);
+}
+#intentsDiv {
+    max-width: 1000px;
+    margin: 30px auto 0;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 30px;
+    justify-content: flex-start;    
+}
+#intentsDiv > div {
+    display: block;
+    justify-content: center;
+    flex: 0 0 33.3%; 
+    margin-bottom: 30px;
+}
+#intentsDiv > div > div {   
+    max-width: 282px;
+    min-width: 282px;
+    min-height: 170px;
+    margin: 0 15px;
+    border-bottom: none !important;    
+    background: #FFFFFF;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.16);
+    border-radius: 10px;    
+    cursor:pointer;
+    padding: 5px;
+}
+#intentsDiv .text {
+    text-align: center;
+    padding: 0 20px;    
+}
+#bootPowerIntent .text {
+    padding: 0 28px;
+}
+#intentsDiv p {
+    color: #165DBA;
+}
+#intentsDiv img {
+    margin: 0 auto;
+    max-width: 60px;
+}
+#intentsDiv .image {
+    height: 60px;
+    margin: 30px 0 20px;
+}
+#lowersection {
+    margin-bottom: 30px;
+}
+
+#supportOptCont {
+    margin-bottom: 30px;
+}
+
+@media only screen and (min-width: 720px) {
+	
+	#pageDescContainer .pageDesc{
+    padding: 0 100px;
+    }
+
+    #pageDescContainer .pageDesc.wideCont {
+        padding: 0;
+        margin-bottom: 0;
+        text-align: center;
+    }
+    #intentsDiv > div > div:hover, #intentsDiv > div > div:focus {        
+        transform: scale(1.091,1.12);
+        outline: none;
+        color: #114284;
+        text-decoration: underline;
+    }
+    #intentsDiv > div > div:hover {
+        box-shadow: 0 0 20px 0 rgb(0 0 0 / 30%);
+    }
+    #intentsDiv > div > div:focus {
+        box-shadow: 0 0 6px #0096d6;
+    }
+    #upperSection .row > div:nth-child(1) {
+    max-width: 56%;
+    flex: 0 0 56%;
+    }
+    #upperSection .row > div:nth-child(2) {
+    max-width: 44%;
+    flex: 0 0 44%;
+    }
+    #upperSection .row > div:nth-child(1) img {
+        max-width: 539px;
+        width: 100%;
+    }
+}
+@media only screen and (max-width: 1000px) {
+    #intentsDiv {
+        max-width: 700px;
+    }
+    #intentsDiv > div {
+        flex: none;
+    }
+    }
+@media only screen and (max-width: 800px) {
+    h2{
+        margin: 0;
+    }
+    #one-click-fix-wrapper #pageDescContainer .pageDesc {
+        margin-bottom: 0;
+    }    
+}
+@media only screen and (max-width: 720px) {
+    #intentsDiv > div > div {   
+        width: 155px;
+        height: 136px;
+        min-width: unset;
+        min-height: unset;
+    }    
+    #upperSection .row div:nth-child(1) .image {
+        display: none;
+    }
+    #upperSection .row div:nth-child(2) {
+        width: 100%;
+        max-width: 100%;
+        flex: 0 0 100%;
+    }
+    #upperSection h2 {
+        text-align: center;
+        font-size: 30px;
+    }
+    #upperSection p {
+        text-align: center;
+        font-size: 16px;
+        line-height: 20px;
+        margin-top:10px;
+    }
+    #intentsDiv img {
+        max-width: 32px;
+        max-height: 32px;
+    }
+    #intentsDiv .image {
+        height: unset;
+        margin: 15px 0;
+    }
+    #intentsDiv .text {    
+        padding: 0 10px;
+    }
+    #intentsDiv p {
+        font-size: 16px;
+        line-height: 20px;
+    }    
+    #intentsDiv {
+        margin: 0 auto;
+        max-width: unset;
+        justify-content: center;
+    }
+    #navbarDiv .text, #pcnavbarDiv .text{
+        font-size: 18px;
+    }
+    #upperSection {
+        margin: 20px 0;
+    }
+}
+@media (max-width: 576px) {
+    .col-sm-6 {
+        flex: 0 0 50%;
+    }
+    #intentsDiv  {
+        padding: 0 10px;
+    }
+    #pageDescContainer .pageDesc .paragraph {
+        text-align: left;
+    }    
+}
+@media (max-width: 496px) {
+    #intentsDiv > div > div {
+        width: 145px;
+        height: 128px;
+    }    
+    #intentsDiv {
+        padding: 0 5px;
+    }
+    #intentsDiv > div > div {
+        margin: 0 5px;
+
+    }
+    #intentsDiv p {
+        font-size: 14px;
+    }
+    #intentsDiv > div > div:hover, #intentsDiv > div > div:focus {
+        width: 145px;
+        height: 128px;
+    }
+    #navbarDiv .col-sm-6, #pcnavbarDiv .col-sm-6 {
+        padding: 0 5px;
+    }    
+    #navbarDiv img, #pcnavbarDiv img {
+    max-width: 23px;
+    height: 21px;
+    }        
+}
+@media (max-width: 350px) {
+    #intentsDiv > div {
+        flex: none;
+    }
+    #navbarDiv .text, #pcnavbarDiv .text{
+        font-size: 16px;
+    }    
+}
+/* content area search starts */
+.search__title {
+    font-family: "HPSimplified";
+    font-size: 20px;
+    line-height: 1.4;
+    letter-spacing: 0.3px;
+    padding-bottom: 10px;
+}
+.services-description-page > .cmp-container {
+    max-width: 1260px;
+    padding-left: 30px;
+    padding-right: 30px;
+    margin: 0 auto;
+}
+.content-area.search {
+    font-size: 16px;
+}
+
+div#searchFragmentComputer, div#searchFragmentPrinter {
+     padding: 100px 0; 
+}
+.search .content-area__content {
+    justify-content: center;
+    flex-flow: column;
+    text-align: center;
+    gap: unset;
+}
+.search__description {
+    line-height: 1.5;
+    padding-bottom: 20px;
+    font-family: "HPSimplifiedLight";    
+}
+
+/* content area search ends */
+
+.printer-troubleShootingTitle{
+	text-align: center;
+	font-weight:400;
+    padding:0 30px;
+}
+
+/* update content for ink cartridge no touch */
+.inkCartDesc ul {
+    margin-left: 15px;
+}
+@media (min-width: 769px) {
+    .inkCartDesc {
+        font-size: 16px !important;
+        padding-left: 70px !important;
+    }
+}
+@media (max-width: 768px) {
+    .inkCartDesc {
+        padding: 0 10px;
+    }
+}
+
+/* update content for ink cartridge no touch ends */
