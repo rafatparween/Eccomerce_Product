@@ -1140,7 +1140,7 @@ export default function Hero() {
                 </svg>
                 <span className="ml-3 text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500">Hewlett Printers Solution</span>
               </div>
-              <p className="text-gray-400">Your trusted source for affordable, high-quality refurbished printers.</p>
+              <p className="text-gray-400">3550 GILA BND CASPER, WY 82604</p>
               <div className="flex space-x-4 mt-6">
                 <a href="#" className="text-gray-400 hover:text-white transition-colors">
                   <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
