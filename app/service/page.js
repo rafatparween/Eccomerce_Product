@@ -51,8 +51,8 @@ export default function ServicesPage() {
   return (
     <>
       <Head>
-        <title>Our Services | Hewlett Hub Solutions</title>
-        <meta name="description" content="Discover comprehensive printer solutions from Hewlett Hub Solutions - refurbished printers, maintenance, supplies, and expert support services." />
+        <title>Our Services | Hewlett Printers Solution</title>
+        <meta name="description" content="Discover comprehensive printer solutions from Hewlett Printers Solution - refurbished printers, maintenance, supplies, and expert support services." />
       </Head>
 
       <div className="bg-gray-950 text-white overflow-x-hidden">
@@ -100,7 +100,7 @@ export default function ServicesPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              Comprehensive Printing Solutions from Hewlett Hub Solutions
+              Comprehensive Printing Solutions from Hewlett Printers Solution
             </motion.p>
           </div>
           <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-gray-950 to-transparent"></div>

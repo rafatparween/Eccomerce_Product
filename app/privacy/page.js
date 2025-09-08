@@ -35,8 +35,8 @@ export default function PrivacyPolicy() {
   return (
     <>
       <Head>
-        <title>Privacy Policy | Hewlett Hub Solutions</title>
-        <meta name="description" content="Hewlett Hub Solutions Privacy Policy. Learn how we collect, use, and protect your personal information." />
+        <title>Privacy Policy | Hewlett Printers Solution</title>
+        <meta name="description" content="Hewlett Printers Solution Privacy Policy. Learn how we collect, use, and protect your personal information." />
       </Head>
 
       <div className="bg-gray-950 text-white overflow-x-hidden">
@@ -227,10 +227,10 @@ Your privacy is important to us. We collect customer data only for order fulfill
               If you have questions about this Privacy Policy or our data practices, please contact us at:
             </p>
             <p className="text-cyan-400 mb-2">
-              Hewlett Hub Solutions<br />
+              Hewlett Printers Solution<br />
               Attn: Privacy Officer<br />
-              privacy@hewletthub.com<br />
-              +1 (800) 123-4567
+              privacy@hewlettprinterssolution.com<br />
+              +1 (808) 468-1018
             </p>
             <p className="text-gray-300">
               For EU residents, you may also lodge a complaint with your local data protection authority.

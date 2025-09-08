@@ -5,8 +5,8 @@ export default function TermsPage() {
   return (
     <>
       <Head>
-        <title>Terms & Conditions | Hewlett Hub Solutions</title>
-        <meta name="description" content="Terms and conditions for purchasing refurbished printers from Hewlett Hub Solutions. Understand our policies on returns, warranties, and more." />
+        <title>Terms & Conditions | Hewlett Printers Solution</title>
+        <meta name="description" content="Terms and conditions for purchasing refurbished printers from Hewlett Printers Solution. Understand our policies on returns, warranties, and more." />
       </Head>
 
       <div className="min-h-screen bg-gray-50 py-12">
@@ -24,7 +24,7 @@ export default function TermsPage() {
               <div className="bg-blue-50 border-l-4 border-blue-600 p-6 mb-12">
                 <h2 className="text-xl font-bold text-gray-800 mb-4">Important Purchase Terms</h2>
                 <p className="text-gray-700 mb-4">
-                  By purchasing from Hewlett Hub Solutions, you agree to our product terms:
+                  By purchasing from Hewlett Printers Solution, you agree to our product terms:
                 </p>
                 <ul className="list-disc pl-6 space-y-2 text-gray-700">
                   <li>All printers are refurbished unless otherwise stated</li>
@@ -39,10 +39,10 @@ export default function TermsPage() {
                 <h2 className="text-2xl font-bold text-gray-800 mb-6">1. General Terms</h2>
                 <div className="space-y-4 text-gray-700">
                   <p>
-                    These Terms & Conditions govern your purchase from Hewlett Hub Solutions ("we", "us", or "our"). By placing an order, you agree to be bound by these terms. We reserve the right to modify these terms at any time without prior notice.
+                    These Terms & Conditions govern your purchase from Hewlett Printers Solution ("we", "us", or "our"). By placing an order, you agree to be bound by these terms. We reserve the right to modify these terms at any time without prior notice.
                   </p>
                   <p>
-                    All products sold by Hewlett Hub Solutions are professionally refurbished to meet functional specifications unless explicitly marked as "new". Our refurbishment process includes thorough testing, cleaning, and replacement of worn components.
+                    All products sold by Hewlett Printers Solution are professionally refurbished to meet functional specifications unless explicitly marked as "new". Our refurbishment process includes thorough testing, cleaning, and replacement of worn components.
                   </p>
                 </div>
               </section>
@@ -132,7 +132,7 @@ export default function TermsPage() {
                 <h2 className="text-2xl font-bold text-gray-800 mb-6">7. Limitation of Liability</h2>
                 <div className="space-y-4 text-gray-700">
                   <p>
-                    Hewlett Hub Solutions shall not be liable for any indirect, incidental, special, or consequential damages arising from the use or inability to use our products, even if we have been advised of the possibility of such damages.
+                    Hewlett Printers Solution shall not be liable for any indirect, incidental, special, or consequential damages arising from the use or inability to use our products, even if we have been advised of the possibility of such damages.
                   </p>
                   <p>
                     Our total liability for any claim related to these terms or your purchase shall not exceed the purchase price of the product in question.
@@ -145,7 +145,7 @@ export default function TermsPage() {
                 <h2 className="text-2xl font-bold text-gray-800 mb-6">8. Governing Law</h2>
                 <div className="space-y-4 text-gray-700">
                   <p>
-                    These Terms & Conditions shall be governed by and construed in accordance with the laws of the state where Hewlett Hub Solutions is registered, without regard to its conflict of law provisions.
+                    These Terms & Conditions shall be governed by and construed in accordance with the laws of the state where Hewlett Printers Solution is registered, without regard to its conflict of law provisions.
                   </p>
                   <p>
                     Any disputes shall be resolved through good faith negotiations between the parties. If resolution cannot be reached, disputes shall be submitted to binding arbitration in accordance with the rules of the American Arbitration Association.

@@ -25,7 +25,7 @@ const JivoChat = () => {
 
       return () => {
         document.body.removeChild(script);
-      };
+      };Hewlett Hub Solutions
     };
 
     loadJivoChatScript();

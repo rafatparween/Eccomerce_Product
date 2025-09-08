@@ -74,8 +74,8 @@ export default function ContactPage() {
   return (
     <>
       <Head>
-        <title>Contact Us | Hewlett Hub Solutions</title>
-        <meta name="description" content="Get in touch with Hewlett Hub Solutions for inquiries about our refurbished printers and services." />
+        <title>Contact Us |Hewlett Printers Solution</title>
+        <meta name="description" content="Get in touch with Hewlett Printers Solution for inquiries about our refurbished printers and services." />
       </Head>
 
       <div className="bg-gray-950 text-white overflow-x-hidden">

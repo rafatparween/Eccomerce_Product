@@ -36,8 +36,8 @@ export default function AboutPage() {
   return (
     <>
       <Head>
-        <title>About Us | Hewlett Hub Solutions</title>
-        <meta name="description" content="Learn about Hewlett Hub Solutions - your trusted partner for certified refurbished printers. Our commitment to quality, sustainability, and affordability." />
+        <title>About Us | Hewlett Printers Solution</title>
+        <meta name="description" content="Learn about Hewlett Printers Solution - your trusted partner for certified refurbished printers. Our commitment to quality, sustainability, and affordability." />
       </Head>
 
       <div className="bg-gray-950 text-white overflow-x-hidden">
@@ -97,7 +97,7 @@ export default function AboutPage() {
           <section className="animate-section bg-gray-900 rounded-xl shadow-lg p-8 mb-16 border border-gray-800">
             <div className="max-w-4xl mx-auto">
               <p className="text-lg text-gray-300 leading-relaxed mb-6">
-                Hewlett Hub Solutions is a customer-first company focused on delivering value through certified refurbished printers. We believe in sustainability and affordability — giving technology a second life and saving customers up to 60% compared to new models.
+               Hewlett Printers Solution is a customer-first company focused on delivering value through certified refurbished printers. We believe in sustainability and affordability — giving technology a second life and saving customers up to 60% compared to new models.
               </p>
               <p className="text-lg text-gray-300 leading-relaxed mb-6">
                 Each device is carefully restored, tested, and quality-checked by our technicians. Our team includes experienced professionals in IT hardware and logistics, ensuring that every product meets a consistent quality standard.
@@ -114,7 +114,7 @@ export default function AboutPage() {
               <div className="md:w-1/2">
                 <h2 className="text-3xl font-bold text-white mb-6">Our Story</h2>
                 <p className="text-gray-400 mb-4">
-                  Founded in 2015, Hewlett Hub Solutions began as a small team of IT enthusiasts who saw an opportunity to reduce electronic waste while making quality printing technology accessible to everyone.
+                  Founded in 2015, Hewlett Printers Solution began as a small team of IT enthusiasts who saw an opportunity to reduce electronic waste while making quality printing technology accessible to everyone.
                 </p>
                 <p className="text-gray-400 mb-4">
                   What started as a passion project in a garage has now grown into a trusted name in refurbished printing solutions, serving thousands of satisfied customers across the country.
@@ -188,7 +188,7 @@ export default function AboutPage() {
 
           {/* Why Choose Us */}
           <section className="animate-section mb-16 bg-gradient-to-br from-gray-900 to-gray-800 rounded-xl p-12 border border-gray-700">
-            <h2 className="text-3xl font-bold text-center text-white mb-12">Why Choose Hewlett Hub Solutions?</h2>
+            <h2 className="text-3xl font-bold text-center text-white mb-12">Why Choose Hewlett Printers Solution?</h2>
             <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
               <motion.div
                 className="flex items-start gap-6 p-6 bg-gray-800/50 rounded-lg border border-gray-700"

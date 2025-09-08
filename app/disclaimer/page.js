@@ -35,8 +35,8 @@ export default function DisclaimerPage() {
   return (
     <>
       <Head>
-        <title>Disclaimer | Hewlett Hub Solutions</title>
-        <meta name="description" content="Hewlett Hub Solutions Disclaimer - Independent refurbished printer reseller not affiliated with OEM manufacturers." />
+        <title>Disclaimer | Hewlett Printers Solution</title>
+        <meta name="description" content="Hewlett Printers Solution Disclaimer - Independent refurbished printer reseller not affiliated with OEM manufacturers." />
       </Head>
 
       <div className="bg-gray-950 text-white overflow-x-hidden">
@@ -96,13 +96,13 @@ export default function DisclaimerPage() {
             <div className="bg-red-900/20 border-l-4 border-red-500 p-4 mb-8">
               <h2 className="text-xl font-bold text-white mb-2">Important Notice</h2>
               <p className="text-gray-300">
-                Hewlett Hub Solutions is an independent refurbished printer reseller and is not affiliated with any manufacturer.
+                Hewlett Printers Solution is an independent refurbished printer reseller and is not affiliated with any manufacturer.
               </p>
             </div>
 
             <h2 className="text-2xl font-bold text-white mb-6">1. Manufacturer Affiliation</h2>
             <p className="text-gray-300 mb-6">
-              Hewlett Hub Solutions is <strong>not affiliated with</strong> or endorsed by HP, Canon, Epson, Brother, or any OEM brand. We are an independent reseller of refurbished printing equipment.
+              Hewlett Printers Solution is <strong>not affiliated with</strong> or endorsed by HP, Canon, Epson, Brother, or any OEM brand. We are an independent reseller of refurbished printing equipment.
             </p>
 
             <h2 className="text-2xl font-bold text-white mb-6">2. Product Identification</h2>
@@ -112,7 +112,7 @@ export default function DisclaimerPage() {
 
             <h2 className="text-2xl font-bold text-white mb-6">3. Refurbished Products</h2>
             <p className="text-gray-300 mb-6">
-              All printers sold by Hewlett Hub Solutions are refurbished or pre-owned unless specifically stated as new. Refurbished products may show signs of previous use but have been professionally tested and restored to working condition.
+              All printers sold by Hewlett Printers Solution are refurbished or pre-owned unless specifically stated as new. Refurbished products may show signs of previous use but have been professionally tested and restored to working condition.
             </p>
 
             <h2 className="text-2xl font-bold text-white mb-6">4. Warranty Information</h2>
@@ -122,12 +122,12 @@ export default function DisclaimerPage() {
 
             <h2 className="text-2xl font-bold text-white mb-6">5. Technical Support</h2>
             <p className="text-gray-300 mb-6">
-              Our technical support services are independent of manufacturer support channels. We provide support only for products purchased through Hewlett Hub Solutions.
+              Our technical support services are independent of manufacturer support channels. We provide support only for products purchased through Hewlett Printers Solution.
             </p>
 
             <h2 className="text-2xl font-bold text-white mb-6">6. Limitation of Liability</h2>
             <p className="text-gray-300 mb-6">
-              Hewlett Hub Solutions shall not be liable for any incidental, consequential, or special damages arising from the use of our products or services.
+              Hewlett Printers Solution shall not be liable for any incidental, consequential, or special damages arising from the use of our products or services.
             </p>
 
             <div className="bg-gray-800/50 p-6 rounded-lg border border-gray-700">
@@ -136,9 +136,9 @@ export default function DisclaimerPage() {
                 If you have any questions about this disclaimer, please contact us at:
               </p>
               <p className="text-cyan-400">
-                Hewlett Hub Solutions<br />
+                Hewlett Printers Solution<br />
                 Legal Department<br />
-                legal@hewletthub.com<br />
+                legal@hewlettprinterssolution.com<br />
                 +1 (800) 123-4567
               </p>
             </div>

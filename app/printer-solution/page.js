@@ -52,8 +52,8 @@ export default function PrinterSolutions() {
   return (
     <>
       <Head>
-        <title>Printer Solutions | Hewlett Hub Solutions</title>
-        <meta name="description" content="Comprehensive printer solutions from Hewlett Hub Solutions - refurbished printers, maintenance, supplies, and expert support services." />
+        <title>Printer Solutions | Hewlett Printers Solution</title>
+        <meta name="description" content="Comprehensive printer solutions from Hewlett Printers Solution - refurbished printers, maintenance, supplies, and expert support services." />
       </Head>
 
       <div className="bg-gray-950 text-white overflow-x-hidden">
@@ -101,7 +101,7 @@ export default function PrinterSolutions() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              Complete printing ecosystem solutions from Hewlett Hub Solutions
+              Complete printing ecosystem solutions from Hewlett Printers Solution
             </motion.p>
           </div>
           <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-gray-950 to-transparent"></div>
@@ -265,7 +265,7 @@ export default function PrinterSolutions() {
           <section className="animate-section bg-gray-900 rounded-xl shadow-lg p-8 mb-16 border border-gray-800">
             <h2 className="text-3xl font-bold text-white mb-8">
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-cyan-300">
-                Why Choose Hewlett Hub Solutions?
+                Why Choose Hewlett Printers Solution?
               </span>
             </h2>
             

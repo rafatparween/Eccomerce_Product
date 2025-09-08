@@ -51,8 +51,8 @@ export default function CookiePolicyPage() {
   return (
     <>
       <Head>
-        <title>Cookie Policy | Hewlett Hub Solutions</title>
-        <meta name="description" content="Our cookie policy explains how we use cookies to enhance your experience on Hewlett Hub Solutions website." />
+        <title>Cookie Policy |Hewlett Printers Solution</title>
+        <meta name="description" content="Our cookie policy explains how we use cookies to enhance your experience on Hewlett Printers Solution website." />
       </Head>
 
       <div className="bg-gray-950 text-white overflow-x-hidden">

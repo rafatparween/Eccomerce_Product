@@ -102,7 +102,7 @@ const PageFooter = () => {
 
         {/* Top Text - Bold & Centered */}
         <div className="text-center text-[18px] font-semibold leading-relaxed text-gray-300 mb-5 px-2">
-          © <span className="text-orange-400">2025</span> Hewlett Hub Solutions. All Rights Reserved. — Not affiliated with HP, Canon, Epson, or any other printer brand.
+          © <span className="text-orange-400">2025</span> Hewlett Printers Solution. All Rights Reserved. — Not affiliated with HP, Canon, Epson, or any other printer brand.
         </div>
 
         {/* Centered Links */}

@@ -215,7 +215,7 @@ export default function Hero() {
               <path d="M9 9H9.01" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
               <path d="M15 9H15.01" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
-            <span className="ml-3 text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500">Hewlett Hub Solutions</span>
+            <span className="ml-3 text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500">Hewlett Printers Solution</span>
           </motion.div>
           
           <motion.div 
@@ -388,11 +388,11 @@ export default function Hero() {
             >
               <h2 className="text-4xl md:text-5xl font-bold mb-8">
                 <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-cyan-300">
-                  About Hewlett Hub Solutions
+                  About Hewlett Printers Solution
                 </span>
               </h2>
               <p className="text-xl text-gray-300 mb-6">
-                Welcome to Hewlett Hub Solutions — your trusted source for high-quality refurbished printers and printing accessories. We specialize in sourcing, refurbishing, and reselling reliable pre-owned printers that offer the same functionality as new models at a fraction of the price.
+                Welcome to Hewlett Printers Solution — your trusted source for high-quality refurbished printers and printing accessories. We specialize in sourcing, refurbishing, and reselling reliable pre-owned printers that offer the same functionality as new models at a fraction of the price.
               </p>
               <div className="space-y-4 mb-8">
                 <div className="flex items-start">
@@ -959,7 +959,7 @@ export default function Hero() {
                 avatar: "https://randomuser.me/api/portraits/women/44.jpg"
               },
               {
-                quote: "As an IT manager, I've outfitted our entire office with refurbished printers from Hewlett Hub Solutions. The quality is exceptional and we've saved thousands.",
+                quote: "As an IT manager, I've outfitted our entire office with refurbished printers from Hewlett Printers Solution. The quality is exceptional and we've saved thousands.",
                 author: "Michael Chen",
                 role: "IT Manager",
                 avatar: "https://randomuser.me/api/portraits/men/32.jpg"
@@ -1138,7 +1138,7 @@ export default function Hero() {
                   <path d="M9 9H9.01" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                   <path d="M15 9H15.01" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
-                <span className="ml-3 text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500">Hewlett Hub Solutions</span>
+                <span className="ml-3 text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500">Hewlett Printers Solution</span>
               </div>
               <p className="text-gray-400">Your trusted source for affordable, high-quality refurbished printers.</p>
               <div className="flex space-x-4 mt-6">
@@ -1199,7 +1199,7 @@ export default function Hero() {
           </div>
           
           <div className="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
-            <p className="text-gray-400 mb-4 md:mb-0">© 2023 Hewlett Hub Solutions. All rights reserved.</p>
+            <p className="text-gray-400 mb-4 md:mb-0">© 2023 Hewlett Printers Solution. All rights reserved.</p>
             <div className="flex space-x-6">
               <a href="/privacy" className="text-gray-400 hover:text-white transition-colors text-sm">Privacy Policy</a>
               <a href="/terms" className="text-gray-400 hover:text-white transition-colors text-sm">Terms & Conditions</a>

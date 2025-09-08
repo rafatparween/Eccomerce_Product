@@ -12,8 +12,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Hewlett Hub Solutions",
-  description: "Hewlett Hub Solutions",
+  title: "Hewlett Printers Solution",
+  description: "Hewlett Printers Solution",
 };
 
 export default function RootLayout({ children }) {

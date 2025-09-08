@@ -51,7 +51,7 @@ export default function RefundPolicyPage() {
   return (
     <>
       <Head>
-        <title>Refund & Return Policy | Hewlett Hub Solutions</title>
+        <title>Refund & Return Policy | Hewlett Printers Solution</title>
         <meta name="description" content="Our refund and return policy for refurbished printers. Understand our terms for returns, exchanges, and refunds." />
       </Head>
 

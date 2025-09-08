@@ -223,7 +223,7 @@ export default function LoginPage() {
           transition={{ delay: 1 }}
           className="mt-6 text-center text-sm text-gray-600"
         >
-          <p>© {new Date().getFullYear()} Hewlett Hub Solutions. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Hewlett Printers Solution. All rights reserved.</p>
         </motion.div>
       </motion.div>
     </div>
