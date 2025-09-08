@@ -157,7 +157,7 @@ export default function TermsPage() {
               <div className="mt-16 bg-gray-50 p-6 rounded-lg">
                 <h3 className="text-lg font-semibold text-gray-800 mb-4">Contact Us</h3>
                 <p className="text-gray-700">
-                  For questions about these Terms & Conditions, please contact our customer service team at <span className="text-blue-600">support@hewletthub.com</span> or call <span className="text-blue-600">1-800-HH-SOLUTIONS</span>.
+                  For questions about these Terms & Conditions, please contact our customer service team at <span className="text-blue-600">support@printerssolution.com</span> or call <span className="text-blue-600">+1 (808)-468-1018</span>.
                 </p>
                 <p className="text-gray-700 mt-2">
                   Last updated: {new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}

@@ -185,7 +185,7 @@ Your privacy is important to us. We collect customer data only for order fulfill
               <li><strong>Portability:</strong> Request transfer of your data to another service</li>
             </ul>
             <p className="text-gray-300">
-              To exercise these rights, please contact us at privacy@hewletthub.com.
+              To exercise these rights, please contact us at privacy@printerssolution.com.
             </p>
           </section>
 
