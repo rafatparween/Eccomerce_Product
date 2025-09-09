@@ -204,8 +204,8 @@ export default function ContactPage() {
                       >
                         <option value="General Inquiry">General Inquiry</option>
                         <option value="Product Questions">Product Questions</option>
-                        <option value="Order Support">Order Support</option>
-                        <option value="Technical Support">Technical Support</option>
+                        <option value="Order Assistance">OrderAssistance</option>
+                        <option value="Technical Assistance">Technical Assistance</option>
                         <option value="Business Inquiry">Business Inquiry</option>
                         <option value="Other">Other</option>
                       </select>
@@ -266,7 +266,7 @@ export default function ContactPage() {
                       </svg>
                     </div>
                     <div>
-                      <h3 className="text-lg font-semibold text-white mb-1">Phone Support</h3>
+                      <h3 className="text-lg font-semibold text-white mb-1">Phone Assistance</h3>
                       <p className="text-gray-400 mb-2">Available Monday-Friday, 9AM-6PM EST</p>
                       <a href="tel:+18001234567" className="text-cyan-400 hover:text-cyan-300 transition-colors text-lg font-medium">+1 (800) 123-4567</a>
                     </div>
@@ -368,11 +368,11 @@ export default function ContactPage() {
                 {[
                   {
                     question: "What's your response time for email inquiries?",
-                    answer: "We typically respond to all email inquiries within 24 hours during business days. For urgent matters, please call our support line."
+                    answer: "We typically respond to all email inquiries within 24 hours during business days. For urgent matters, please call our  Assistance line."
                   },
                   {
                     question: "Do you offer onsite repair services?",
-                    answer: "Currently, we provide remote support and in-warranty service through shipping. We don't offer onsite repair services at this time."
+                    answer: "Currently, we provide remote assistance and in-warranty service through shipping. We don't offer onsite repair services at this time."
                   },
                   {
                     question: "Can I visit your location to see products?",

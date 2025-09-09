@@ -52,7 +52,7 @@ export default function ServicesPage() {
     <>
       <Head>
         <title>Our Services | Hewlett Printers Solution</title>
-        <meta name="description" content="Discover comprehensive printer solutions from Hewlett Printers Solution - refurbished printers, maintenance, supplies, and expert support services." />
+        <meta name="description" content="Discover comprehensive printer solutions from Hewlett Printers Solution - refurbished printers, maintenance, supplies, and expert Assistance services." />
       </Head>
 
       <div className="bg-gray-950 text-white overflow-x-hidden">
@@ -120,7 +120,7 @@ export default function ServicesPage() {
             </p>
             <ul className="list-disc pl-6 text-gray-300 mb-6 space-y-2">
               <li><strong>Condition:</strong> Refurbished (Grade A or B)</li>
-              <li><strong>Compatibility:</strong> USB/WiFi, OS Support</li>
+              <li><strong>Compatibility:</strong> USB/WiFi, OS Assistance</li>
               <li><strong>Accessories:</strong> Power cord, ink (if applicable)</li>
               <li><strong>Optional setup help</strong> (remote)</li>
             </ul>
@@ -164,7 +164,7 @@ export default function ServicesPage() {
           <section className="animate-section bg-gray-900 rounded-xl shadow-lg p-8 mb-16 border border-gray-800">
             <h2 className="text-3xl font-bold text-white mb-6">
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-cyan-300">
-                Optional Support Services
+                Optional Assistance Services
               </span>
             </h2>
             <div className="flex items-start mb-6">
@@ -177,7 +177,7 @@ export default function ServicesPage() {
               <div>
                 <h3 className="text-2xl font-semibold text-white mb-3">Installation & Setup Assistance (Optional Add-on)</h3>
                 <p className="text-gray-300 mb-4">
-                  Need help getting started? We offer optional remote support for:
+                  Need help getting started? We offer optional remote Assistance for:
                 </p>
                 <ul className="list-disc pl-6 text-gray-300 space-y-2 mb-6">
                   <li>Printer installation</li>
@@ -187,7 +187,7 @@ export default function ServicesPage() {
                 </ul>
                 <div className="bg-gray-800/50 p-4 rounded-lg border-l-4 border-blue-400">
                   <p className="text-gray-300">
-                    <span className="font-semibold">Note:</span> This service is provided on request only and is billed separately. Our support does not cover hardware repair or brand-authorized service.
+                    <span className="font-semibold">Note:</span> This service is provided on request only and is billed separately. Our Assistance does not cover hardware repair or brand-authorized service.
                   </p>
                 </div>
               </div>

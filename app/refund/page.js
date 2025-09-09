@@ -252,7 +252,7 @@ export default function RefundPolicyPage() {
               <div className="bg-gradient-to-r from-blue-900/30 to-cyan-900/30 p-6 rounded-lg">
                 <h3 className="text-2xl font-semibold text-white mb-4">Need Help With a Return?</h3>
                 <p className="text-gray-300 mb-4">
-                  Contact our support team for assistance with returns or warranty claims:
+                  Contact our Assistance team for assistance with returns or warranty claims:
                 </p>
                 <div className="grid md:grid-cols-2 gap-4">
                   <div className="flex items-center">
@@ -262,7 +262,7 @@ export default function RefundPolicyPage() {
                       </svg>
                     </div>
                     <div>
-                      <p className="text-gray-400 text-sm">Phone Support</p>
+                      <p className="text-gray-400 text-sm">Phone </p>
                       <p className="text-white">+1 (808)-468-1018</p>
                     </div>
                   </div>
@@ -273,7 +273,7 @@ export default function RefundPolicyPage() {
                       </svg>
                     </div>
                     <div>
-                      <p className="text-gray-400 text-sm">Email Support</p>
+                      <p className="text-gray-400 text-sm">Email </p>
                       <p className="text-white">returns@printerssolution.com</p>
                     </div>
                   </div>

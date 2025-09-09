@@ -96,7 +96,7 @@ export default function PrivacyPolicy() {
             <h2 className="text-2xl font-bold text-white mb-6">Introduction</h2>
             <p className="text-gray-300 mb-6">
               
-Your privacy is important to us. We collect customer data only for order fulfillment, support, and communication. No personal information is shared with third parties. All payment information is processed securely via trusted payment gateways.
+Your privacy is important to us. We collect customer data only for order fulfillment, Assistance, and communication. No personal information is shared with third parties. All payment information is processed securely via trusted payment gateways.
             </p>
             <p className="text-gray-300">
               By accessing or using our service, you agree to the collection and use of information in accordance with this policy.
@@ -129,7 +129,7 @@ Your privacy is important to us. We collect customer data only for order fulfill
             </p>
             <ul className="list-disc pl-6 text-gray-300 space-y-2">
               <li>To process and fulfill your orders</li>
-              <li>To provide customer support and respond to inquiries</li>
+              <li>To provide customer Assistance and respond to inquiries</li>
               <li>To improve our website and product offerings</li>
               <li>To communicate with you about orders, products, and promotions</li>
               <li>To prevent fraud and enhance security</li>

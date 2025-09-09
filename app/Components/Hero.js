@@ -456,7 +456,7 @@ export default function Hero() {
             {[
               { value: "90%", label: "Cost savings compared to new printers" },
               { value: "1 Year", label: "Warranty on all refurbished printers" },
-              { value: "24/7", label: "Technical support available" },
+              { value: "90%", label: "Performance guarantee" },
               { value: "500+", label: "Printers refurbished monthly" },
               { value: "98%", label: "Customer satisfaction rate" },
               { value: "50%", label: "Reduction in e-waste contribution" }
@@ -640,7 +640,7 @@ export default function Hero() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
                   </svg>
                 ),
-                title: "Free Setup Support",
+                title: "Free Setup Assistance",
                 description: "Our expert technicians will help you set up your printer remotely at no additional cost.",
                 color: "from-amber-500 to-yellow-400"
               },
@@ -766,7 +766,7 @@ export default function Hero() {
                     <svg className="w-6 h-6 text-green-400 mt-1 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
                     </svg>
-                    <p className="text-gray-300">Free setup support included</p>
+                    <p className="text-gray-300">Free Setup Included</p>
                   </div>
                 </div>
               </div>
@@ -965,7 +965,7 @@ export default function Hero() {
                 avatar: "https://randomuser.me/api/portraits/men/32.jpg"
               },
               {
-                quote: "The setup support was incredible - they walked me through everything remotely. My printer works like new and arrived faster than expected!",
+                quote: "The setup  was incredible - they walked me through everything remotely. My printer works like new and arrived faster than expected!",
                 author: "David Wilson",
                 role: "Home Office User",
                 avatar: "https://randomuser.me/api/portraits/men/75.jpg"
@@ -1173,15 +1173,15 @@ export default function Hero() {
             </div>
             
             <div>
-              <h3 className="text-lg font-semibold mb-4">Support</h3>
-              <ul className="space-y-2">
-                <li><a href="/" className="text-gray-400 hover:text-white transition-colors">Setup Guides</a></li>
-                <li><a href="/" className="text-gray-400 hover:text-white transition-colors">FAQs</a></li>
-                <li><a href="/" className="text-gray-400 hover:text-white transition-colors">Warranty Info</a></li>
-                <li><a href="/" className="text-gray-400 hover:text-white transition-colors">Contact Support</a></li>
-                <li><a href="/" className="text-gray-400 hover:text-white transition-colors">Driver Downloads</a></li>
-                <li><a href="/" className="text-gray-400 hover:text-white transition-colors">Troubleshooting</a></li>
-              </ul>
+              <h3 className="text-lg font-semibold mb-4">Resources</h3>
+<ul className="space-y-2">
+  <li><a href="/" className="text-gray-400 hover:text-white transition-colors">Setup Guides</a></li>
+  <li><a href="/" className="text-gray-400 hover:text-white transition-colors">FAQs</a></li>
+  <li><a href="/" className="text-gray-400 hover:text-white transition-colors">Warranty Info</a></li>
+  <li><a href="/" className="text-gray-400 hover:text-white transition-colors">Contact Us</a></li>
+  <li><a href="/" className="text-gray-400 hover:text-white transition-colors">Driver Downloads</a></li>
+  <li><a href="/" className="text-gray-400 hover:text-white transition-colors">Troubleshooting</a></li>
+</ul>
             </div>
             
             <div>

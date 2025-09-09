@@ -172,7 +172,7 @@ export default function Troubleshoot() {
             onClick={handleSetupClick}
             disabled={!jivoReady}
           >
-            Click Here For Chat Support
+            Click Here For Chat Assistance
           </button>
         </div>
 
@@ -181,17 +181,17 @@ export default function Troubleshoot() {
           <p className="text-3xl lg:text-[40px] text-black mb-2">Diagnose and solve</p>
           <div className="flex items-start justify-center lg:justify-start mb-4">
             <h1 className="text-xl lg:text-[29px] text-black">
-              Contact Support – Chat Live
+              Contact Us through – Live Chat
             </h1>
           </div>
 
           <p className="text-base lg:text-[20px] text-black leading-relaxed mb-2">
-            In this support hub, you'll find quick access to live assistance for common computer and printer issues.
+            In this Assistance hub, you'll find quick access to live assistance for common computer and printer issues.
           </p>
           <p className="text-base lg:text-[20px] text-black leading-relaxed">
             Click the tabs to switch between <span className="font-bold">Computer</span> and <span className="font-bold">Printer</span> topics,
             <br className="hidden lg:block"/>
-            Then start a live chat with a support agent.
+            Then start a live chat with a Assistance agent.
           </p>
         </div>
       </div>

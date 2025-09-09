@@ -53,7 +53,7 @@ export default function PrinterSolutions() {
     <>
       <Head>
         <title>Printer Solutions | Hewlett Printers Solution</title>
-        <meta name="description" content="Comprehensive printer solutions from Hewlett Printers Solution - refurbished printers, maintenance, supplies, and expert support services." />
+        <meta name="description" content="Comprehensive printer solutions from Hewlett Printers Solution - refurbished printers, maintenance, supplies, and expert Assistance services." />
       </Head>
 
       <div className="bg-gray-950 text-white overflow-x-hidden">
@@ -189,7 +189,7 @@ export default function PrinterSolutions() {
           <section className="animate-section bg-gray-900 rounded-xl shadow-lg p-8 mb-16 border border-gray-800">
             <h2 className="text-3xl font-bold text-white mb-8">
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-cyan-300">
-                Support Services
+               Assistance Services
               </span>
             </h2>
             
@@ -292,7 +292,7 @@ export default function PrinterSolutions() {
                   icon: "🌱"
                 },
                 {
-                  title: "Expert Support",
+                  title: "Expert Assistance",
                   description: "Knowledgeable technicians available to help",
                   icon: "👨‍💻"
                 },

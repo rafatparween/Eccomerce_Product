@@ -29,7 +29,7 @@ export default function TermsPage() {
                 <ul className="list-disc pl-6 space-y-2 text-gray-700">
                   <li>All printers are refurbished unless otherwise stated</li>
                   <li>Devices may show minor cosmetic wear</li>
-                  <li>Support services (setup) are optional and separate from the product cost</li>
+                  <li>Assistance services (setup) are optional and separate from the product cost</li>
                   <li>Customers must follow the return policy for any issue resolution</li>
                 </ul>
               </div>
@@ -90,7 +90,7 @@ export default function TermsPage() {
                     <strong>Return Policy:</strong> You may return products within 14 days of delivery for a refund or exchange. Returned products must be in original condition with all accessories. A 15% restocking fee may apply.
                   </p>
                   <p>
-                    <strong>Warranty Claims:</strong> To initiate a warranty claim, contact our support team with your order details and description of the issue. We may require troubleshooting steps or return of the product for evaluation.
+                    <strong>Warranty Claims:</strong> To initiate a warranty claim, contact our Assistance team with your order details and description of the issue. We may require troubleshooting steps or return of the product for evaluation.
                   </p>
                 </div>
               </section>
@@ -113,13 +113,13 @@ export default function TermsPage() {
 
               {/* Support Services */}
               <section className="mb-12">
-                <h2 className="text-2xl font-bold text-gray-800 mb-6">6. Support Services</h2>
+                <h2 className="text-2xl font-bold text-gray-800 mb-6">6.Assistance Services</h2>
                 <div className="space-y-4 text-gray-700">
                   <p>
-                    Basic technical support is included with all purchases at no additional cost. Advanced setup services, configuration assistance, or on-site support are available as paid add-ons.
+                    Basic technical Assistance is included with all purchases at no additional cost. Advanced setup services, configuration assistance, or on-site Assistance are available as paid add-ons.
                   </p>
                   <p>
-                    Support is available Monday-Friday, 9am-5pm EST via email, phone, or live chat. Response times may vary based on support volume.
+                    Assistance is available Monday-Friday, 9am-5pm EST via email, phone, or live chat. Response times may vary based on assistance volume.
                   </p>
                   <p>
                     <strong>Self-Service Resources:</strong> We provide comprehensive online documentation, setup guides, and troubleshooting articles to help customers resolve common issues.

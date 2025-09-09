@@ -166,10 +166,10 @@ export default function PageNavbar() {
             "Printer Offline",
             "Printer Setup",
             "Scanner Setup",
-            "Support Home",
+            "Assistance Home",
             "Ink Cartridges Issue",
             "Diagnostics",
-            "Business Support",
+            "Business Assistance",
           ].map((item, index) => (
             <Link
               key={index}

@@ -80,7 +80,7 @@ export default function Printerissue() {
   
         {/* Search section */}
         <div className="text-center mt-20 mb-20">
-          <h2 className="text-2xl font-semibold text-black">Search our support articles</h2>
+          <h2 className="text-2xl font-semibold text-black">Search our Assistance articles</h2>
           <div className="mt-4 flex justify-center">
             <input
               type="text"

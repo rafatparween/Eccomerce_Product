@@ -120,9 +120,9 @@ export default function DisclaimerPage() {
               Our products come with our own refurbishment warranty, which is not a manufacturer's warranty. Manufacturer warranties do not transfer to refurbished products unless explicitly stated.
             </p>
 
-            <h2 className="text-2xl font-bold text-white mb-6">5. Technical Support</h2>
+            <h2 className="text-2xl font-bold text-white mb-6">5. Technical Assistance</h2>
             <p className="text-gray-300 mb-6">
-              Our technical support services are independent of manufacturer support channels. We provide support only for products purchased through Hewlett Printers Solution.
+              Our technical Assistance services are independent of manufacturer Assistance channels. We provide Assistance only for products purchased through Hewlett Printers Solution.
             </p>
 
             <h2 className="text-2xl font-bold text-white mb-6">6. Limitation of Liability</h2>
