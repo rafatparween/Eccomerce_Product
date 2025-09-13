@@ -8,44 +8,44 @@ import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function CookiePolicyPage() {
-  const sectionRefs = useRef([]);
+  const mainContainer = useRef(null);
 
   useLayoutEffect(() => {
-    // Animate sections
-    gsap.utils.toArray(".animate-section").forEach((section, i) => {
-      gsap.from(section, {
-        scrollTrigger: {
-          trigger: section,
-          start: "top 80%",
-          toggleActions: "play none none none",
-        },
-        opacity: 0,
-        y: 50,
-        duration: 0.8,
-        delay: i * 0.1,
-        ease: "power2.out",
+    const ctx = gsap.context(() => {
+      // Animate sections
+      gsap.utils.toArray(".animate-section").forEach((section, i) => {
+        gsap.from(section, {
+          scrollTrigger: {
+            trigger: section,
+            start: "top 80%",
+            toggleActions: "play none none none",
+          },
+          opacity: 0,
+          y: 50,
+          duration: 0.8,
+          delay: i * 0.1,
+          ease: "power2.out",
+        });
       });
-    });
 
-    // Animate cookie cards
-    gsap.utils.toArray(".cookie-card").forEach((card, i) => {
-      gsap.from(card, {
-        scrollTrigger: {
-          trigger: card,
-          start: "top 80%",
-          toggleActions: "play none none none",
-        },
-        opacity: 0,
-        y: 100,
-        duration: 0.8,
-        delay: i * 0.1,
-        ease: "back.out(1.2)",
+      // Animate cookie cards
+      gsap.utils.toArray(".cookie-card").forEach((card, i) => {
+        gsap.from(card, {
+          scrollTrigger: {
+            trigger: card,
+            start: "top 80%",
+            toggleActions: "play none none none",
+          },
+          opacity: 0,
+          y: 100,
+          duration: 0.8,
+          delay: i * 0.1,
+          ease: "back.out(1.2)",
+        });
       });
-    });
+    }, mainContainer); // scope selector
 
-    return () => {
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-    };
+    return () => ctx.revert(); // cleanup
   }, []);
 
   return (
@@ -58,7 +58,7 @@ export default function CookiePolicyPage() {
         />
       </Head>
 
-      <div className="bg-gray-950 text-white overflow-x-hidden">
+      <div className="bg-gray-950 text-white overflow-x-hidden" ref={mainContainer}>
         {/* Hero Section */}
         <section className="relative min-h-[60vh] flex items-center justify-center bg-gradient-to-br from-gray-900 to-gray-950 overflow-hidden pt-20">
           {/* Animated background lines */}
