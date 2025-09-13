@@ -52,7 +52,7 @@ export default function ServicesPage() {
     <>
       <Head>
         <title>Our Services | Hewlett Printers Solution</title>
-        <meta name="description" content="Discover comprehensive printer solutions from Hewlett Printers Solution - refurbished printers, maintenance, supplies, and expert Assistance services." />
+        <meta name="description" content="Discover comprehensive printing solutions from Hewlett Printers Solution - new printers, accessories, setup guidance, and IT solutions." />
       </Head>
 
       <div className="bg-gray-950 text-white overflow-x-hidden">
@@ -100,7 +100,7 @@ export default function ServicesPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              Comprehensive Printing Solutions from Hewlett Printers Solution
+             Comprehensive Printing Solutions from Hewlett Printers Solution.
             </motion.p>
           </div>
           <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-gray-950 to-transparent"></div>
@@ -116,13 +116,13 @@ export default function ServicesPage() {
               </span>
             </h2>
             <p className="text-gray-300 mb-6">
-              We offer a variety of refurbished printer models from trusted brands including HP, Canon, Epson, and Brother. Each product listing includes:
+              We offer a variety of new printer models from trusted brands including HP, Canon, Epson, and Brother. Each product is carefully selected for quality and reliability.
             </p>
             <ul className="list-disc pl-6 text-gray-300 mb-6 space-y-2">
-              <li><strong>Condition:</strong> Refurbished (Grade A or B)</li>
-              <li><strong>Compatibility:</strong> USB/WiFi, OS Assistance</li>
-              <li><strong>Accessories:</strong> Power cord, ink (if applicable)</li>
-              <li><strong>Optional setup help</strong> (remote)</li>
+              <li><strong>Condition:</strong> Brand new with full manufacturer warranty</li>
+              <li><strong>Compatibility:</strong> USB/WiFi connectivity options</li>
+              <li><strong>Accessories:</strong> Power cord, ink/toner (if applicable)</li>
+              <li><strong>Setup guidance</strong> included with purchase</li>
             </ul>
             <div className="bg-gray-800/50 p-4 rounded-lg border-l-4 border-cyan-400 mb-6">
               <p className="text-gray-300 italic">
@@ -132,7 +132,7 @@ export default function ServicesPage() {
             
             <h3 className="text-2xl font-semibold text-white mb-4">Product Categories:</h3>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {['Inkjet Printers', 'Laser Printers', 'Wireless Printers', 'Multifunction Printers', 'Bulk Purchase for Offices'].map((category, i) => (
+              {['Inkjet Printers', 'Laser Printers', 'Wireless Printers', 'Multifunction Printers', 'Office Solutions', 'Home Printers'].map((category, i) => (
                 <motion.div 
                   key={i}
                   className="flex items-center bg-gray-800/50 rounded-lg p-4 border border-gray-700 hover:border-cyan-400 transition-colors"
@@ -160,11 +160,11 @@ export default function ServicesPage() {
             <div className="flex-grow border-t border-gray-700"></div>
           </div>
 
-          {/* Support Services Section */}
+          {/* Setup Guidance Section */}
           <section className="animate-section bg-gray-900 rounded-xl shadow-lg p-8 mb-16 border border-gray-800">
             <h2 className="text-3xl font-bold text-white mb-6">
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-cyan-300">
-                Optional Assistance Services
+                Setup Guidance & IT Solutions
               </span>
             </h2>
             <div className="flex items-start mb-6">
@@ -175,21 +175,36 @@ export default function ServicesPage() {
                 </svg>
               </div>
               <div>
-                <h3 className="text-2xl font-semibold text-white mb-3">Installation & Setup Assistance (Optional Add-on)</h3>
+                <h3 className="text-2xl font-semibold text-white mb-3">Setup Guidance</h3>
                 <p className="text-gray-300 mb-4">
-                  Need help getting started? We offer optional remote Assistance for:
+                  We provide comprehensive setup guidance for your new equipment:
                 </p>
                 <ul className="list-disc pl-6 text-gray-300 space-y-2 mb-6">
-                  <li>Printer installation</li>
-                  <li>Driver setup</li>
-                  <li>Connectivity issues (WiFi/USB)</li>
-                  <li>Basic usage guidance</li>
+                  <li>Printer installation and configuration</li>
+                  <li>Driver setup for your operating system</li>
+                  <li>Connectivity solutions (WiFi/USB)</li>
+                  <li>Basic usage guidance and best practices</li>
                 </ul>
-                <div className="bg-gray-800/50 p-4 rounded-lg border-l-4 border-blue-400">
-                  <p className="text-gray-300">
-                    <span className="font-semibold">Note:</span> This service is provided on request only and is billed separately. Our Assistance does not cover hardware repair or brand-authorized service.
-                  </p>
-                </div>
+              </div>
+            </div>
+            
+            <div className="flex items-start">
+              <div className="bg-cyan-500 text-white p-2 rounded-full mr-4">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
+                </svg>
+              </div>
+              <div>
+                <h3 className="text-2xl font-semibold text-white mb-3">IT Solutions</h3>
+                <p className="text-gray-300 mb-4">
+                  Our IT solutions help integrate your printing needs with your business systems:
+                </p>
+                <ul className="list-disc pl-6 text-gray-300 space-y-2">
+                  <li>Network printing solutions</li>
+                  <li>Print management systems</li>
+                  <li>Workflow optimization</li>
+                  <li>Ongoing technical support</li>
+                </ul>
               </div>
             </div>
           </section>

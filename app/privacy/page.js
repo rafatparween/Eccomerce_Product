@@ -92,17 +92,19 @@ export default function PrivacyPolicy() {
 
         {/* Main Content */}
         <div className="container mx-auto px-6 py-16 -mt-16 relative z-10 max-w-5xl">
+          
+          {/* Introduction */}
           <section className="animate-section bg-gray-900 rounded-xl shadow-lg p-8 mb-16 border border-gray-800">
             <h2 className="text-2xl font-bold text-white mb-6">Introduction</h2>
             <p className="text-gray-300 mb-6">
-              
-Your privacy is important to us. We collect customer data only for order fulfillment, Assistance, and communication. No personal information is shared with third parties. All payment information is processed securely via trusted payment gateways.
+              Your privacy is important to us. We collect customer data only for order fulfillment, assistance, and communication. No personal information is shared with third parties. All payment information is processed securely via trusted payment gateways.
             </p>
             <p className="text-gray-300">
               By accessing or using our service, you agree to the collection and use of information in accordance with this policy.
             </p>
           </section>
 
+          {/* Information We Collect */}
           <section className="animate-section bg-gray-900 rounded-xl shadow-lg p-8 mb-16 border border-gray-800">
             <h2 className="text-2xl font-bold text-white mb-6">1. Information We Collect</h2>
             <h3 className="text-xl font-semibold text-cyan-400 mb-3">Personal Information</h3>
@@ -122,6 +124,7 @@ Your privacy is important to us. We collect customer data only for order fulfill
             </p>
           </section>
 
+          {/* How We Use Your Information */}
           <section className="animate-section bg-gray-900 rounded-xl shadow-lg p-8 mb-16 border border-gray-800">
             <h2 className="text-2xl font-bold text-white mb-6">2. How We Use Your Information</h2>
             <p className="text-gray-300 mb-4">
@@ -129,7 +132,7 @@ Your privacy is important to us. We collect customer data only for order fulfill
             </p>
             <ul className="list-disc pl-6 text-gray-300 space-y-2">
               <li>To process and fulfill your orders</li>
-              <li>To provide customer Assistance and respond to inquiries</li>
+              <li>To provide customer assistance and respond to inquiries</li>
               <li>To improve our website and product offerings</li>
               <li>To communicate with you about orders, products, and promotions</li>
               <li>To prevent fraud and enhance security</li>
@@ -137,6 +140,7 @@ Your privacy is important to us. We collect customer data only for order fulfill
             </ul>
           </section>
 
+          {/* Data Sharing */}
           <section className="animate-section bg-gray-900 rounded-xl shadow-lg p-8 mb-16 border border-gray-800">
             <h2 className="text-2xl font-bold text-white mb-6">3. Data Sharing and Disclosure</h2>
             <p className="text-gray-300 mb-4">
@@ -155,6 +159,7 @@ Your privacy is important to us. We collect customer data only for order fulfill
             </p>
           </section>
 
+          {/* Data Security */}
           <section className="animate-section bg-gray-900 rounded-xl shadow-lg p-8 mb-16 border border-gray-800">
             <h2 className="text-2xl font-bold text-white mb-6">4. Data Security</h2>
             <p className="text-gray-300 mb-4">
@@ -171,6 +176,7 @@ Your privacy is important to us. We collect customer data only for order fulfill
             </p>
           </section>
 
+          {/* Your Rights */}
           <section className="animate-section bg-gray-900 rounded-xl shadow-lg p-8 mb-16 border border-gray-800">
             <h2 className="text-2xl font-bold text-white mb-6">5. Your Rights and Choices</h2>
             <p className="text-gray-300 mb-4">
@@ -185,10 +191,11 @@ Your privacy is important to us. We collect customer data only for order fulfill
               <li><strong>Portability:</strong> Request transfer of your data to another service</li>
             </ul>
             <p className="text-gray-300">
-              To exercise these rights, please contact us at privacy@printerssolution.com.
+              To exercise these rights, please contact us at privacy@hewlettprinterssolution.com.
             </p>
           </section>
 
+          {/* Cookies */}
           <section className="animate-section bg-gray-900 rounded-xl shadow-lg p-8 mb-16 border border-gray-800">
             <h2 className="text-2xl font-bold text-white mb-6">6. Cookies and Tracking Technologies</h2>
             <p className="text-gray-300 mb-4">
@@ -204,6 +211,7 @@ Your privacy is important to us. We collect customer data only for order fulfill
             </p>
           </section>
 
+          {/* Children's Privacy */}
           <section className="animate-section bg-gray-900 rounded-xl shadow-lg p-8 mb-16 border border-gray-800">
             <h2 className="text-2xl font-bold text-white mb-6">7. Children's Privacy</h2>
             <p className="text-gray-300">
@@ -211,6 +219,7 @@ Your privacy is important to us. We collect customer data only for order fulfill
             </p>
           </section>
 
+          {/* Changes */}
           <section className="animate-section bg-gray-900 rounded-xl shadow-lg p-8 mb-16 border border-gray-800">
             <h2 className="text-2xl font-bold text-white mb-6">8. Changes to This Policy</h2>
             <p className="text-gray-300 mb-4">
@@ -221,6 +230,7 @@ Your privacy is important to us. We collect customer data only for order fulfill
             </p>
           </section>
 
+          {/* Contact */}
           <section className="animate-section bg-gray-900 rounded-xl shadow-lg p-8 border border-gray-800">
             <h2 className="text-2xl font-bold text-white mb-6">9. Contact Us</h2>
             <p className="text-gray-300 mb-4">
@@ -236,6 +246,7 @@ Your privacy is important to us. We collect customer data only for order fulfill
               For EU residents, you may also lodge a complaint with your local data protection authority.
             </p>
           </section>
+
         </div>
       </div>
     </>

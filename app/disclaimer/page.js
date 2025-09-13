@@ -35,8 +35,8 @@ export default function DisclaimerPage() {
   return (
     <>
       <Head>
-        <title>Disclaimer | Hewlett Printers Solution</title>
-        <meta name="description" content="Hewlett Printers Solution Disclaimer - Independent refurbished printer reseller not affiliated with OEM manufacturers." />
+        <title>Disclaimer | Hewlett Hub</title>
+        <meta name="description" content="Hewlett Hub Disclaimer - Independent printer and IT solutions provider not affiliated with OEM manufacturers." />
       </Head>
 
       <div className="bg-gray-950 text-white overflow-x-hidden">
@@ -84,7 +84,7 @@ export default function DisclaimerPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              Important Legal Information
+             Important Legal Information
             </motion.p>
           </div>
           <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-gray-950 to-transparent"></div>
@@ -96,13 +96,13 @@ export default function DisclaimerPage() {
             <div className="bg-red-900/20 border-l-4 border-red-500 p-4 mb-8">
               <h2 className="text-xl font-bold text-white mb-2">Important Notice</h2>
               <p className="text-gray-300">
-                Hewlett Printers Solution is an independent refurbished printer reseller and is not affiliated with any manufacturer.
+                Hewlett Hub is an independent provider of printers and IT solutions and is not affiliated with any manufacturer.
               </p>
             </div>
 
             <h2 className="text-2xl font-bold text-white mb-6">1. Manufacturer Affiliation</h2>
             <p className="text-gray-300 mb-6">
-              Hewlett Printers Solution is <strong>not affiliated with</strong> or endorsed by HP, Canon, Epson, Brother, or any OEM brand. We are an independent reseller of refurbished printing equipment.
+              Hewlett Hub is <strong>not affiliated with</strong> or endorsed by HP, Canon, Epson, Brother, or any OEM brand. We are an independent provider of printing equipment and IT solutions.
             </p>
 
             <h2 className="text-2xl font-bold text-white mb-6">2. Product Identification</h2>
@@ -110,24 +110,24 @@ export default function DisclaimerPage() {
               Product and brand names are used strictly for identification and compatibility purposes only. All trademarks, logos, and brand names are the property of their respective owners.
             </p>
 
-            <h2 className="text-2xl font-bold text-white mb-6">3. Refurbished Products</h2>
+            <h2 className="text-2xl font-bold text-white mb-6">3. Product Information</h2>
             <p className="text-gray-300 mb-6">
-              All printers sold by Hewlett Printers Solution are refurbished or pre-owned unless specifically stated as new. Refurbished products may show signs of previous use but have been professionally tested and restored to working condition.
+              All printers sold by Hewlett Hub are new unless specifically stated otherwise. We provide setup guidance and IT solutions to ensure optimal performance of your equipment.
             </p>
 
             <h2 className="text-2xl font-bold text-white mb-6">4. Warranty Information</h2>
             <p className="text-gray-300 mb-6">
-              Our products come with our own refurbishment warranty, which is not a manufacturer's warranty. Manufacturer warranties do not transfer to refurbished products unless explicitly stated.
+              Our products come with standard manufacturer warranties. Additional setup guidance and IT solutions are provided as part of our service offerings.
             </p>
 
-            <h2 className="text-2xl font-bold text-white mb-6">5. Technical Assistance</h2>
+            <h2 className="text-2xl font-bold text-white mb-6">5. Technical Support</h2>
             <p className="text-gray-300 mb-6">
-              Our technical Assistance services are independent of manufacturer Assistance channels. We provide Assistance only for products purchased through Hewlett Printers Solution.
+              Our technical support services focus on setup guidance and IT solutions. We provide support only for products purchased through Hewlett Hub.
             </p>
 
             <h2 className="text-2xl font-bold text-white mb-6">6. Limitation of Liability</h2>
             <p className="text-gray-300 mb-6">
-              Hewlett Printers Solution shall not be liable for any incidental, consequential, or special damages arising from the use of our products or services.
+              Hewlett Hub shall not be liable for any incidental, consequential, or special damages arising from the use of our products or services beyond what is covered by manufacturer warranties.
             </p>
 
             <div className="bg-gray-800/50 p-6 rounded-lg border border-gray-700">
@@ -136,9 +136,9 @@ export default function DisclaimerPage() {
                 If you have any questions about this disclaimer, please contact us at:
               </p>
               <p className="text-cyan-400">
-                Hewlett Printers Solution<br />
+                Hewlett Hub<br />
                 Legal Department<br />
-                legal@hewlettprinterssolution.com<br />
+                support@hewletthub.com<br />
                 +1 (800) 123-4567
               </p>
             </div>

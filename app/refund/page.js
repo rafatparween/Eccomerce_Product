@@ -52,7 +52,7 @@ export default function RefundPolicyPage() {
     <>
       <Head>
         <title>Refund & Return Policy | Hewlett Printers Solution</title>
-        <meta name="description" content="Our refund and return policy for refurbished printers. Understand our terms for returns, exchanges, and refunds." />
+        <meta name="description" content="Our refund and return policy for new printers, accessories, setup guidance, and IT solutions." />
       </Head>
 
       <div className="bg-gray-950 text-white overflow-x-hidden">
@@ -100,7 +100,7 @@ export default function RefundPolicyPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              Clear guidelines for returns and refunds of our refurbished printers
+              Clear guidelines for returns and refunds of our new printers, accessories, setup guidance, and IT solutions
             </motion.p>
           </div>
           <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-gray-950 to-transparent"></div>
@@ -118,7 +118,7 @@ export default function RefundPolicyPage() {
                 Key Policy Highlights
               </h2>
               <ul className="list-disc pl-6 text-gray-300 space-y-2">
-                <li>Returns accepted within 7 days of delivery if the printer is DOA (dead on arrival) or not as described</li>
+                <li>Returns accepted within 7 days of delivery if the product is defective or not as described</li>
                 <li>Return must include all original packaging and accessories</li>
                 <li>Setup/help charges are non-refundable</li>
                 <li>Refunds processed within 5–7 business days of approved return</li>
@@ -143,7 +143,7 @@ export default function RefundPolicyPage() {
                   <li>Contact us within 7 days to initiate return</li>
                   <li>Provide order number and reason for return</li>
                   <li>We'll email you a return authorization and shipping label</li>
-                  <li>Pack the printer securely with all original items</li>
+                  <li>Pack the product securely with all original items</li>
                   <li>Ship within 3 days of receiving return authorization</li>
                 </ul>
               </motion.div>
@@ -162,7 +162,7 @@ export default function RefundPolicyPage() {
                   <h3 className="text-xl font-semibold text-white">Refund Details</h3>
                 </div>
                 <ul className="list-disc pl-6 text-gray-300 space-y-2">
-                  <li>Full refund for DOA or not-as-described items</li>
+                  <li>Full refund for defective or not-as-described products</li>
                   <li>15% restocking fee for other returns</li>
                   <li>Original shipping costs non-refundable</li>
                   <li>Refund issued to original payment method</li>
@@ -194,13 +194,10 @@ export default function RefundPolicyPage() {
                 <div className="bg-gray-800/30 p-5 rounded-lg border-l-4 border-blue-500">
                   <p className="text-gray-300 mb-3">We accept returns under these conditions:</p>
                   <ul className="list-disc pl-6 text-gray-300 space-y-2">
-                    <li><strong>Dead on Arrival (DOA):</strong> Printer doesn't power on or has major functional defects</li>
+                    <li><strong>Defective on Arrival:</strong> Product doesn't function properly</li>
                     <li><strong>Not as Described:</strong> Significant difference from product listing</li>
-                    <li><strong>Wrong Item Shipped:</strong> You received a different model than ordered</li>
+                    <li><strong>Wrong Item Shipped:</strong> You received a different product than ordered</li>
                   </ul>
-                  <p className="text-gray-300 mt-4 italic">
-                    Note: Minor cosmetic wear is expected on refurbished items and doesn't qualify for return.
-                  </p>
                 </div>
               </div>
 
@@ -216,11 +213,11 @@ export default function RefundPolicyPage() {
                 </h3>
                 <div className="bg-gray-800/30 p-5 rounded-lg border-l-4 border-red-500">
                   <ul className="list-disc pl-6 text-gray-300 space-y-2">
-                    <li>Printers with physical damage caused by the customer</li>
+                    <li>Products with physical damage caused by the customer</li>
                     <li>Items missing original packaging or accessories</li>
                     <li>Products purchased more than 7 days ago</li>
                     <li>Optional setup/help services (once rendered)</li>
-                    <li>Ink/toner cartridges (unless defective)</li>
+                    <li>Consumables like ink or toner (unless defective)</li>
                   </ul>
                 </div>
               </div>
@@ -236,7 +233,7 @@ export default function RefundPolicyPage() {
                   Warranty Coverage
                 </h3>
                 <div className="bg-gray-800/30 p-5 rounded-lg border-l-4 border-green-500">
-                  <p className="text-gray-300 mb-3">All refurbished printers include a 12-month limited warranty covering:</p>
+                  <p className="text-gray-300 mb-3">All new products include a 12-month limited warranty covering:</p>
                   <ul className="list-disc pl-6 text-gray-300 space-y-2">
                     <li>Functional defects in materials or workmanship</li>
                     <li>Normal use failures</li>
@@ -274,7 +271,8 @@ export default function RefundPolicyPage() {
                     </div>
                     <div>
                       <p className="text-gray-400 text-sm">Email </p>
-                      <p className="text-white">returns@printerssolution.com</p>
+                      <p className="text-white">support@hewlettprinterssolution.com</p>
+                      
                     </div>
                   </div>
                 </div>

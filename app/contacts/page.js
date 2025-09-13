@@ -75,7 +75,7 @@ export default function ContactPage() {
     <>
       <Head>
         <title>Contact Us |Hewlett Printers Solution</title>
-        <meta name="description" content="Get in touch with Hewlett Printers Solution for inquiries about our refurbished printers and services." />
+        <meta name="description" content="Get in touch with Hewlett Printers Solution for inquiries about We're here to help with all your printer needs." />
       </Head>
 
       <div className="bg-gray-950 text-white overflow-x-hidden">
@@ -122,7 +122,7 @@ export default function ContactPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              We're here to help with all your printer needs
+              👉 New printers, accessories, setup guidance, and IT solutions.
             </motion.p>
           </div>
           <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-gray-950 to-transparent"></div>
@@ -368,11 +368,11 @@ export default function ContactPage() {
                 {[
                   {
                     question: "What's your response time for email inquiries?",
-                    answer: "We typically respond to all email inquiries within 24 hours during business days. For urgent matters, please call our  Assistance line."
+                    answer: "We typically respond to all email inquiries within 24 hours during business days. For urgent matters, please call our assistance line."
                   },
                   {
-                    question: "Do you offer onsite repair services?",
-                    answer: "Currently, we provide remote assistance and in-warranty service through shipping. We don't offer onsite repair services at this time."
+                    question: "Do you offer product setup services?",
+                    answer: "Yes, we provide comprehensive setup guidance for all our products to ensure they work perfectly for your needs."
                   },
                   {
                     question: "Can I visit your location to see products?",

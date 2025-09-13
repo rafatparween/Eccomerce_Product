@@ -53,7 +53,7 @@ export default function PrinterSolutions() {
     <>
       <Head>
         <title>Printer Solutions | Hewlett Printers Solution</title>
-        <meta name="description" content="Comprehensive printer solutions from Hewlett Printers Solution - refurbished printers, maintenance, supplies, and expert Assistance services." />
+        <meta name="description" content="Comprehensive printer solutions from Hewlett Printers Solution - new printers, accessories, setup guidance, and IT solutions." />
       </Head>
 
       <div className="bg-gray-950 text-white overflow-x-hidden">
@@ -101,7 +101,7 @@ export default function PrinterSolutions() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              Complete printing ecosystem solutions from Hewlett Printers Solution
+              👉 New printers, accessories, setup guidance, and IT solutions.
             </motion.p>
           </div>
           <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-gray-950 to-transparent"></div>
@@ -180,7 +180,7 @@ export default function PrinterSolutions() {
 
             <div className="bg-gray-800/50 p-6 rounded-lg border-l-4 border-blue-500">
               <p className="text-gray-300">
-                <span className="font-semibold">Note:</span> All printers are professionally refurbished and tested. We offer printers from top brands including HP, Canon, Epson, and Brother. We are not affiliated with these manufacturers.
+                <span className="font-semibold">Note:</span> We offer printers from top brands including HP, Canon, Epson, and Brother. We are not affiliated with these manufacturers.
               </p>
             </div>
           </section>
@@ -189,25 +189,25 @@ export default function PrinterSolutions() {
           <section className="animate-section bg-gray-900 rounded-xl shadow-lg p-8 mb-16 border border-gray-800">
             <h2 className="text-3xl font-bold text-white mb-8">
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-cyan-300">
-               Assistance Services
+                Our Services
               </span>
             </h2>
             
             <div className="grid md:grid-cols-2 gap-8 mb-8">
               {[
                 {
-                  title: "Remote Setup Assistance",
-                  description: "Our technicians will help you get your printer installed and configured",
+                  title: "Setup Guidance",
+                  description: "Expert assistance to get your printer installed and configured",
                   icon: "🖥️",
                   details: [
                     "Driver installation",
                     "Network/Wi-Fi setup",
-                    "Basic troubleshooting"
+                    "Basic configuration"
                   ]
                 },
                 {
                   title: "Maintenance Plans",
-                  description: "Keep your printer running smoothly with regular maintenance",
+                  description: "Keep your printer running smoothly with regular care",
                   icon: "🔧",
                   details: [
                     "Print head cleaning",
@@ -216,13 +216,13 @@ export default function PrinterSolutions() {
                   ]
                 },
                 {
-                  title: "Ink & Toner Subscriptions",
-                  description: "Never run out of supplies with our automatic delivery service",
+                  title: "Ink & Toner Supplies",
+                  description: "Quality supplies for optimal printing performance",
                   icon: "🖨️",
                   details: [
                     "Genuine compatible supplies",
-                    "Usage-based scheduling",
-                    "10% discount on subscriptions"
+                    "Reliable performance",
+                    "Competitive pricing"
                   ]
                 },
                 {
@@ -272,34 +272,34 @@ export default function PrinterSolutions() {
             <div className="grid md:grid-cols-3 gap-8">
               {[
                 {
-                  title: "Quality Assurance",
-                  description: "Every printer undergoes rigorous testing and refurbishment",
+                  title: "Quality Products",
+                  description: "We offer reliable printers and accessories",
                   icon: "🔍"
                 },
                 {
-                  title: "Cost Savings",
-                  description: "Save 40-70% compared to new printers",
+                  title: "Cost Effective",
+                  description: "Competitive pricing on all our products",
                   icon: "💰"
                 },
                 {
                   title: "Warranty Protection",
-                  description: "1-year warranty on all refurbished printers",
+                  description: "Peace of mind with our warranty options",
                   icon: "🛡️"
                 },
                 {
-                  title: "Eco-Friendly",
-                  description: "Reduce e-waste with refurbished equipment",
-                  icon: "🌱"
-                },
-                {
-                  title: "Expert Assistance",
-                  description: "Knowledgeable technicians available to help",
+                  title: "Expert Guidance",
+                  description: "Knowledgeable staff available to help",
                   icon: "👨‍💻"
                 },
                 {
                   title: "Flexible Solutions",
                   description: "Custom configurations for your specific needs",
                   icon: "⚙️"
+                },
+                {
+                  title: "IT Solutions",
+                  description: "Comprehensive technology support services",
+                  icon: "🌐"
                 }
               ].map((benefit, i) => (
                 <motion.div 

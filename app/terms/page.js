@@ -6,7 +6,7 @@ export default function TermsPage() {
     <>
       <Head>
         <title>Terms & Conditions | Hewlett Printers Solution</title>
-        <meta name="description" content="Terms and conditions for purchasing refurbished printers from Hewlett Printers Solution. Understand our policies on returns, warranties, and more." />
+        <meta name="description" content="Terms and conditions for purchasing printers from Hewlett Printers Solution. Understand our policies on returns, warranties, and more." />
       </Head>
 
       <div className="min-h-screen bg-gray-50 py-12">
@@ -27,8 +27,8 @@ export default function TermsPage() {
                   By purchasing from Hewlett Printers Solution, you agree to our product terms:
                 </p>
                 <ul className="list-disc pl-6 space-y-2 text-gray-700">
-                  <li>All printers are refurbished unless otherwise stated</li>
-                  <li>Devices may show minor cosmetic wear</li>
+                  <li>All products are new unless otherwise stated</li>
+                  <li>Devices may show minor cosmetic variations</li>
                   <li>Assistance services (setup) are optional and separate from the product cost</li>
                   <li>Customers must follow the return policy for any issue resolution</li>
                 </ul>
@@ -42,7 +42,7 @@ export default function TermsPage() {
                     These Terms & Conditions govern your purchase from Hewlett Printers Solution ("we", "us", or "our"). By placing an order, you agree to be bound by these terms. We reserve the right to modify these terms at any time without prior notice.
                   </p>
                   <p>
-                    All products sold by Hewlett Printers Solution are professionally refurbished to meet functional specifications unless explicitly marked as "new". Our refurbishment process includes thorough testing, cleaning, and replacement of worn components.
+                    All products sold by Hewlett Printers Solution are professionally tested to meet functional specifications. Our process includes thorough inspection, cleaning, and quality verification.
                   </p>
                 </div>
               </section>
@@ -52,7 +52,7 @@ export default function TermsPage() {
                 <h2 className="text-2xl font-bold text-gray-800 mb-6">2. Product Information</h2>
                 <div className="space-y-4 text-gray-700">
                   <p>
-                    <strong>Cosmetic Condition:</strong> Refurbished products may show signs of previous use including minor scratches, scuffs, or other cosmetic imperfections that do not affect functionality. Cosmetic condition is not considered a defect.
+                    <strong>Cosmetic Condition:</strong> Products may show minor cosmetic variations that do not affect functionality. Cosmetic condition is not considered a defect.
                   </p>
                   <p>
                     <strong>Accessories:</strong> Products include only those accessories listed in the product description. Original accessories may be replaced with compatible alternatives of equal or better quality.
@@ -84,7 +84,7 @@ export default function TermsPage() {
                 <h2 className="text-2xl font-bold text-gray-800 mb-6">4. Warranty and Returns</h2>
                 <div className="space-y-4 text-gray-700">
                   <p>
-                    <strong>Warranty:</strong> All refurbished products come with a 12-month limited warranty covering functional defects. The warranty begins on the date of delivery.
+                    <strong>Warranty:</strong> All products come with a 12-month limited warranty covering functional defects. The warranty begins on the date of delivery.
                   </p>
                   <p>
                     <strong>Return Policy:</strong> You may return products within 14 days of delivery for a refund or exchange. Returned products must be in original condition with all accessories. A 15% restocking fee may apply.
@@ -111,12 +111,12 @@ export default function TermsPage() {
                 </div>
               </section>
 
-              {/* Support Services */}
+              {/* Assistance Services */}
               <section className="mb-12">
-                <h2 className="text-2xl font-bold text-gray-800 mb-6">6.Assistance Services</h2>
+                <h2 className="text-2xl font-bold text-gray-800 mb-6">6. Assistance Services</h2>
                 <div className="space-y-4 text-gray-700">
                   <p>
-                    Basic technical Assistance is included with all purchases at no additional cost. Advanced setup services, configuration assistance, or on-site Assistance are available as paid add-ons.
+                    Basic technical assistance is included with all purchases at no additional cost. Advanced setup services, configuration assistance, or on-site assistance are available as paid add-ons.
                   </p>
                   <p>
                     Assistance is available Monday-Friday, 9am-5pm EST via email, phone, or live chat. Response times may vary based on assistance volume.
@@ -163,6 +163,7 @@ export default function TermsPage() {
                   Last updated: {new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
                 </p>
               </div>
+
             </div>
           </div>
         </div>
